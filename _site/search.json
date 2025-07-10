@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Rodrigo Grandy, PhD - Scientific Leader & Innovation Expert"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "rodrigograndy",
+    "section": "",
+    "text": "University of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "rodrigo grandy PhD",
+    "section": "",
+    "text": "Wengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "index.html#main-areas-of-expertise",
+    "href": "index.html#main-areas-of-expertise",
+    "title": "",
+    "section": "Main Areas of Expertise",
+    "text": "Main Areas of Expertise\n\nStrategic Planning & Execution of R&D Programs\nTeam Building, Training, and Mentoring\nStakeholder Management, Cross-Functional Collaboration & External Partner Collaboration\nScientific Communication & Project Presentation\nCell Therapy & Genomics for Cell-Based Products:\n\niPSC-Derived Cultures and Differentiation\nHematopoietic Stem Cell (HSC) & T Cell Differentiation\nGenomics, Bioinformatics, & NGS Techniques\nQuality Control & Cell Banking for iPSCs\nProcess Optimisation in Cell Line Development"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "",
+    "section": "About Me",
+    "text": "About Me\nInnovative scientific leader with over 19 years of combined experience in academia and biotech. Skilled in establishing and managing R&D projects, driving innovation, and fostering collaboration. Experienced in supporting process development and manufacturing efforts to facilitate seamless translation of scientific ideas into healthcare solutions. Passionate about leading teams and transforming scientific research into impactful healthcare advancements.\nStrong technical expertise with a focus on data-driven decision-making and stakeholder management."
+  },
+  {
+    "objectID": "Untitled-1.html",
+    "href": "Untitled-1.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "&lt;!-- Left Column (Image) --&gt;\n&lt;div class=\"about-cover\"&gt;\n  ![](profile.png){.profile-image}\n&lt;/div&gt;\n\n&lt;!-- Right Column (Content) --&gt;\n&lt;div class=\"about-main\"&gt;\n  ## About Me\n  Your content here\n  \n  ::: {.links}\n  [GitHub]{.icon .github} | [Twitter]{.icon .twitter}\n  :::\n    &lt;/div&gt;\n&lt;/div&gt;"
+  },
+  {
+    "objectID": "index.html#about-me-1",
+    "href": "index.html#about-me-1",
+    "title": "rodrigograndy@gmail.com",
+    "section": "",
+    "text": "Innovative scientific leader with over 19 years of combined experience…"
+  }
+]

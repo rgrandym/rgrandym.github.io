@@ -12,10 +12,11 @@ venv/
 
 # Ignore pyproject files
 *.pyproject.toml
-*.poetry.lock   
+*.poetry.lock
 uv.lock
 
 # Ignore folders and files related to build artifacts
 assets/
 styles/
 .streamlit/
+/.quarto/

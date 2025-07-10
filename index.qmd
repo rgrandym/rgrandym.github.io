@@ -1,0 +1,47 @@
+---
+image: assets/logo_2.png
+page-layout: full
+format: html
+---
+
+::: {.main-title}
+Rodrigo Grandy, PhD - Scientific Leader & Innovation Expert
+:::
+::: {.subtitle}
+Stem Cell Biologyst | Principal Scientist | Group Leader | Data Analysis with Machine Learning & AI <br> Oxford | United Kingdom | rodrigograndy@gmail.com
+:::
+
+::: {.top-section}
+::: {.left-column}
+::: {.logo-container}
+![](assets/logo_2.png){.profile-image}
+:::
+::: {.links}
+[{{< fa brands github >}}](https://github.com){.social-link} | [{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.social-link}
+:::
+:::
+
+
+
+::: {.right-column}
+## About Me
+Innovative  scientific  leader  with  over  19  years  of  combined  experience  in  academia  and  biotech.  Skilled  in establishing  and  managing  R&D  projects,  driving  innovation,  and  fostering  collaboration.  Experienced  in supporting  process  development  and  manufacturing  efforts  to  facilitate  seamless  translation  of  scientific ideas  into  healthcare  solutions.  Passionate  about  leading  teams  and  transforming  scientific  research  into impactful healthcare advancements.  
+
+Strong technical expertise with a focus on data-driven decision-making and stakeholder management. 
+:::
+:::
+
+::: {.full-width-section}
+## Main Areas of Expertise
+- Strategic Planning & Execution of R&D Programs
+- Team Building, Training, and Mentoring
+- Stakeholder Management, Cross-Functional Collaboration & External Partner Collaboration
+- Scientific Communication & Project Presentation
+- Cell Therapy & Genomics for Cell-Based Products:
+  - iPSC-Derived Cultures and Differentiation
+  - Hematopoietic Stem Cell (HSC) & T Cell Differentiation
+  - Genomics, Bioinformatics, & NGS Techniques
+  - Quality Control & Cell Banking for iPSCs
+  - Process Optimisation in Cell Line Development
+:::
+

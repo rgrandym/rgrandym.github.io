@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "rodrigograndy@gmail.com",
+    "section": "",
+    "text": "Innovative scientific leader with over 19 years of combined experience…\n\n\n\n\nStrategic Planning & Execution of R&D Programs\n…\n\n\nGitHub | LinkedIn"
+  },
+  {
+    "objectID": "index.html#main-areas-of-expertise",
+    "href": "index.html#main-areas-of-expertise",
+    "title": "rodrigograndy@gmail.com",
+    "section": "",
+    "text": "Strategic Planning & Execution of R&D Programs\n…\n\n\nGitHub | LinkedIn"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Rodrigo Grandy",
+    "section": "Experience",
+    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html#experience-1",
+    "href": "index.html#experience-1",
+    "title": "Rodrigo Grandy",
+    "section": "Experience",
+    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "rodrigograndy@gmail.com",
+    "section": "",
+    "text": "Innovative scientific leader with over 19 years of combined experience…"
+  },
+  {
+    "objectID": "Untitled-1.html",
+    "href": "Untitled-1.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "&lt;!-- Left Column (Image) --&gt;\n&lt;div class=\"about-cover\"&gt;\n  ![](profile.png){.profile-image}\n&lt;/div&gt;\n\n&lt;!-- Right Column (Content) --&gt;\n&lt;div class=\"about-main\"&gt;\n  ## About Me\n  Your content here\n  \n  ::: {.links}\n  [GitHub]{.icon .github} | [Twitter]{.icon .twitter}\n  :::\n    &lt;/div&gt;\n&lt;/div&gt;"
+  }
+]

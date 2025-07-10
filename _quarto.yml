@@ -1,0 +1,25 @@
+project:
+  type: website
+  
+
+website:
+  site-url: https://rgrandym.github.io
+  description: "Data Science Blog and Portfolio of Rodrigo Grandy"
+  navbar:
+    background: "#00003E"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: projects.qmd
+        text: Projects
+      - href: cv.qmd
+        text: CV
+    footer:
+      copyright: "© 2023 Rodrigo Grandy"
+
+format:
+  html:
+    theme: cosmo
+    css: styles/styles.css
+
+
