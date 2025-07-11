@@ -1,7 +1,6 @@
 project:
   type: website
   
-
 website:
   site-url: https://rgrandym.github.io
   description: "Data Science Blog and Portfolio of Rodrigo Grandy"
@@ -19,7 +18,13 @@ website:
 
 format:
   html:
-    theme: cosmo
+    page-layout: full
     css: styles/styles.css
-
-
+    include-in-header:
+      text: |
+        <style>
+          :root {
+            --content-width: 1400px;
+            --side-padding: 5vw;      /* Responsive side padding */
+          }
+        </style>

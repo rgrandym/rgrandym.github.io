@@ -54,5 +54,19 @@
     "title": "rodrigograndy@gmail.com",
     "section": "",
     "text": "Innovative scientific leader with over 19 years of combined experience…"
+  },
+  {
+    "objectID": "index.html#secondary-areas-of-expertise",
+    "href": "index.html#secondary-areas-of-expertise",
+    "title": "",
+    "section": "Secondary Areas of Expertise",
+    "text": "Secondary Areas of Expertise\n\nData Science & Programming: Python, Data Analysis\n\nMachine Learning Applications and Statistics\n\nFamiliarity with Process Optimisation & Quality by Design (QbD), Design of Experiments (DoE), GMP and Standards in Cell-Based Products"
+  },
+  {
+    "objectID": "index.html#main-technical-skills",
+    "href": "index.html#main-technical-skills",
+    "title": "",
+    "section": "Main Technical Skills",
+    "text": "Main Technical Skills\n\nCellular & Molecular Biology Techniques: Flow Cytometry, Immunofluorescence, Gene Editing, Cell Culture, iPSCs, cell differentiation, embryonic development, protein expression, RNA expression\nGenomics & Sequencing: NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation\nLaboratory & Process Development: Assay Development, Process Optimisation, cell banking, QC standards for iPSCs\nData Analysis & Bioinformatics: Python, Machine Learning, Statistical Analysis, Data Visualisation"
   }
 ]
