@@ -26,7 +26,9 @@ _files/
 .DS_Store
 Thumbs.db
 
+
 # Temp files
 *.log
 *.tmp
 *~
+temp_documents/
