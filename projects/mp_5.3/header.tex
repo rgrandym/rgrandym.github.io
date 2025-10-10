@@ -1,0 +1,37 @@
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \centering
+    \vspace{2cm}
+    {\Huge\bfseries \@title\par}
+    \vspace{3cm}
+    {\Large \@author\par}
+    \vfill
+    {\large \@date\par}
+  \end{titlepage}
+  \setcounter{page}{1}
+}
+\makeatother
+
+% Set default font size for tables and captions
+\usepackage{caption} % For caption control
+\usepackage{etoolbox} % For table font control
+
+% Set captions to 12pt
+\captionsetup{font=small} % "small" is typically 10-12pt in LaTeX
+\renewcommand{\captionlabelfont}{\footnotesize}
+\renewcommand{\captionfont}{\footnotesize}
+
+% Force tables to 12pt
+\AtBeginEnvironment{tabular}{\footnotesize}
+\AtBeginEnvironment{longtable}{\footnotesize}
+
+% Force TOC to appear on page 2
+\let\oldtoc\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \clearpage % End current page (page 1)
+  \pagestyle{empty} % Optional: Remove header/footer for TOC page
+  \oldtoc % Insert TOC (now on page 2)
+  \clearpage % End TOC page
+  \pagestyle{plain} % Restore headers (if needed)
+}

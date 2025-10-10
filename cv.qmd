@@ -1,0 +1,85 @@
+---
+title: "Curriculum Vitae"
+subtitle: "Rodrigo Grandy, PhD"
+page-layout: article
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+## Download CV
+
+You can download my full CV in PDF format:
+
+[Download CV (PDF)](assets/CV_Rodrigo_Grandy_Principal_Scientist_Group_Leader_June_2025.pdf){.btn .btn-primary}
+
+---
+
+## Professional Summary
+
+Innovative scientific leader with over 19 years of combined experience in academia and biotech, specializing in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing. Recently completed advanced certification in AI and Machine Learning for Data Science, gaining expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
+
+## Core Expertise
+
+- Strategic R&D planning
+- Team leadership
+- iPSC-derived cell cultures
+- Hematopoietic stem cell differentiation
+- Genomics & bioinformatics
+- Process optimization
+- Quality control for cell-based products
+- AI/ML for data analysis
+
+## Education
+
+**PhD in Cell and Molecular Biology**  
+*University Name* | Year
+
+**Master's Degree**  
+*University Name* | Year
+
+**Bachelor's Degree**  
+*University Name* | Year
+
+## Professional Experience
+
+### Current Position
+**Principal Scientist & Group Leader**  
+*Company Name* | Date - Present
+
+- Leading innovation in stem cell biology and immunology research
+- Establishing R&D programs and managing cross-functional teams
+- Translating scientific discoveries into healthcare solutions
+
+### Previous Positions
+
+**Senior Scientist**  
+*Company Name* | Date - Date
+
+- Description of responsibilities and achievements
+
+**Scientist**  
+*Company Name* | Date - Date
+
+- Description of responsibilities and achievements
+
+## Publications
+
+Selected publications and research contributions.
+
+## Skills & Technologies
+
+**Wet Lab**: Cell culture, iPSC differentiation, flow cytometry, molecular biology
+
+**Bioinformatics**: NGS analysis, genomics pipelines, data visualization
+
+**Programming**: Python, R, bioinformatics tools
+
+**AI/ML**: Neural networks, deep learning, LLMs, RAG systems
+
+## Contact
+
+- Email: rodrigograndy@gmail.com
+- LinkedIn: [linkedin.com/in/rodrigo-grandy](https://www.linkedin.com/in/rodrigo-grandy)
+- GitHub: [github.com/rgrandym](https://github.com/rgrandym)

@@ -1,0 +1,42 @@
+---
+title: "iPSC Differentiation Optimization"
+description: "Data-driven optimization of induced pluripotent stem cell differentiation protocols using statistical modeling"
+date: "2024-10-20"
+categories: ["Cell Biology", "Data Science", "Process Optimization"]
+image: "../assets/logo_2.png"
+---
+
+## Problem
+
+Differentiating induced pluripotent stem cells (iPSCs) into specific cell types requires precise control of culture conditions. Manual optimization is time-consuming and often yields suboptimal results. We needed a systematic approach to identify optimal differentiation parameters.
+
+## Solution
+
+Implemented a data-driven optimization framework:
+
+- Design of experiments (DOE) approach for systematic parameter testing
+- High-throughput data collection from flow cytometry and qPCR
+- Statistical modeling to identify key variables affecting differentiation efficiency
+- Machine learning models to predict optimal culture conditions
+- Automated data visualization dashboard for real-time monitoring
+
+The framework enabled rapid optimization of differentiation protocols with minimal experimental iterations.
+
+## Technologies
+
+- **Python**: Data analysis and modeling (scipy, statsmodels)
+- **Machine Learning**: Regression models and optimization algorithms
+- **R**: Statistical analysis and experimental design
+- **Flow Cytometry Data**: Automated processing and quality control
+
+## Outcomes
+
+- Improved differentiation efficiency by 40% compared to baseline protocols
+- Reduced optimization time from 6 months to 6 weeks
+- Created reusable framework applicable to multiple cell types
+- Established data pipeline for continuous process improvement
+- Supported manufacturing scale-up with validated protocols
+
+This project showcases how combining scientific domain knowledge with statistical rigor and machine learning can accelerate therapeutic cell production.
+
+[← Back to Projects](../projects.qmd){.back-link}

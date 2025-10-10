@@ -1,0 +1,13 @@
+---
+title: "Blog"
+listing:
+  contents: posts
+  type: default
+  sort: "date desc"
+  sort-ui: false
+  filter-ui: true
+  categories: true
+  fields: [date, title, description, reading-time, categories]
+---
+
+Exploring topics in bioinformatics, data analysis, machine learning, and scientific computing. Sharing knowledge, experiences, and best practices from years of research and development.

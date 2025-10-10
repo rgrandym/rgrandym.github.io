@@ -1,30 +1,45 @@
 project:
   type: website
-  
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "*.md"
+    - "!projects/**/*.ipynb"
+    - "!projects/**/before-body.tex"
+    - "!projects/**/header.tex"
+    - "!projects/course_2/**/*"
+    - "!projects/course_3_p1/**/*"
+    - "!projects/course_3_p2/**/*"
+    - "!projects/mp_5.3/**/*"
+    - "!projects/mp_6.3/**/*"
+    - "!assets/**/*.qmd"
+    - "!assets/**/*.ipynb"
+    - "projects/genomic-qc-pipeline.qmd"
+    - "projects/ipsc-optimization.qmd"
+    - "projects/immunology-development.qmd"
+    - "projects/student-dropout-prediction.qmd"
+
 website:
   site-url: https://rgrandym.github.io
-  description: "Data Science Blog and Portfolio of Rodrigo Grandy"
+  description: "Professional Portfolio - Principal Scientist & Group Leader"
   navbar:
-    background: "#00003E"
+    background: '#000000'
     left:
-      - href: index.qmd
-        text: Home
-      - href: projects.qmd
-        text: Projects
-      - href: cv.qmd
-        text: CV
-    footer:
-      copyright: "© 2023 Rodrigo Grandy"
+      - text: "Home"
+        href: index.qmd
+      - text: "Projects"
+        href: projects.qmd
+      - text: "Blog"
+        href: blog.qmd
+      - text: "CV"
+        href: cv.qmd
+  page-footer:
+    center: "© 2025 Rodrigo Grandy"
 
 format:
   html:
-    page-layout: full
+    theme: 
+      light: cosmo
     css: styles/styles.css
-    include-in-header:
-      text: |
-        <style>
-          :root {
-            --content-width: 1400px;
-            --side-padding: 5vw;      /* Responsive side padding */
-          }
-        </style>
+    toc: false
+    link-external-newwindow: true

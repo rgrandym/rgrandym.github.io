@@ -1,0 +1,311 @@
+---
+title: "Building Reproducible Bioinformatics Pipelines with Python"
+author: "Rodrigo Grandy"
+date: "2025-02-20"
+description: "Learn how to build robust, reproducible bioinformatics analysis pipelines using Python, best practices for code organization, and strategies for ensuring reproducibility."
+categories: ["Tutorial", "Best Practices", "Automation"]
+tags: ["Python", "Reproducibility", "Pipeline Development", "Bioinformatics"]
+reading-time: "10 min"
+---
+
+## Why Reproducibility Matters
+
+In bioinformatics, reproducibility isn't just good practice - it's essential for scientific integrity and regulatory compliance. I've seen too many analyses that can't be reproduced, leading to wasted time, failed validations, and delayed projects.
+
+After building dozens of analysis pipelines in research and industry settings, I've learned that reproducibility must be designed in from the start.
+
+## The Five Pillars of Reproducible Pipelines
+
+### 1. Environment Management
+
+Never rely on system Python. Always use isolated environments.
+
+```bash
+# Using conda
+conda create -n myanalysis python=3.11
+conda activate myanalysis
+
+# Document all dependencies
+conda env export > environment.yml
+```
+
+**Pro tip**: Pin exact versions in production. Use version ranges only during development.
+
+### 2. Modular Code Structure
+
+Break your analysis into small, testable functions. Each function should do one thing well.
+
+```python
+def load_count_matrix(filepath, min_genes=200):
+    """Load gene expression matrix and apply basic filtering.
+    
+    Args:
+        filepath: Path to count matrix file
+        min_genes: Minimum genes per cell threshold
+        
+    Returns:
+        Filtered AnnData object
+    """
+    adata = sc.read_csv(filepath)
+    sc.pp.filter_cells(adata, min_genes=min_genes)
+    return adata
+
+def calculate_qc_metrics(adata, mt_pattern="^MT-"):
+    """Calculate quality control metrics."""
+    adata.var['mt'] = adata.var_names.str.startswith(mt_pattern)
+    sc.pp.calculate_qc_metrics(
+        adata,
+        qc_vars=['mt'],
+        inplace=True
+    )
+    return adata
+```
+
+Notice:
+- Clear docstrings
+- Single responsibility per function
+- Explicit return values
+- Configurable parameters
+
+### 3. Configuration Management
+
+Never hardcode parameters. Use configuration files.
+
+```python
+# config.yaml
+data:
+  input_path: "data/raw/counts.csv"
+  output_path: "data/processed/"
+
+qc:
+  min_genes: 200
+  max_genes: 5000
+  max_mt_percent: 10
+
+clustering:
+  resolution: 0.6
+  n_neighbors: 15
+```
+
+```python
+# In your pipeline
+import yaml
+
+with open('config.yaml') as f:
+    config = yaml.safe_load(f)
+
+adata = load_count_matrix(
+    config['data']['input_path'],
+    min_genes=config['qc']['min_genes']
+)
+```
+
+**Benefits:**
+- Easy to modify parameters without changing code
+- Different configs for different experiments
+- Version control tracks parameter changes
+
+### 4. Comprehensive Logging
+
+Log everything. Your future self will thank you.
+
+```python
+import logging
+
+# Setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('analysis.log'),
+        logging.StreamHandler()
+    ]
+)
+
+logger = logging.getLogger(__name__)
+
+def process_data(adata, config):
+    """Process single-cell data with logging."""
+    logger.info(f"Starting analysis with {adata.n_obs} cells")
+    
+    # QC filtering
+    n_cells_before = adata.n_obs
+    adata = filter_cells(adata, config['qc'])
+    n_cells_after = adata.n_obs
+    
+    logger.info(
+        f"QC filtering: removed {n_cells_before - n_cells_after} cells "
+        f"({100 * (1 - n_cells_after/n_cells_before):.1f}%)"
+    )
+    
+    return adata
+```
+
+### 5. Automated Testing (Yes, Even for Analysis Code!)
+
+Test your analysis functions. It catches bugs before they corrupt your results.
+
+```python
+import pytest
+import numpy as np
+import anndata as ad
+
+def test_filter_cells():
+    """Test that cell filtering works correctly."""
+    # Create test data
+    X = np.random.randn(100, 50)
+    adata = ad.AnnData(X)
+    
+    # Add QC metrics
+    adata.obs['n_genes'] = np.random.randint(100, 1000, 100)
+    
+    # Filter
+    adata_filtered = filter_cells(adata, min_genes=500)
+    
+    # Check
+    assert all(adata_filtered.obs['n_genes'] >= 500)
+    assert adata_filtered.n_obs < adata.n_obs
+```
+
+Run tests with: `pytest tests/`
+
+## A Complete Pipeline Example
+
+Here's how it all comes together:
+
+```python
+# analysis_pipeline.py
+import logging
+import yaml
+import scanpy as sc
+from pathlib import Path
+
+# Import your modules
+from src.qc import calculate_qc_metrics, filter_cells
+from src.normalization import normalize_counts
+from src.clustering import find_clusters
+from src.visualization import generate_plots
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def run_pipeline(config_path):
+    """Run complete scRNA-seq analysis pipeline."""
+    
+    # Load configuration
+    with open(config_path) as f:
+        config = yaml.safe_load(f)
+    
+    logger.info("Starting pipeline")
+    
+    # Load data
+    adata = sc.read_csv(config['data']['input_path'])
+    logger.info(f"Loaded {adata.n_obs} cells, {adata.n_vars} genes")
+    
+    # QC
+    adata = calculate_qc_metrics(adata)
+    adata = filter_cells(adata, config['qc'])
+    logger.info(f"After QC: {adata.n_obs} cells")
+    
+    # Normalization
+    adata = normalize_counts(adata, config['normalization'])
+    
+    # Clustering
+    adata = find_clusters(adata, config['clustering'])
+    logger.info(f"Found {adata.obs['cluster'].nunique()} clusters")
+    
+    # Visualization
+    output_dir = Path(config['data']['output_path'])
+    output_dir.mkdir(exist_ok=True)
+    generate_plots(adata, output_dir)
+    
+    # Save results
+    adata.write(output_dir / 'processed_data.h5ad')
+    logger.info("Pipeline complete")
+    
+    return adata
+
+if __name__ == '__main__':
+    run_pipeline('config.yaml')
+```
+
+## Version Control Best Practices
+
+Track code, configs, and analysis logs (but not data):
+
+```bash
+# .gitignore
+data/
+*.h5ad
+*.log
+__pycache__/
+```
+
+Commit regularly with meaningful messages:
+
+```bash
+git commit -m "Add QC filtering with configurable thresholds"
+```
+
+## Docker for Ultimate Reproducibility
+
+For critical analyses, containerize everything:
+
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /analysis
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY src/ ./src/
+COPY config.yaml .
+COPY analysis_pipeline.py .
+
+CMD ["python", "analysis_pipeline.py"]
+```
+
+Build and run:
+
+```bash
+docker build -t my-analysis:v1.0 .
+docker run -v $(pwd)/data:/analysis/data my-analysis:v1.0
+```
+
+## Lessons Learned
+
+After years of building pipelines, here are my key takeaways:
+
+✅ **Start simple**: Don't over-engineer. Add complexity only when needed  
+✅ **Document as you go**: Future you is a different person  
+✅ **Test early**: Bugs found late are exponentially more expensive  
+✅ **Use version control**: No exceptions  
+✅ **Automate everything**: If you do it twice, automate it
+
+❌ **Don't hardcode**: Parameters will change  
+❌ **Don't skip logging**: You'll need it for debugging  
+❌ **Don't ignore errors**: Handle them explicitly  
+
+## Conclusion
+
+Reproducible pipelines take more effort upfront but save enormous time downstream. They enable:
+
+- Confident iteration and experimentation
+- Easier collaboration and knowledge transfer
+- Regulatory compliance (crucial for clinical work)
+- Scientific credibility
+
+Invest in reproducibility from day one. Your colleagues, reviewers, and future self will thank you.
+
+## Resources
+
+- [Cookie Cutter Data Science](https://drivendata.github.io/cookiecutter-data-science/)
+- [Snakemake workflow management](https://snakemake.readthedocs.io/)
+- [Best Practices for Scientific Computing](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745)
+
+---
+
+*Questions or suggestions? Connect with me on [LinkedIn](https://www.linkedin.com/in/rodrigo-grandy).*
+
+[← Back to Blog](../blog.qmd){.back-link}

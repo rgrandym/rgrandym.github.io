@@ -1,62 +1,90 @@
 ---
-image: assets/logo_2.png
-page-layout: full
-format: html
+title: "Rodrigo Grandy, PhD"
+subtitle: "Cell & Molecular Biologist | Cell Therapy | AI and ML Analytics"
+page-layout: custom
+format: 
+  html:
+    toc: false
+    css: styles/styles.css
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 ---
 
-::: {.main-title}
-Rodrigo Grandy, PhD - Scientific Leader & Innovation Expert
-:::
-::: {.subtitle}
-Stem Cell Biologyst | Principal Scientist | Group Leader | Data Analysis with Machine Learning & AI <br> Oxford | United Kingdom | rodrigograndy@gmail.com
+<!-- Hero Section: 60/40 split - Content left, Picture right -->
+::: {.hero-section}
+::: {.hero-content}
+
+Innovative scientific leader with over 19 years of combined experience in academia and biotech, specializing in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing. Recently completed advanced certification in AI and Machine Learning for Data Science, gaining expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
+Skilled in establishing and managing R&D projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modeling. Experienced in supporting process development and manufacturing to facilitate seamless translation of scientific ideas into healthcare solutions. Passionate about leading teams and transforming cell biology and genomic research into impactful biotechnology advancements through integration of molecular biology expertise with AI-driven approaches.
+Strong technical expertise spanning wet-lab methodologies, bioinformatics, and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
+
 :::
 
-::: {.top-section}
-::: {.left-column}
-::: {.logo-container}
-![](assets/logo_2.png){.profile-image}
-:::
+::: {.hero-image}
+![](assets/Rodrigo_Grandy_photo.jpg){width="300" alt="Rodrigo Grandy - Professional Photo"}
 
-<!-- New image container added here -->
-::: {.additional-image-container}
-![](assets/immuno_dev.png){.additional-image .additional-image-pos-1}
+::: {.contact-links}
+[{{< fa envelope >}}](mailto:rodrigograndy@gmail.com){.contact-link target="_blank" title="Email"} 
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.contact-link target="_blank" title="LinkedIn"} 
+[{{< fa brands github >}}](https://github.com/rgrandym){.contact-link target="_blank" title="GitHub"} 
 :::
-
-::: {.links}
-[{{< fa brands github >}}](https://github.com){.social-link} | [{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.social-link}
 :::
 :::
 
-::: {.right-column}
-## About Me
-Innovative  scientific  leader  with  over  19  years  of  combined  experience  in  academia  and  biotech.  Skilled  in establishing  and  managing  R&D  projects,  driving  innovation,  and  fostering  collaboration.  Experienced  in supporting  process  development  and  manufacturing  efforts  to  facilitate  seamless  translation  of  scientific ideas  into  healthcare  solutions.  Passionate  about  leading  teams  and  transforming  scientific  research  into impactful healthcare advancements.  
-
-Strong technical expertise with a focus on data-driven decision-making and stakeholder management. 
-
-## Main Areas of Expertise
-- Strategic Planning & Execution of R&D Programs
-- Team Building, Training, and Mentoring
-- Stakeholder Management, Cross-Functional Collaboration & External Partner Collaboration
-- Scientific Communication & Project Presentation
-- Cell Therapy & Genomics for Cell-Based Products:
-  - iPSC-Derived Cultures and Differentiation
-  - Hematopoietic Stem Cell (HSC) & T Cell Differentiation
-  - Genomics, Bioinformatics, & NGS Techniques
-  - Quality Control & Cell Banking for iPSCs
-  - Process Optimisation in Cell Line Development
-
-## Secondary Areas of Expertise
-- Data Science & Programming: Python, Data Analysis  
-- Machine Learning Applications and Statistics  
-- Familiarity with Process Optimisation & Quality by Design (QbD), Design of Experiments (DoE), GMP and Standards in Cell-Based Products 
-
-## Main Technical Skills 
-- Cellular & Molecular Biology Techniques: Flow Cytometry, Immunofluorescence, Gene Editing, Cell Culture, iPSCs, cell differentiation, embryonic development, protein expression, RNA expression
-- Genomics & Sequencing: NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation
-- Laboratory & Process Development: Assay Development, Process Optimisation, cell banking, QC standards for iPSCs 
-- Data Analysis & Bioinformatics: Python, Machine Learning, Statistical Analysis, Data Visualisation
-
-:::
+<!-- Core Expertise - Full Width -->
+::: {.core-expertise-section}
+**Core Expertise**: Strategic R&D planning • Team leadership • iPSC-derived cell cultures • Hematopoietic stem cell differentiation • Genomics & bioinformatics • Process optimization • Quality control for cell-based products
 :::
 
 
+
+<!-- Featured Project Section -->
+::: {.featured-section}
+## Featured Projects
+
+::: {.featured-project-card}
+::: {.cell_therapy_project_card-content}
+### Generation of Fully Matured Hematopoietic Stem Cells with iPSC: This should be the basecamp for iPSC-derived Immunotherapies.
+
+Led a pioneering project focused on the generation of hematopoietic stem cells (HSCs) from induced pluripotent stem cells (iPSCs). Developed and optimized protocols for cell differentiation, ensuring high yield and purity of HSCs for therapeutic applications.
+
+**Technologies**: iPSC Culture • Cell Differentiation • Flow Cytometry • Gene Editing • Stem Cell Biology
+
+::: {.featured-actions}
+[View Full Project](projects/genomic-qc-pipeline.qmd){.cta-button}
+[View All Projects](projects.qmd){.cta-button}
+:::
+:::
+:::
+
+::: {.featured-project-card}
+::: {.cell_therapy_project_card-content}
+### Quality Control of Genetically Engineered iPSCs for Immunotherapies.
+
+Led a pioneering project focused on the quality control of genetically engineered iPSCs. Developed and optimized protocols for the characterization and validation of iPSCs, ensuring their safety and efficacy for therapeutic applications.
+
+**Technologies**: iPSC Culture • Cell Differentiation • Flow Cytometry • Gene Editing • Stem Cell Biology
+
+::: {.featured-actions}
+[View Full Project](projects/genomic-qc-pipeline.qmd){.cta-button}
+[View All Projects](projects.qmd){.cta-button}
+:::
+:::
+:::
+
+::: {.featured-project-card}
+::: {.cell_therapy_project_card-content}
+### Development of CAR-T Cells from iPSCs for Cancer Immunotherapy.
+
+Led a groundbreaking project focused on the development of CAR-T cells from induced pluripotent stem cells (iPSCs). Established protocols for the differentiation and engineering of iPSCs into CAR-T cells, enabling targeted cancer therapies.
+
+**Technologies**: iPSC Culture • CAR-T Cell Engineering • Flow Cytometry • Gene Editing • Stem Cell Biology
+
+::: {.featured-actions}
+[View Full Project](projects/genomic-qc-pipeline.qmd){.cta-button}
+[View All Projects](projects.qmd){.cta-button}
+:::
+:::
+:::
+:::

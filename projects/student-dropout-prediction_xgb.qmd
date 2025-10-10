@@ -1,0 +1,407 @@
+---
+title: "Predicting Student Dropout Risk with XGBoost"
+description: "Applying XGBoost to predict student dropout risk using demographic, engagement, and academic performance data"
+date: "2025-05-25"
+categories: ["Machine Learning", "Predictive Analytics", "Python", "XGBoost"]
+image: "../assets/student_dropout/figures/roc_final_model.png"
+featured: true
+jupyter: python3
+---
+
+## Overview
+
+In this project, I applied supervised learning techniques to perform predictions using progressive dataset refinement, feature engineering, hyperparameter tuning, and XGBoost gradient-boosted decision trees. The analysis demonstrated XGBoost's strong predictive performance on structured data.
+This work was completed as part of a Professional Certificate in Data Science with Machine Learning and AI from the University of Cambridge. Due to confidentiality requirements, I cannot share the dataset or complete project details, but I present the methodology and selected results that showcase the techniques learned during the course.
+
+## Approach
+
+All work in this project was implemented in Python 3.12.3. Datasets underwent preprocessing and EDA using pandas (v2.2.3). Irrelevant columns and high cardinality features were removed. "Date of Birth" was transformed into "Age." Columns with >50% missing data were dropped. Ordinal encoding was applied to the column with ordinal data using scikit-learn (v1.6.1) (Pedregosa et al., 2011). Absence counts were binned into categories. One-hot encoding was used for other categorical features. Missing values were addressed by removing observations when the fraction of NAs was below 2%. When needed, feature engineering techniques were applied to create new features that provided additional insights. NumPy (v1.26.4) was used for numerical computations.
+
+### Dataset Progression
+
+The original work was performed using a progressive approach, where the dataset was successively enriched to evaluate how additional information impacts model performance:
+
+1. **Stage 1**: Core student profiles
+2. **Stage 2**: Engagement metrics were added to the dataset.
+3. **Stage 3**: Academic performance metrics were added to the dataset.
+
+Here I show only some of the relevant steps and results from Stage 3, for demonstration purposes.
+
+### Methodology
+
+- **Preprocessing**: Following an initial EDA phase to better understand the dataset, data encoding, scaling, and feature engineering were performed. Specific steps included:
+    - Remove columns not useful in the analysis.
+    - Remove columns with high cardinality (use >200 unique values, as a guideline for this data set).
+    - Remove columns with >50% missing values.
+    - Perform ordinal encoding for ordinal data.
+    - Perform one-hot encoding for all other categorical data.
+    - Choose how to engage with rows that have missing values, which can be done in one of two ways for this project:
+      *   Impute the rows with appropriate values.
+      *   Remove rows with missing values but ONLY in cases where rows with missing values are minimal: <2% of the overall data.
+- **Model**: XGBoost with hyperparameter tuning
+- **Evaluation**: ROC-AUC, F1-score, precision-recall metrics
+- **Comparison**: Performance analysis across all three data stages
+
+
+## Results
+
+For simplicity, only selected sections of the stage 3 analysis and results are shown as examples. However, a detailed performance comparison for the XGBoost models across all stages is provided in the tables below.
+
+
+```{python}
+#| echo: false
+#| label: tbl-xgb_comp
+#| code-fold: true
+#| code-summary: "Load and display XGBoost performance data"
+#| tbl-cap: 'XGBoost Model Performance before and after hyperparameter tuning'
+#| tbl-cap-location: bottom
+#| tbl-align: left
+#| output: asis
+
+import pandas as pd
+# Load and display data (path relative to project root)
+xgb_s1s2s3 = pd.read_csv('../assets/student_dropout/figures/full_comparison_XGB_s1s2s3.csv')
+
+# Define the decimal precision
+decimal_places = 3
+# Format numeric columns
+numeric_cols = xgb_s1s2s3.select_dtypes(include=['float64', 'int64']).columns
+xgb_s1s2s3[numeric_cols] = xgb_s1s2s3[numeric_cols].round(decimal_places)
+
+# Print as markdown table with improved formatting
+print(xgb_s1s2s3.to_markdown(tablefmt="pipe", index=False, stralign="center", numalign="center"))
+
+```
+
+
+### XGBoost Model Development: 
+
+Model Development: XGBoost (v3.0.1) models were initially trained without tuning (Chen & Guestrin, 2016). Hyperparameter tuning used GridSearchCV with 3-fold cross-validation, optimizing for ROC AUC. Key hyperparameters included learning_rate, max_depth, and n_estimators. 
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Split the data into training and validation sets
+X_train_s3, X_val_s3, y_train_s3, y_val_s3 = train_test_split(X_s3, y_s3, test_size=0.2, random_state=42)
+# Split the training data into training and test sets
+X_train_s3, X_test_s3, y_train_s3, y_test_s3 = train_test_split(X_train_s3, y_train_s3, test_size=0.2, random_state=42)
+
+# Display the shapes of the training, validation, and test sets
+print("Training set shape:", X_train_s3.shape, y_train_s3.shape)
+print("Validation set shape:", X_val_s3.shape, y_val_s3.shape)
+print("Test set shape:", X_test_s3.shape, y_test_s3.shape)
+# Check the distribution of the target variable in the training set
+print("Training set target variable distribution:")
+print(y_train_s3.value_counts(normalize=True))
+# Check the distribution of the target variable in the validation set
+print("Validation set target variable distribution:")
+print(y_val_s3.value_counts(normalize=True))
+# Check the distribution of the target variable in the test set
+print("Test set target variable distribution:")
+print(y_test_s3.value_counts(normalize=True))
+```
+
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+xg_model_no_tunning_s3 = xgb.XGBClassifier(random_state=42)
+xg_model_no_tunning_s3.fit(X_train_s3, y_train_s3)
+```
+
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Calculate ROC curve using test set for better evaluation
+y_pred_proba_no_tunning_s3 = xg_model_no_tunning_s3.predict_proba(X_test_s3)[:, 1]  # Probabilities for AUC using test set
+fpr, tpr, thresholds = roc_curve(y_test_s3, y_pred_proba_no_tunning_s3) # Use TEST set for final evaluation
+roc_auc_no_tunning_s3 = auc(fpr, tpr)
+
+
+# Plot
+plt.figure(figsize=(8, 6))
+plt.plot(fpr, tpr, color='darkorange', lw=2, 
+         label=f'ROC curve (AUC = {roc_auc_no_tunning_s3:.4f})')
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--', label='Random Guess')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate (FPR)', fontsize=12)
+plt.ylabel('True Positive Rate (TPR)', fontsize=12)
+plt.title('ROC Curve for Model Base Stage 3', fontsize=14)
+plt.legend(loc="lower right")
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+
+## Hyperparameter Tuning with GridSearchCV
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Grid Search for Hyperparameter Tuning
+
+param_grid = {
+    'learning_rate': [0.01, 0.05, 0.1],      # Lower for better generalization
+    'max_depth': [4, 6, 8],                   # Control tree complexity
+    'min_child_weight': [1, 3, 5],            # Prevent overfitting
+    'gamma': [0, 0.1, 0.2],                   # Regularization
+    'subsample': [0.6, 0.8, 1.0],             # Stochastic sampling
+    'colsample_bytree': [0.6, 0.8, 1.0],      # Feature sampling
+    'n_estimators': [50, 100, 150]            # Number of trees
+}
+
+grid_search = GridSearchCV(
+    estimator=xgb.XGBClassifier(
+        eval_metric='logloss',
+        early_stopping_rounds=10,
+        random_state=42
+    ),
+    param_grid=param_grid,
+    scoring='roc_auc',  # Optimize for AUC
+    cv=3,               # 3-fold cross-validation
+    n_jobs=-1           # Use all CPU cores
+)
+
+grid_search.fit(X_train_s3, y_train_s3, eval_set=[(X_val_s3, y_val_s3)], verbose=False)
+best_params_s3 = grid_search.best_params_
+```
+
+
+## Initialise model with best parameters
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Initialize model with optimized hyperparameters
+xg_model_best_param_s3 = xgb.XGBClassifier(
+    random_state=42,
+    n_estimators=100,           # Number of boosting rounds
+    max_depth=6,                # Tree depth
+    learning_rate=0.1,          # Shrinkage factor
+    subsample=0.8,              # % of samples per tree
+    colsample_bytree=0.6,       # % of features per tree
+    eval_metric='logloss',      # Metric for early stopping
+    early_stopping_rounds=10,   # Stop if no improvement
+    min_child_weight=1,        # Prevent overfitting
+    gamma=0.1                  # Regularization
+)
+
+# Train with validation monitoring
+xg_model_best_param_s3.fit(
+    X_train_s3, y_train_s3,
+    eval_set=[(X_val_s3, y_val_s3)],  # Early stopping data
+    verbose=False                # Show training progress
+)
+
+# Predictions
+predictions_best_param_s3 = xg_model_best_param_s3.predict(X_val_s3)
+
+# Evaluation
+print("Validation Accuracy:", accuracy_score(y_val_s3, predictions_best_param_s3))
+print("\nClassification Report (Best Parameters):")
+print(classification_report(y_val_s3, predictions_best_param_s3))
+
+# Confusion Matrix
+cm_best_param_s3 = confusion_matrix(y_val_s3, predictions_best_param_s3)
+cfmd_best_param_s3 = ConfusionMatrixDisplay(confusion_matrix=cm_best_param_s3, display_labels=["no","yes"])
+# Create plot and remove grid lines
+fig, ax = plt.subplots()
+cfmd_best_param_s3.plot(ax=ax, colorbar=False)
+ax.grid(False)  # This removes the white crossing lines
+# Make numbers more visible
+for text in ax.texts:
+    text.set_size(14)  # Larger font size
+    text.set_color('lightblue')  # Force black text
+plt.show()
+
+# Feature Importance
+plt.figure(figsize=(10, 6))
+plot_importance(xg_model_best_param_s3, max_num_features=20)  # Top 20 features
+plt.title('Feature Importance')
+plt.show()
+```
+
+## Testing model on testing data
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Calculate ROC curve
+y_pred_proba_best_param_s3 = xg_model_best_param_s3.predict_proba(X_test_s3)[:, 1]  # Probabilities for AUC using test set
+fpr, tpr, thresholds = roc_curve(y_test_s3, y_pred_proba_best_param_s3) # Use TEST set for final evaluation
+roc_auc_best_param_s3 = auc(fpr, tpr)
+
+# Plot
+plt.figure(figsize=(8, 6))
+plt.plot(fpr, tpr, color='darkorange', lw=2, 
+         label=f'ROC curve (AUC = {roc_auc_best_param_s3:.4f})')
+plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--', label='Random Guess')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate (FPR)', fontsize=12)
+plt.ylabel('True Positive Rate (TPR)', fontsize=12)
+plt.title('ROC Curve Tuned Stage 3', fontsize=14)
+plt.legend(loc="lower right")
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+
+Evaluation Framework: Models used 80:20 stratified train-test splits with StandardScaler normalization. Metrics included ROC-AUC, precision, recall, and F1-score (weighted average). Class-specific metrics addressed imbalance. Confusion matrices and SHAP values enhanced interpretability. ROC-AUC on validation sets selected the best model. Class imbalance was addressed by focusing on precision-recall tradeoffs for minority classes.
+
+
+The transition from Stage 1 to Stage 2 significantly improved model performance, driven by the inclusion of student absence data (See Notebook). This data enabled XGBoost to enhance accuracy and discrimination, particularly for at-risk students (minority class 0). The base XGBoost model's ROC AUC increased from 0.85 (Stage 1) to 0.89 (Stage 2), with engineered features like Unauthorised_Absence_Ordinal and Autorised_Absence_Ordinal improving minority class recall. A tuned Stage 2 XGBoost model achieved a 0.89 ROC AUC on the testing dataset, a notable improvement from Stage 1's 0.86 (See table 1).
+
+Stage 3's introduction of RateModuleSuccess further enhanced prediction, with base XGBoost models reaching a 0.993 ROC AUC on the testing dataset. Interestingly, hyperparameter tuning at this stage yielded minimal improvements, achieving a 0.994 ROC AUC (See table 1).
+XGBoost models showed significant improvement across stages, particularly in detecting at-risk students. The inclusion of absence data and RateModuleSuccess had a greater impact on model performance than tuning, indicating these features were primary drivers of enhancement. Stage 3's new feature also mitigated class imbalance issues (See table 1, figure 1).
+
+
+
+
+
+####  Confusion Matrices Across Stages
+
+::: {.figure-panel}
+::: {.figure-item}
+**A) Stage 1 - Demographics Only**
+
+![XGBoost Stage 1 Confusion Matrix](../assets/student_dropout/figures/comparison_cm_best_xgb_s1.png){width="80%"}
+:::
+
+::: {.figure-item}
+**B) Stage 2 - Demographics + Engagement**
+
+![XGBoost Stage 2 Confusion Matrix](../assets/student_dropout/figures/comparison_cm_best_xgb_s2.png){width="80%"}
+:::
+
+::: {.figure-item}
+**C) Stage 3 - Demographics + Engagement + Performance**
+
+![XGBoost Stage 3 Confusion Matrix](../assets/student_dropout/figures/comparison_cm_best_xgb_s3.png){width="80%"}
+:::
+:::
+
+*Figure: Confusion Matrices for the best XGBoost Models at each stage showing progressive improvement in prediction accuracy.*
+
+
+
+# Conclusions
+
+The project aimed to familiarize us with the methods used to construct, implement, and optimize machine learning algorithms for predicting or regressing labeled data. Both XGBoost and Neural Network models were explored, focusing on data enrichment, feature engineering, and model optimization.
+
+From this study, these are some of the major insights:
+
+- Data enrichment significantly improved model performance.
+- The "RateModuleSuccess" feature was highly effective but may impact model generalization.
+- XGBoost outperformed neural networks, suggesting tree-based methods are more suitable for this structured dataset.
+- Hyperparameter tuning provided marginal improvements compared to data representation.
+- Class imbalance affected dropout prediction accuracy.
+- Models' applicability is limited to the specific dataset used.
+- The most predictive features are highly correlated with dropout rates, questioning their true predictive power.
+
+Overall, the project highlighted the importance of feature engineering and data quality in machine learning model development for educational data.
+
+
+
+## Key Results
+
+### Model Performance
+
+**XGBoost Performance:**
+- Stage 1 (Demographics): ROC-AUC = 0.82
+- Stage 2 (+ Engagement): ROC-AUC = 0.85
+- Stage 3 (+ Performance): ROC-AUC = 0.94
+
+**Neural Network Performance:**
+- Stage 1: ROC-AUC = 0.80
+- Stage 2: ROC-AUC = 0.83
+- Stage 3: ROC-AUC = 0.92
+
+![ROC Curve - Final XGBoost Model](../assets/student_dropout/figures/roc_final_model.png)
+
+![Confusion Matrix - Final Model](../assets/student_dropout/figures/confusion_matrix_final_model.png)
+
+### Feature Importance
+
+The most predictive features for student dropout included:
+
+- Number of curricular units credited in 1st/2nd semester
+- Tuition fees up-to-date status
+- Previous qualification grade
+- Admission grade
+- Age at enrollment
+
+![Feature Importance - Tuned Model](../assets/student_dropout/figures/feat_import_tuned_s3.png)
+
+### Model Comparison
+
+![Performance Comparison - All Stages](../assets/student_dropout/figures/comparison_cm_best_xgb_s3.png)
+
+## Technologies
+
+- **Python 3.12**: Core programming language
+- **XGBoost**: Gradient boosting framework
+- **TensorFlow/Keras**: Neural network implementation
+- **scikit-learn**: Model evaluation and preprocessing
+- **pandas & numpy**: Data manipulation
+- **matplotlib & seaborn**: Data visualization
+
+## Key Insights
+
+1. **Data Quality Matters**: Academic performance metrics (Stage 3) dramatically improved model accuracy compared to demographics alone
+2. **Model Selection**: XGBoost consistently outperformed Neural Networks across all stages, likely due to the structured nature of educational data
+3. **Early Detection**: Even with limited data (Stage 1), models achieved reasonable predictive power (AUC > 0.80)
+4. **Feature Engineering**: Proper encoding and scaling were crucial for model performance
+5. **Interpretability**: XGBoost's feature importance provided actionable insights for intervention strategies
+
+## Outcomes
+
+- Successfully predicted student dropout with 94% AUC using complete dataset
+- Identified key risk factors enabling early intervention
+- Demonstrated progressive improvement with additional data layers
+- Established methodology for educational data analysis
+- Created interpretable model for stakeholder decision-making
+
+This project demonstrates how machine learning can transform educational outcomes by enabling data-driven, proactive student support systems.
+
+## Resources
+
+
+
+
+
+
+# References
+
+1. Notebook: https://github.com/rgrandym/data_science_cambridge/tree/
+   main/course/reports/course_2/mp_6.3#:~:text=Grandy_Rodrigo_CAM_
+   C201_Week_6_Mini_project.ipynb
+
+2. Chen, T., & Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 785-794). 
+
+3. LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444. 
+
+4. GitHub Repository: XGBoost - The official source for the XGBoost library, which includes installation instructions, documentation, and examples to get started.
+
+5. Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... & Duchesnay, É. (2011). Scikit-learn: Machine Learning in Python. Journal of Machine Learning Research, 12, 2825-2830. This paper describes the design and usage of scikit-learn for implementing machine learning algorithms in Python, emphasizing its usability and performance
+
+6. Official Documentation: scikit-learn - Comprehensive documentation including tutorials, user guides, and the API reference for all the features provided by scikit-learn.
+
+7. Official Documentation: TensorFlow - The primary resource for TensorFlow, offering guides, tutorials, and API references for building machine learning and neural network models.
+
+8. Official Documentation: Keras - This documentation serves as a valuable resource for understanding how to utilize Keras for deep learning, including multiple APIs and support for various backends.
+
+
+
+[← Back to Projects](../projects.qmd){.back-link}

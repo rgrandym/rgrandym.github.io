@@ -1,0 +1,175 @@
+---
+title: "Mini-project 6.3: Customer Segmentation with Clustering"
+author: "Rodrigo Grandy, PhD"
+date: "2025-04-07" 
+format:
+    pdf:
+      documentclass: extarticle
+      toc: true
+      title-block-banner: false 
+      mainfont: Helvetica
+      sansfont: Helvetica
+      fontsize: 14pt
+      fig-format: retina
+      fig-dpi: 300
+      fig-align: center
+      number-sections: true
+      colorlinks: false
+      geometry: "left=2cm,right=2cm,top=3cm,bottom=3cm"
+      include-before-body: before-body.tex
+      include-in-header: header.tex
+---
+
+# Introduction
+
+Understanding and serving customers are key strategic objectives in retail marketing. By analyzing customer data, businesses can enhance satisfaction and retention through price optimization and targeted resource allocation. 
+
+Customer segmentation enables businesses to group customers by shared characteristics such as demographics, geography, purchasing behavior, and preferences.
+
+In this project, we applied machine learning and data-driven methodologies to develop clustering models for customer segmentation, aiming to optimize marketing strategies and improve business outcomes.
+
+
+# Objectives
+
+The main goal of this mini-project is to help us understand how to apply clustering techniques for customer segmentation analysis.
+
+- Perform EDA for initial understanding of the data set.
+- Preprocess the data and conduct feature engineering
+- Determine the optimal number of clusters ($k$)
+- Apply ML models to reduce dimensions and segment customers.
+- Write a report with critical findings and recommendations.
+
+
+# Methods
+
+The e-commerce dataset used for customer segmentation was obtained from this url: https://github.com/FourthRevGitHub/CAM_DS_Public-Data-Sets/raw/main/Course%201/Week%206/CUSTOMERS_CLEAN.zip, containing 951,668 transaction records from 1 January 2012 to 30 December 2016. Analysis was conducted in Python 3.12.0 using standard libraries (pandas, NumPy, Matplotlib, Seaborn) and scikit-learn's clustering algorithms (k-means, hierarchical clustering) with standard and robust scaling. Clustering quality was assessed via elbow analysis and silhouette scores, while dimensionality reduction (PCA) and t-SNE projections were applied for visualization. 
+
+Feature engineering focused on five key metrics: purchase frequency, recency, customer lifetime value (CLV), average unit cost, and customer age (Table 1). Exploratory data analysis (EDA) verified data quality, distributions, and outliers. Due to computational constraints, hierarchical clustering was applied to a subset, while other analyses used the full dataset. The complete implementation is available here: https://github.com/rgrandym/data_science_cambridge/blob/main/course/reports
+/mp6.3/Grandy_Rodrigo_CAM_C101_W6_Mini_project.ipynb.
+
+
+```{python}
+#| echo: false
+#| label: tbl-eng_feat
+#| tbl-cap: 'Extract of Data Set with Engineer Features'
+#| tbl-cap-location: bottom
+#| tbl-align: left  # Left-aligns the caption
+#| output: asis
+
+import pandas as pd
+# Load and display data
+engin_feat = pd.read_csv('figures/table_1_engineered_features.csv')
+
+# Print as markdown table with improved formatting
+print(engin_feat.head().to_markdown(tablefmt="pipe", index=False, stralign="left", numalign="center"))
+
+```
+
+```{python}
+#| echo: false
+#| label: tbl-outliers
+#| tbl-cap: 'No outliers detected in the Engineered Features'
+#| tbl-cap-location: bottom
+#| tbl-align: left  # Left-aligns the caption
+#| output: asis
+
+import pandas as pd
+outliers = pd.read_csv('figures/outliers_in_engineered_features.csv')
+print(outliers.head().to_markdown(tablefmt="pipe", index=False))
+
+```
+
+# Results
+
+Exploratory data analysis (EDA) revealed significant deviations from normality across all engineered features (see Notebook for detailed visualizations). This characteristic indicates that careful selection and interpretation of clustering methods should be exercised, as distance-based algorithms may be sensitive to these patterns.
+
+Transactional features (frequency, Recency, clv, Avg_Unit_Cost) contained extreme values beyond typical ranges, initially suggesting outliers (Figure 1). However, the IQR method flagged no outliers in the these features (Table 2), indicating that these extreme values may still represent natural variation rather than anomalies; domain knowledge would be needed to confirm this.
+
+After feature engineering, 2,908 missing values (4.3% of 68,300 total observations) were removed to maintain data integrity for clustering analysis.
+
+![Distribution of Engineered Feature Values](figures/boxplot_anomalies_IQR_methods.pdf)
+
+
+Comparative analysis of k-means and hierarchical clustering revealed differences in optimal cluster numbers. Hierarchical clustering produced variable results (2-6 clusters) depending on linkage methods and scaling approaches, while k-means with elbow analysis indicated 4-6 clusters (see Notebook). To examine whether extreme values influenced these discrepancies, unscaled, robust-scaled, and standard-scaled data was evaluated. 
+
+Notably, all scaling methods generated similar elbow plots but showed degraded silhouette scores, including inconsistent and negative values, suggesting suboptimal cluster separation. While the scaled versions weakly converged at k=6, the unscaled data strongly suggested k=4 as the most stable solution (Figure 2, Notebook). For this reason, the rest of the analyses were performed with k=4.
+
+
+```{=latex}
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.3\linewidth}
+\caption*{\fontsize{10}{12}\selectfont\textmd{A}}
+\includegraphics[width=\linewidth]{figures/elbow_plot_kmeans_unscaled.pdf}
+\end{subfigure}
+\hspace{0.03\linewidth}
+\begin{subfigure}{0.3\linewidth}
+\caption*{\fontsize{10}{12}\selectfont\textmd{B}}
+\includegraphics[width=\linewidth]{figures/elbow_plot_kmeans_standard_scaled.pdf}
+\end{subfigure}
+\hspace{0.03\linewidth}
+\begin{subfigure}{0.3\linewidth}
+\caption*{\fontsize{10}{12}\selectfont\textmd{C}}
+\includegraphics[width=\linewidth]{figures/elbow_plot_kmean_robust_scaling.pdf}
+\end{subfigure}
+\caption{Comparison of elbow methods: (A) Unscaled, (B) Standard scaled, (C) Robust scaled}
+\label{fig:elbow_panel}
+\end{figure}
+
+```
+
+To better understand the underlying structure of the data, visualizations were performed both before and after dimensionality reduction. The PCA-enhanced t-SNE approach demonstrated superior performance compared to t-SNE alone, highlighting PCA's effectiveness in preserving meaningful patterns for nonlinear projection. While both standard and robust scaling methods maintained the global data structure in PCA space, standard scaling yielded slightly more compact k-means clusters with reduced overlap (see Notebook).
+
+![t-SNE-PCA projection k-means versus hierarchical clustering](figures/tsne_clusters_comparison_kmeans_vs_hierarchical.pdf)
+
+
+Of note, a strong similarity between k-means and hierarchical clustering results was observed when t-SNE with PCA and standard scaling were used (Figure 3). This observation further supported k-means with k=4 as an appropriate method for the analysis of this data set.
+
+Overall, the results discussed above combined with the computational advantages of k-means clustering methods, indicated that k-means clustering with k=4 was the optimal balance between interpretability and methodological consistency required to performed customer segmentation with this data set. 
+
+Following cluster generation, the customer groups were analyzed in greater detail. While the box plots for the identified segments did not reveal clear patterns or distributions, potentially due to the influence of extreme values (See Notebook), the mean values for each cluster (Table 3) highlighted distinct differences. These averages provide meaningful insights into how the customer base is partitioned. Notably, the youngest and oldest customer segments dominate in terms of Customer Lifetime Value (CLV), suggesting they contribute the most to revenue. 
+
+
+```{python}
+#| echo: false
+#| label: tbl-cluster_summary
+#| tbl-cap: 'Summary of features in each cluster'
+#| tbl-cap-location: bottom
+#| tbl-align: left  # Left-aligns the caption
+#| output: asis
+
+import pandas as pd
+outliers = pd.read_csv('figures/cluster_summary.csv')
+print(outliers.head().to_markdown(tablefmt="pipe", index=False))
+
+```
+
+
+![t-SNE-PCA projection average Age and CLV per customer cluster](figures/tsne_clusters_verification_plot_clv_Age.pdf)
+
+Interestingly, the 49-year-old group, though the smallest in size, exhibits the highest purchase frequency—averaging five times more transactions than the youngest and oldest groups. In contrast, the 48-year-old segment falls in the middle for both size and CLV but shows the lowest purchase frequency and longest recency, indicating relatively inactive engagement. 
+
+A clearer visualization of these distinctions emerges in Figure 4, where the t-SNE-PCA projection of selected features demonstrates that the k-means clustering captures meaningful behavioral patterns. The alignment of clusters with specific demographics—particularly age and CLV—offers actionable insights into how different customer segments drive business performance.
+
+
+# Conclusions
+
+Overall, these results suggest that customers can be segmented into meaningful categories, despite the dataset’s lack of normality, which is a potential challenge for distance-based algorithms like k-means. 
+
+The consistency of outcomes across different scaling methods and clustering approaches indicates relative robustness to this limitation. That said, the low silhouette scores across all trials suggest the data may not partition well into distinct clusters, possibly due to inherent overlap between customer segments or algorithmic constraints. 
+
+Importantly, Hierarchical clustering could be a better approach to distinguish overlapping customers and it could yield better segmentation provided there is enough computational power to process the data set.
+
+Further investigation with alternative methods could clarify these nuances, though such analysis falls outside this assignment’s scope. Ultimately, the k=4 clustering—while imperfect—appears to capture actionable patterns, such as:
+
+- The youngest and oldest customer groups exhibit the highest Customer Lifetime Value (CLV), suggesting they are the most revenue-critical segments. This suggests that the company should prioritize retention strategies to maintain their high spending.
+- The 49-year-old group, though small, buys 5x more frequently than other segments, indicating strong engagement but limited reach. The company could explore ways to expand this segment.
+- The 48 years old segment has medium CLV (compared with the other groups), the lowest purchase frequency, and the longest recency (time since last purchase), suggesting that they may be at risk of churn or are simply less active. 
+
+
+While the current k=4 clustering provides useful segmentation, the company should combine these insights with behavioral (not just demographic) data to optimize marketing and retention strategies. The data suggests age and CLV are key drivers, but deeper analysis including purchase categories, channel preferences, location, etc., could unlock further growth.
+
+
+
+
+

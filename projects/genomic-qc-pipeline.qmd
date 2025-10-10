@@ -1,0 +1,45 @@
+---
+title: "Genomic Quality Control Pipeline"
+description: "Automated pipeline for quality control and analysis of next-generation sequencing data in cell therapy manufacturing"
+date: "2024-08-05"
+categories: ["Bioinformatics", "Quality Control", "Automation"]
+image: "../assets/logo_2.png"
+featured: true
+---
+
+## Problem
+
+Cell therapy manufacturing requires rigorous genomic quality control to ensure product safety and consistency. Manual analysis of NGS data is error-prone, time-consuming, and difficult to standardize across batches. Regulatory requirements demand comprehensive documentation and traceability.
+
+## Solution
+
+Developed an automated genomic QC pipeline with:
+
+- **Data Processing**: Automated alignment, variant calling, and quality metrics calculation
+- **Quality Gates**: Predefined acceptance criteria for genomic integrity
+- **Visualization**: Interactive dashboards for batch-level QC review
+- **Reporting**: Automated generation of regulatory-compliant reports
+- **Traceability**: Complete audit trail from raw data to final decision
+
+The pipeline processes samples in parallel, reducing analysis time from days to hours while improving accuracy and consistency.
+
+## Technologies
+
+- **Python**: Pipeline orchestration and data processing
+- **Bioinformatics Tools**: BWA, GATK, SAMtools, FastQC
+- **Visualization**: Plotly, matplotlib for interactive plots
+- **Infrastructure**: Docker containers for reproducible environments
+- **Version Control**: Git for code and analysis versioning
+
+## Outcomes
+
+- Reduced QC analysis time by 85% (from 3 days to 4 hours per batch)
+- Eliminated manual transcription errors in quality reports
+- Enabled real-time decision-making during manufacturing
+- Successfully passed regulatory inspection with full audit trail
+- Adopted as standard QC workflow across multiple manufacturing sites
+- Processed over 500 clinical batches with zero quality escapes
+
+The pipeline demonstrates how automation and bioinformatics can strengthen quality systems in cell therapy manufacturing while accelerating time-to-patient.
+
+[← Back to Projects](../projects.qmd){.back-link}

@@ -1,22 +1,32 @@
-# Ignore Python bytecode files
+# Python
 __pycache__/
 *.py[cod]
-.vscode/
 *.DS_Store
 
-# Ignore Python virtual environments
+# Python virtual environments
 venv/
 .env/
 .venv/
 .python/
 
-# Ignore pyproject files
-*.pyproject.toml
-*.poetry.lock
+# Dependency files
 uv.lock
 
-# Ignore folders and files related to build artifacts
-assets/
-styles/
-.streamlit/
+# Quarto build artifacts
+_site/
 /.quarto/
+_files/
+*_files/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.log
+*.tmp
+*~
