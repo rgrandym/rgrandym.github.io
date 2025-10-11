@@ -7,17 +7,13 @@ project:
     - "!projects/**/*.ipynb"
     - "!projects/**/before-body.tex"
     - "!projects/**/header.tex"
-    - "!projects/course_2/**/*"
-    - "!projects/course_3_p1/**/*"
-    - "!projects/course_3_p2/**/*"
-    - "!projects/mp_5.3/**/*"
-    - "!projects/mp_6.3/**/*"
     - "!assets/**/*.qmd"
     - "!assets/**/*.ipynb"
     - "projects/genomic-qc-pipeline.qmd"
     - "projects/ipsc-optimization.qmd"
     - "projects/immunology-development.qmd"
     - "projects/student-dropout-prediction.qmd"
+    - "projects/student-dropout-xgb-notebook.qmd"
 
 website:
   site-url: https://rgrandym.github.io

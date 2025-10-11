@@ -825,3 +825,13 @@ blockquote {
     height: 200px;
   }
 }
+
+/* ============================================
+   Table Caption Alignment
+   ============================================ */
+
+.table-caption-left .quarto-float-caption,
+.table-caption-left figcaption {
+  text-align: left !important;
+  caption-side: bottom;
+}
