@@ -2,94 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/tasks.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.612Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/research.html</loc>
-    <lastmod>2025-10-07T13:20:41.112Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.611Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/plan.html</loc>
-    <lastmod>2025-10-07T13:20:41.112Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.611Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/contracts/content-schema.html</loc>
-    <lastmod>2025-10-07T13:12:57.844Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.610Z</lastmod>
   </url>
   <url>
-    <loc>https://rgrandym.github.io/IMPLEMENTATION_SUMMARY.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <loc>https://rgrandym.github.io/assets/categories/README-ml-ai.html</loc>
+    <lastmod>2025-10-12T09:57:11.499Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/assets/categories/README-cell-molecular.html</loc>
+    <lastmod>2025-10-12T09:57:11.584Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/CSS_CLEANUP_SUMMARY.html</loc>
-    <lastmod>2025-10-09T16:49:21.974Z</lastmod>
+    <lastmod>2025-10-12T11:51:12.815Z</lastmod>
   </url>
   <url>
-    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_xgb.html</loc>
-    <lastmod>2025-10-09T19:05:07.498Z</lastmod>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_xgb_092525.html</loc>
+    <lastmod>2025-10-17T15:44:24.946Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/projects/ipsc-optimization.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-12T10:59:39.975Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/projects/genomic-qc-pipeline.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-12T10:59:39.932Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/category-descriptions/cell-therapy.html</loc>
+    <lastmod>2025-10-12T12:08:48.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/categories/machine-learning-ai.html</loc>
+    <lastmod>2025-10-20T14:42:58.080Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/categories/cell-molecular-biology.html</loc>
+    <lastmod>2025-10-12T12:08:47.872Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/posts/2025-02-20-reproducible-bioinformatics-pipelines.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.605Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/index.html</loc>
-    <lastmod>2025-10-08T16:37:11.216Z</lastmod>
+    <lastmod>2025-10-17T09:02:39.464Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/blog.html</loc>
-    <lastmod>2025-10-07T14:24:41.583Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.600Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/cv.html</loc>
-    <lastmod>2025-10-08T12:14:30.944Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.601Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/posts/2025-01-15-scrna-seq-best-practices.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.604Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/projects.html</loc>
-    <lastmod>2025-10-09T16:46:32.428Z</lastmod>
+    <lastmod>2025-10-12T12:21:53.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/categories/cell-therapy.html</loc>
+    <lastmod>2025-10-12T12:08:47.826Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/category-descriptions/cell-molecular-biology.html</loc>
+    <lastmod>2025-10-12T12:08:47.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/category-descriptions/machine-learning-ai.html</loc>
+    <lastmod>2025-10-12T12:08:48.068Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/projects/immunology-development.html</loc>
-    <lastmod>2025-10-07T13:59:45.185Z</lastmod>
+    <lastmod>2025-10-10T16:28:41.703Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn.html</loc>
-    <lastmod>2025-10-09T16:35:55.614Z</lastmod>
+    <lastmod>2025-10-12T15:20:13.740Z</lastmod>
   </url>
   <url>
-    <loc>https://rgrandym.github.io/CLEANUP_SUMMARY.html</loc>
-    <lastmod>2025-10-07T14:31:44.942Z</lastmod>
+    <loc>https://rgrandym.github.io/ARCHITECTURE.html</loc>
+    <lastmod>2025-10-12T11:51:12.770Z</lastmod>
   </url>
   <url>
-    <loc>https://rgrandym.github.io/ENVIRONMENT_UPDATE.html</loc>
-    <lastmod>2025-10-09T12:35:16.460Z</lastmod>
+    <loc>https://rgrandym.github.io/FIGURE_TEMPLATES.html</loc>
+    <lastmod>2025-10-11T10:30:34.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/assets/categories/README-cell-therapy.html</loc>
+    <lastmod>2025-10-12T09:57:11.540Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/checklists/requirements.html</loc>
-    <lastmod>2025-10-07T13:05:32.342Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.609Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/data-model.html</loc>
-    <lastmod>2025-10-07T13:20:41.112Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.610Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/quickstart.html</loc>
-    <lastmod>2025-10-08T16:37:11.214Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.611Z</lastmod>
   </url>
   <url>
     <loc>https://rgrandym.github.io/specs/001-professional-portfolio-website/spec.html</loc>
-    <lastmod>2025-10-07T13:05:32.342Z</lastmod>
+    <lastmod>2025-10-10T10:19:27.611Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_151025.html</loc>
+    <lastmod>2025-10-19T14:40:27.049Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_151025_test.html</loc>
+    <lastmod>2025-10-19T14:48:20.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/agent_prompt_nn_analysis.html</loc>
+    <lastmod>2025-10-19T15:12:40.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_151025_AGENT_GENERATED.html</loc>
+    <lastmod>2025-10-19T17:19:13.698Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_151025_backup.html</loc>
+    <lastmod>2025-10-19T14:40:27.049Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/README.html</loc>
+    <lastmod>2025-10-10T10:19:27.409Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_test_agent.html</loc>
+    <lastmod>2025-10-20T12:16:03.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_chunked.html</loc>
+    <lastmod>2025-10-19T20:19:52.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-nn-chunked-full.html</loc>
+    <lastmod>2025-10-19T21:45:41.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_201025.html</loc>
+    <lastmod>2025-10-21T11:52:48.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rgrandym.github.io/projects/student-dropout-prediction_nn_201025_NEW.html</loc>
+    <lastmod>2025-10-20T16:26:26.443Z</lastmod>
   </url>
 </urlset>

@@ -33,6 +33,9 @@ Thumbs.db
 *~
 temp_documents/
 
+# Work in progress
+work_in_progress/
+
 # Models
 models/
 

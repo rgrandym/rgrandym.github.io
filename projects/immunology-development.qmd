@@ -3,7 +3,7 @@ title: "Immunology Development Analysis"
 description: "Computational analysis of immune system development patterns using machine learning and bioinformatics approaches"
 date: "2024-12-15"
 categories: ["Bioinformatics", "Research", "Machine Learning"]
-image: "../assets/immuno_dev.png"
+
 ---
 
 ## Problem

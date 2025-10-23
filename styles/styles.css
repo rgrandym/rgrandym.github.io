@@ -292,10 +292,19 @@ img[width="500"] { --image-width: 500px; }
   padding: 20px 2.5% 0 2.5% !important;  /* Match page content padding */
 }
 
-/* Projects listing page - remove side padding to align with filter */
+/* Projects listing page - align with title block */
 body:has(.quarto-listing-default) #title-block-header {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-left: 2.5% !important;
+  padding-right: 2.5% !important;
+  max-width: var(--max-width) !important;
+}
+
+/* Full width for listing pages - match title block */
+body:has(.quarto-listing-default) main {
+  max-width: var(--max-width) !important;
+  padding-left: 2.5% !important;
+  padding-right: 2.5% !important;
+  margin: 0 auto !important;
 }
 
 /* Project detail pages - title is inside padded content, so no extra padding */
@@ -313,6 +322,10 @@ body:has(.quarto-listing-default) #title-block-header {
   display: none;  /* Hide empty metadata section */
 }
 
+/* Hide date/metadata column on projects landing page only (category cards have no dates) */
+.projects-landing-page ~ #listing-listing .metadata {
+  display: none !important;
+}
 
 .hero-section {
   display: grid;
@@ -705,57 +718,85 @@ blockquote {
    ============================================ */
 
 /* Override grid and set list layout */
+.quarto-listing-default,
+.list.quarto-listing-default,
 #quarto-content .quarto-listing-default {
   display: flex !important;
   flex-direction: column !important;
   gap: 2rem !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* Individual project item */
+.quarto-listing-default .quarto-post,
+.list.quarto-listing-default .quarto-post,
+.quarto-listing-default .listing-item,
 #quarto-content .quarto-listing-default .quarto-post,
 #quarto-content .quarto-listing-default .listing-item {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  align-items: flex-start;
-  padding: 1.5rem;
-  background: var(--background);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2rem !important;
+  align-items: flex-start !important;
+  padding: 1.5rem 1.5rem 1.5rem 0 !important;  /* No left padding to align with title */
+  background: var(--background) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: var(--transition) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
+.quarto-listing-default .quarto-post:hover,
+.list.quarto-listing-default .quarto-post:hover,
+.quarto-listing-default .listing-item:hover,
 #quarto-content .quarto-listing-default .quarto-post:hover,
 #quarto-content .quarto-listing-default .listing-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Thumbnail on the left */
-#quarto-content .quarto-listing-default .listing-item-img-placeholder {
+/* Thumbnail container - works with Quarto's natural sizing */
+.quarto-listing-default .thumbnail,
+.list.quarto-listing-default .thumbnail,
+#quarto-content .quarto-listing-default .thumbnail {
   flex-shrink: 0;
   width: 250px;
   height: 150px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
+  overflow: visible;
 }
 
-#quarto-content .quarto-listing-default .listing-item-img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Thumbnail images - let Quarto control sizing naturally */
+.quarto-listing-default .thumbnail img,
+.list.quarto-listing-default .thumbnail img,
+#quarto-content .quarto-listing-default .thumbnail img,
+.thumbnail-image {
+  width: auto;
+  height: auto;
+  max-width: 250px;
+  max-height: 150px;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Content on the right */
+.quarto-listing-default .body,
+.list.quarto-listing-default .body,
+.quarto-listing-default .listing-item-content,
 #quarto-content .quarto-listing-default .listing-item-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
   gap: 0.5rem;
 }
 
 /* Project title */
+.quarto-listing-default .listing-title,
 #quarto-content .quarto-listing-default .listing-title {
   font-size: 24px;
   font-weight: 600;
@@ -765,17 +806,20 @@ blockquote {
   line-height: 1.3;
 }
 
+.quarto-listing-default .listing-title a,
 #quarto-content .quarto-listing-default .listing-title a {
   color: var(--text);
   text-decoration: none;
   transition: var(--transition);
 }
 
+.quarto-listing-default .listing-title a:hover,
 #quarto-content .quarto-listing-default .listing-title a:hover {
   color: #A8A8A8;
 }
 
-/* Project description */
+/* Project description - default for all listing pages */
+.quarto-listing-default .listing-description,
 #quarto-content .quarto-listing-default .listing-description {
   font-size: 17px;
   line-height: 1.6;
@@ -783,7 +827,15 @@ blockquote {
   margin-bottom: 0.75rem;
 }
 
+/* Category description font size ONLY on projects landing page (not category pages) */
+.list.quarto-listing-default .quarto-post .listing-description,
+.list.quarto-listing-default .quarto-post .listing-description a {
+  font-size: 14px !important;  /* Smaller font for category descriptions on landing page */
+  line-height: 1.5 !important;
+}
+
 /* Categories */
+.quarto-listing-default .listing-categories,
 #quarto-content .quarto-listing-default .listing-categories {
   display: flex;
   flex-wrap: wrap;
@@ -791,6 +843,7 @@ blockquote {
   margin-top: auto;
 }
 
+.quarto-listing-default .listing-category,
 #quarto-content .quarto-listing-default .listing-category {
   background: #F5F5F5;
   color: var(--text);
@@ -802,11 +855,13 @@ blockquote {
   transition: var(--transition);
 }
 
+.quarto-listing-default .listing-category:hover,
 #quarto-content .quarto-listing-default .listing-category:hover {
   background: #E0E0E0;
 }
 
 /* Date */
+.quarto-listing-default .listing-date,
 #quarto-content .quarto-listing-default .listing-date {
   font-size: 14px;
   color: var(--text-light);
@@ -815,13 +870,147 @@ blockquote {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  #quarto-content .quarto-listing-default .quarto-post,
-  #quarto-content .quarto-listing-default .listing-item {
+  .quarto-listing-default .quarto-post,
+  .quarto-listing-default .listing-item,
+  .quarto-listing-default .quarto-post,
+  .list.quarto-listing-default .quarto-post,
+  #quarto-content .quarto-listing-default .quarto-post {
     flex-direction: column;
   }
   
-  #quarto-content .quarto-listing-default .listing-item-img-placeholder {
+  .quarto-listing-default .thumbnail,
+  .list.quarto-listing-default .thumbnail,
+  #quarto-content .quarto-listing-default .thumbnail {
     width: 100%;
     height: 200px;
   }
 }
+
+/* ============================================
+   Table Caption Alignment
+   ============================================ */
+
+.table-caption-left .quarto-float-caption,
+.table-caption-left figcaption {
+  text-align: left !important;
+  caption-side: bottom;
+}
+
+/* ============================================
+   Figure Panel System
+   ============================================ */
+
+/* Main figure container */
+.fig-panel {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 100%;
+}
+
+/* Row container for figures */
+.fig-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2%;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+/* Column sizes */
+.fig-col-1 { flex: 0 0 100%; max-width: 100%; }
+.fig-col-2 { flex: 0 0 48%; max-width: 48%; }
+.fig-col-3 { flex: 0 0 31%; max-width: 31%; }
+.fig-col-4 { flex: 0 0 23%; max-width: 23%; }
+
+/* Custom widths */
+.fig-col-30 { flex: 0 0 30%; max-width: 30%; }
+.fig-col-40 { flex: 0 0 40%; max-width: 40%; }
+.fig-col-45 { flex: 0 0 45%; max-width: 45%; }
+.fig-col-50 { flex: 0 0 50%; max-width: 50%; }
+.fig-col-60 { flex: 0 0 60%; max-width: 60%; }
+.fig-col-70 { flex: 0 0 70%; max-width: 70%; }
+.fig-col-80 { flex: 0 0 80%; max-width: 80%; }
+
+/* Individual figure wrapper */
+.fig-item {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+/* Panel labels (A, B, C, etc.) */
+.fig-label {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5em;
+  letter-spacing: 0.5px;
+}
+
+.fig-label-sm { font-size: 12pt; }
+.fig-label-md { font-size: 14pt; }
+.fig-label-lg { font-size: 16pt; }
+.fig-label-xl { font-size: 18pt; }
+
+/* Label positions */
+.fig-label-top { margin-bottom: 0.5em; margin-top: 0; }
+.fig-label-bottom { margin-top: 0.5em; margin-bottom: 0; }
+.fig-label-left { text-align: left; }
+.fig-label-center { text-align: center; }
+.fig-label-right { text-align: right; }
+
+/* Image styling */
+.fig-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--card-radius);
+}
+
+/* Figure captions */
+.fig-caption {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0.8em auto 0;
+  text-align: left;
+  padding: 0 0em;
+  font-weight: normal
+}
+
+.fig-caption-center { text-align: center; }
+.fig-caption-sm { font-size: 0.8em; }
+.fig-caption-md { font-size: 0.9em; }
+.fig-caption-lg { font-size: 1em; }
+
+/* Panel titles (above each subfigure) */
+.fig-title {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fig-row {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  
+  .fig-col-2, .fig-col-3, .fig-col-4,
+  .fig-col-30, .fig-col-40, .fig-col-45,
+  .fig-col-50, .fig-col-60, .fig-col-70, .fig-col-80 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .fig-caption {
+    max-width: 100%;
+    padding: 0;
+  }
+}
+

@@ -1,14 +1,67 @@
 ---
 title: "Projects"
-listing:
-  contents: projects
-  type: default
-  sort: "date desc"
-  sort-ui: false
-  filter-ui: true
-  categories: true
-  fields: [image, title, description, categories, date]
-  image-height: 150px  # Control thumbnail size
+page-layout: full
 ---
 
-Browse my portfolio of projects in Machine Learning, Data Science, and stem cell research. Each project demonstrates practical applications of data science and scientific innovation in biotechnology.
+::: {.projects-landing-page}
+Browse my portfolio of projects across key research areas. Each category showcases my skills and practical experience in data science, machine learning, and scientific innovation in biotechnology.
+:::
+
+```{=html}
+<div class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+
+<!-- Cell Therapy -->
+<div class="quarto-post image-right">
+  <div class="thumbnail">
+    <a href="projects/categories/cell-therapy.html">
+      <img src="assets/images/stemcells.png" class="thumbnail-image">
+    </a>
+  </div>
+  <div class="body">
+    <h3 class="no-anchor listing-title">
+      <a href="projects/categories/cell-therapy.html">Cell Therapy</a>
+    </h3>
+    <div class="listing-description">
+      Advanced research in stem cell optimization, iPSC technology, and regenerative medicine. Focus on protocol development and cell line engineering for therapeutic applications.
+    </div>
+  </div>
+</div>
+
+<!-- Cell and Molecular Biology -->
+<div class="quarto-post image-right">
+  <div class="thumbnail">
+    <a href="projects/categories/cell-molecular-biology.html">
+      <img src="assets/images/embryonic_dev.png" class="thumbnail-image">
+    </a>
+  </div>
+  <div class="body">
+    <h3 class="no-anchor listing-title">
+      <a href="projects/categories/cell-molecular-biology.html">Cell and Molecular Biology</a>
+    </h3>
+    <div class="listing-description">
+      This section describes my research conducted during nine years of postdoctoral training at UMass Medical School (USA) and the Stem Cell Institute at Cambridge University (United Kingdom). During this period, I focused on cellular mechanisms, genomic analysis, epigenetics, and the regulation of cell differentiation. My primary research involved human embryonic stem cells (hESCs) and induced pluripotent stem cells (iPSCs), specifically investigating their differentiation processes and optimizing protocols for generating mature tissue cells by applying principles of human embryonic development.
+    </div>
+  </div>
+</div>
+
+<!-- Machine Learning & AI -->
+<div class="quarto-post image-right">
+  <div class="thumbnail">
+    <a href="projects/categories/machine-learning-ai.html">
+      <img src="assets/images/logo_2.png" class="thumbnail-image">
+    </a>
+  </div>
+  <div class="body">
+    <h3 class="no-anchor listing-title">
+      <a href="projects/categories/machine-learning-ai.html">Machine Learning & AI</a>
+    </h3>
+    <div class="listing-description">
+      Predictive modeling, statistical analysis, and artificial intelligence applications in education and data science. Featuring XGBoost models, neural networks, and advanced analytics.
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+```

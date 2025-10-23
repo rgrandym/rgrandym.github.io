@@ -3,21 +3,37 @@ project:
   output-dir: _site
   render:
     - "*.qmd"
-    - "*.md"
-    - "!projects/**/*.ipynb"
-    - "!projects/**/before-body.tex"
-    - "!projects/**/header.tex"
-    - "!projects/course_2/**/*"
-    - "!projects/course_3_p1/**/*"
-    - "!projects/course_3_p2/**/*"
-    - "!projects/mp_5.3/**/*"
-    - "!projects/mp_6.3/**/*"
-    - "!assets/**/*.qmd"
-    - "!assets/**/*.ipynb"
+    - "README.md"
+    - "ARCHITECTURE.md"
+    # Individual projects
     - "projects/genomic-qc-pipeline.qmd"
     - "projects/ipsc-optimization.qmd"
     - "projects/immunology-development.qmd"
-    - "projects/student-dropout-prediction.qmd"
+    - "projects/student-dropout-prediction_xgb_092525.qmd"
+    - "projects/student-dropout-prediction_nn_201025.qmd"
+    
+    
+
+    # Category pages
+    - "projects/categories/*.qmd"
+    # Exclude documentation and guides
+    - "!NOTEBOOK_TO_QUARTO_*.md"
+    - "!*_GUIDE.md"
+    - "!SELECTION_GUIDE.md"
+    - "!CSS_CLEANUP_SUMMARY.md"
+    - "!FIGURE_TEMPLATES.md"
+    # Exclude agent_quarto_reports directory (templates and prompts)
+    - "!agent_quarto_reports/**"
+    # Exclude generated prompts
+    - "!agent_*.md"
+    # Exclude for now
+    - "!projects/work_in_progress/**"
+    - "!projects/**/*.ipynb"
+    - "!projects/**/before-body.tex"
+    - "!projects/**/header.tex"
+    - "!assets/**/*.qmd"
+    - "!assets/**/*.ipynb"
+    
 
 website:
   site-url: https://rgrandym.github.io
@@ -28,7 +44,16 @@ website:
       - text: "Home"
         href: index.qmd
       - text: "Projects"
-        href: projects.qmd
+        menu:
+          - text: "All Projects"
+            href: projects.qmd
+          - text: "---"
+          - text: "Machine Learning & AI"
+            href: projects/categories/machine-learning-ai.qmd
+          - text: "Cell Therapy"
+            href: projects/categories/cell-therapy.qmd
+          - text: "Cell and Molecular Biology"
+            href: projects/categories/cell-molecular-biology.qmd
       - text: "Blog"
         href: blog.qmd
       - text: "CV"
