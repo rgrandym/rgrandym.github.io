@@ -1,0 +1,9 @@
+---
+title: "Cell Therapy"
+description: "Advanced research in stem cell optimization, iPSC technology, and regenerative medicine. Focus on protocol development and cell line engineering for therapeutic applications."
+image: "../../assets/images/stemcells.png"
+---
+
+```{=html}
+<script>window.location.href = '../categories/cell-therapy.html';</script>
+```

@@ -1,0 +1,18 @@
+---
+title: "Machine Learning & AI"
+page-layout: full
+listing:
+  contents: 
+    - "../student-dropout-prediction_xgb_092525.qmd"
+    - "../student-dropout-prediction_nn_201025.qmd"
+    
+  type: default
+  sort: "date desc"
+  fields: [image, title, description, categories, date]
+---
+
+[← Back to Projects](../../projects.qmd){.back-link}
+
+## Machine Learning & AI Projects
+
+Predictive modeling and AI applications in education and data science.

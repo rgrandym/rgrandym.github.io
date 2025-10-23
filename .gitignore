@@ -32,3 +32,6 @@ Thumbs.db
 *.tmp
 *~
 temp_documents/
+work_in_progress/
+assets/student_dropout/references/.chroma/
+models/

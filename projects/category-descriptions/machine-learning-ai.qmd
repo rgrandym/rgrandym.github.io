@@ -1,0 +1,9 @@
+---
+title: "Machine Learning & AI"
+description: "Predictive modeling, statistical analysis, and artificial intelligence applications in education and data science. Featuring XGBoost models, neural networks, and advanced analytics."
+image: "../../assets/images/logo_2.png"
+---
+
+```{=html}
+<script>window.location.href = '../categories/machine-learning-ai.html';</script>
+```

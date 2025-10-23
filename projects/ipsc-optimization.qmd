@@ -3,7 +3,7 @@ title: "iPSC Differentiation Optimization"
 description: "Data-driven optimization of induced pluripotent stem cell differentiation protocols using statistical modeling"
 date: "2024-10-20"
 categories: ["Cell Biology", "Data Science", "Process Optimization"]
-image: "../assets/logo_2.png"
+image: "../assets/images/logo_2.png"
 ---
 
 ## Problem

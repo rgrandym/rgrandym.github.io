@@ -1,0 +1,48 @@
+---
+title: "title"
+description: "short description"
+date: "date"
+categories: ["Term A", "Term B", "Term C", "Term D"]
+image: "PATH_TO_THUMBNAIL.png"
+featured: true
+jupyter: python3
+page-layout: full
+bibliography: ../assets/PROJECT_NAME/references/references.bib
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        figcaption.quarto-float-caption {
+          text-align: left !important;
+        }
+        .quarto-figure-center {
+          text-align: left !important;
+        }
+        .fig-label-left-edge {
+          text-align: left !important;
+          margin-left: calc(-46vw + 50%);
+          width: 100vw;
+          position: relative;
+          left: 0;
+        }
+        /* Numbered references */
+        #refs .csl-entry {
+          padding-left: 2em;
+          text-indent: -2em;
+          margin-bottom: 1em;
+        }
+        #refs {
+          counter-reset: ref-counter;
+        }
+        #refs .csl-entry::before {
+          counter-increment: ref-counter;
+          content: counter(ref-counter) ". ";
+          margin-right: 0.5em;
+        }
+        </style>
+---
+
+## Template Content
+
+This is a template file for Quarto documents.

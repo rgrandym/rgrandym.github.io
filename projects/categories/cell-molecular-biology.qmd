@@ -1,0 +1,16 @@
+---
+title: "Cell and Molecular Biology"
+listing:
+  contents: 
+    - "../genomic-qc-pipeline.qmd"
+    - "../immunology-development.qmd"
+  type: default
+  sort: "date desc"
+  fields: [image, title, description, categories, date]
+---
+
+[← Back to Projects](../../projects.qmd){.back-link}
+
+## Cell and Molecular Biology Projects
+
+Research projects investigating cellular mechanisms, genomic analysis, and molecular biology in stem cell systems.

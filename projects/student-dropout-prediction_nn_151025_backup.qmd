@@ -1,0 +1,1015 @@
+---
+title: "Predicting Student Dropout Risk with Neural Networks"
+description: "Applying Neural Networks to predict student dropout risk using demographic, engagement, and academic performance data"
+date: "2025-10-15"
+categories: ["Machine Learning", "Predictive Analytics", "Python", "Neural Networks"]
+image: "../../assets/student_dropout/figures/learning_curve_nn_s3.png"
+featured: true
+jupyter: python3
+page-layout: full
+format:
+  html:
+    include-in-header:
+      text: |
+        <style>
+        figcaption.quarto-float-caption {
+          text-align: left !important;
+        }
+        .quarto-figure-center {
+          text-align: left !important;
+        }
+        .fig-label-left-edge {
+          text-align: left !important;
+          margin-left: calc(-46vw + 50%);
+          width: 100vw;
+          position: relative;
+          left: 0;
+        }
+        </style>
+---
+
+## Overview
+
+In this project, I applied supervised learning techniques to perform predictions using progressive dataset refinement, feature engineering, neural networks, and hyperparameter tuning. The analysis demonstrated the strong predictive performance of neural networks on structured data.
+This work was completed as part of a Professional Certificate in Data Science with Machine Learning and AI from the University of Cambridge. Due to confidentiality requirements, I cannot share the dataset or complete project details, but I present the methodology and selected results that showcase the techniques learned during the course.
+
+## Approach
+
+All work in this project was implemented in Python 3.12.3. Datasets underwent preprocessing and EDA using pandas (v2.2.3). Irrelevant columns and high cardinality features were removed. "Date of Birth" was transformed into "Age." Columns with >50% missing data were dropped. Ordinal encoding was applied to the column with ordinal data using scikit-learn (v1.6.1) (Pedregosa et al., 2011). Absence counts were binned into categories. One-hot encoding was used for other categorical features. Missing values were addressed by removing observations when the fraction of NAs was below 2%. When needed, feature engineering techniques were applied to create new features that provided additional insights. NumPy (v1.26.4) was used for numerical computations.
+
+### Dataset Progression
+
+The original work was performed using a progressive approach, where the dataset was successively enriched to evaluate how additional information impacts model performance:
+
+1. **Stage 1**: Core student profiles
+2. **Stage 2**: Engagement metrics were added to the dataset.
+3. **Stage 3**: Academic performance metrics were added to the dataset.
+
+Here I show only some of the relevant steps and results from Stage 3, for demonstration purposes.
+
+### Methodology
+
+- **Preprocessing**: Following an initial EDA phase to better understand the dataset, data encoding, scaling, and feature engineering were performed. Specific steps included:
+    - Remove columns not useful in the analysis.
+    - Remove columns with high cardinality (use >200 unique values, as a guideline for this data set).
+    - Remove columns with >50% missing values.
+    - Perform ordinal encoding for ordinal data.
+    - Perform one-hot encoding for all other categorical data.
+    - Choose how to engage with rows that have missing values, which can be done in one of two ways for this project:
+      *   Impute the rows with appropriate values.
+      *   Remove rows with missing values but ONLY in cases where rows with missing values are minimal: <2% of the overall data.
+- **Model**: Neural Network with hyperparameter tuning
+- **Evaluation**: ROC-AUC with hyperparameter tuning, learning curves, and confusion matrices
+- **Evaluation**: ROC-AUC, F1-score, precision-recall metrics
+- **Comparison**: Performance analysis across all three data stages
+
+
+## Results
+
+For simplicity, only selected sections of the stage 3 analysis and results are shown as examples. A detailed performance comparison for the neural network models across all stages before and after hyperparameter tuning is provided in the table below.
+
+```{python}
+#| label: tbl-NN_comparison
+#| code-fold: true
+#| code-summary: "Load and display Neural Network performance data"
+#| tbl-cap: 'Neural Network Performance before and after hyperparameter tuning'
+#| tbl-cap-location: bottom
+#| tbl-align: left  # Left-aligns the caption
+#| output: asis
+
+import pandas as pd
+# Load and display data
+nn_s1s2s3 = pd.read_csv('../assets/student_dropout/figures/comparison_neural_networks_all_stages.csv')
+
+# Define the decimal precision
+decimal_places = 3
+# Format numeric columns
+numeric_cols = nn_s1s2s3.select_dtypes(include=['float64', 'int64']).columns
+nn_s1s2s3[numeric_cols] = nn_s1s2s3[numeric_cols].round(decimal_places)
+
+# Print as markdown table with improved formatting
+print(nn_s1s2s3.to_markdown(tablefmt="pipe", index=False, stralign="center", numalign="center"))
+
+
+```
+
+
+### Neural Network Model Development: 
+
+Neural networks were built using TensorFlow (v2.19.0) and Keras (v3.10.0) with architectures spanning 1-3 hidden layers (16-128 units each), ReLU activation functions, and Softmax output layers. Regularization techniques included Dropout (0.2-0.3) and L1/L2 penalties to prevent overfitting. Models employed Adam or RMSProp optimizers with learning rates ranging from 0.01 to 0.001, paired with sparse categorical crossentropy loss. Early stopping (patience=3) and deterministic batch shuffling ensured both generalization and reproducibility across training runs.
+
+The development process began with comprehensive environment configuration to suppress TensorFlow logging artifacts (TF_CPP_MIN_LOG_LEVEL=3) and disable oneDNN optimization warnings. Feature matrices (X) were constructed by isolating the target variable (y='CompletedCourse_Yes') from the dataset, followed by a nested train-test split strategy: an initial 80-20 split created validation sets, then a secondary 80-20 split of remaining training data generated test sets. This three-way partitioning enabled robust model selection via the validation set while preserving an untouched test set for final evaluation.
+
+Data preprocessing employed StandardScaler for feature normalization across all splits. Post-scaling validation confirmed zero NaN/Inf values—a critical checkpoint before model training. Unique sample counts were verified across splits to detect potential data leakage or duplication issues that could artificially inflate performance metrics. Target variable distribution analysis across all three splits verified balanced class representation, addressing concerns inherent to imbalanced classification tasks.
+
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+
+# Split the data into features and target variable
+X_s3 = df3_filled.drop(columns=['CompletedCourse_Yes'], axis=1, inplace=False)
+y_s3 = df3_filled['CompletedCourse_Yes']
+
+# Split the data into training and validation sets
+X_train_s3, X_val_s3, y_train_s3, y_val_s3 = train_test_split(X_s3, y_s3, test_size=0.2, random_state=42)
+# Split the training data into training and test sets
+X_train_s3, X_test_s3, y_train_s3, y_test_s3 = train_test_split(X_train_s3, y_train_s3, test_size=0.2, random_state=42)
+
+# Display the shapes of the training, validation, and test sets
+print("Training set shape:", X_train_s3.shape, y_train_s3.shape)
+print("Validation set shape:", X_val_s3.shape, y_val_s3.shape)
+print("Test set shape:", X_test_s3.shape, y_test_s3.shape)
+
+# Check the distribution of the target variable in the training set
+print("Training set target variable distribution:")
+print(y_train_s3.value_counts(normalize=True))
+
+# Check the distribution of the target variable in the validation set
+print("Validation set target variable distribution:")
+print(y_val_s3.value_counts(normalize=True))
+
+# Check the distribution of the target variable in the test set
+print("Test set target variable distribution:")
+print(y_test_s3.value_counts(normalize=True))
+```
+
+
+```{python}
+#| echo: true
+#| eval: false
+# Scale the data S3
+scaler = StandardScaler()
+X_train_scaled_s3 = scaler.fit_transform(X_train_s3)
+X_val_scaled_s3 = scaler.transform(X_val_s3)
+X_test_scaled_s3 = scaler.transform(X_test_s3)
+```
+```{python}
+#| echo: true
+#| eval: false
+# Check for NaN/inf values that might have been imputed incorrectly
+print("NaN values X_train_s3:", np.isnan(X_train_scaled_s3).sum())
+print("Inf values X_train_s3:", np.isinf(X_train_scaled_s3).sum())
+
+print("NaN values X_val_s3:", np.isnan(X_val_scaled_s3).sum())
+print("Inf values X_val_s3:", np.isinf(X_val_scaled_s3).sum())
+
+print("NaN values X_test_s3:", np.isnan(X_test_scaled_s3).sum())
+print("Inf values X_test_s3:", np.isinf(X_test_scaled_s3).sum())
+
+# Check if all samples are identical
+unique_samples_s3 = np.unique(X_train_scaled_s3, axis=0).shape[0]
+print(f"Unique samples X_train_s3: {unique_samples_s3} out of {X_train_scaled_s3.shape[0]}")
+
+unique_samples_val_s3 = np.unique(X_val_scaled_s3, axis=0).shape[0]
+print(f"Unique samples X_val_s3: {unique_samples_val_s3} out of {X_val_scaled_s3.shape[0]}")
+
+unique_samples_test_s3 = np.unique(X_test_scaled_s3, axis=0).shape[0]
+print(f"Unique samples X_test_s3: {unique_samples_test_s3} out of {X_test_scaled_s3.shape[0]}")
+```
+
+
+### Construction of the Neural Network Model
+
+The implementation architecture centered on deterministic training through `set_global_determinism()`, which configured environment variables (PYTHONHASHSEED, TF_DETERMINISTIC_OPS, TF_CUDNN_DETERMINISTIC) and enabled TensorFlow's experimental operation determinism. This framework guaranteed reproducible results across training runs—essential for scientific validity and model comparison.
+
+The `create_model()` function employed strategic seeding with GlorotUniform kernel initialization and Zeros bias initialization, both parameterized with model-specific seeds. Nine architectural configurations were systematically tested, spanning 1-3 hidden layers with 16-64 units per layer. Each configuration received a unique deterministic seed (42+i) to ensure independent yet reproducible training trajectories.
+
+The `train_models_deterministic()` orchestrator managed training loops with session clearing (`tf.keras.backend.clear_session()`) and garbage collection between model iterations to prevent memory accumulation. Models trained for 50 epochs maximum with batch_size=32 and deterministic shuffling enabled. Early stopping monitored validation loss with patience=3, automatically restoring optimal weights. Training histories captured loss/accuracy trajectories for both training and validation sets, alongside final performance metrics and seed values for complete experimental traceability.
+
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+#| # Define Baseline Model
+# Suppress TensorFlow warnings and logs
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress all TF logs (0=all, 1=info, 2=warning, 3=error)
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN optimizations warnings
+warnings.filterwarnings('ignore')
+
+# Additional TensorFlow logging suppression
+tf.get_logger().setLevel('ERROR')
+tf.autograph.set_verbosity(0)
+
+def set_global_determinism(seed=42):
+    """
+    Enable 100% reproducibility on operations related to tensor and randomness.
+    """
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    os.environ['TF_DETERMINISTIC_OPS'] = '1'
+    os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
+    
+    random.seed(seed)
+    np.random.seed(seed)
+    tf.random.set_seed(seed)
+    
+    # Configure TensorFlow for determinism
+    tf.config.experimental.enable_op_determinism()
+
+# Call this at the very beginning of your script
+set_global_determinism(42)
+
+# Define Baseline Model with seed reset
+def create_model(input_dim, output_dim, layers=2, units=128, dropout=0.2, lr=0.001, seed=42):
+    # Reset seeds before each model creation
+    tf.random.set_seed(seed)
+    np.random.seed(seed)
+    
+    model = Sequential(name=f"model_{layers}L_{units}U")
+    model.add(InputLayer(shape=(input_dim,)))
+    
+    for _ in range(layers):
+        model.add(Dense(units, activation='relu', 
+                       kernel_initializer=tf.keras.initializers.GlorotUniform(seed=seed),
+                       bias_initializer=tf.keras.initializers.Zeros()))
+        model.add(Dropout(dropout, seed=seed))
+    
+    model.add(Dense(output_dim, activation='softmax',
+                   kernel_initializer=tf.keras.initializers.GlorotUniform(seed=seed),
+                   bias_initializer=tf.keras.initializers.Zeros()))
+    
+    model.compile(optimizer=Adam(learning_rate=lr),
+                 loss='sparse_categorical_crossentropy',
+                 metrics=['accuracy'])
+    return model
+
+# Training setup with deterministic seeds
+def train_models_deterministic(architecture_configs, X_train, y_train, X_val, y_val):
+    models_base_s3 = []
+    histories_base_s3 = []
+    
+    for i, config in enumerate(architecture_configs):
+        print(f"\nTraining Model {i+1}: {config}")
+        
+        # Set unique but deterministic seed for each model
+        model_seed = 42 + i
+        set_global_determinism(model_seed)
+        
+        # Clear session
+        tf.keras.backend.clear_session()
+        gc.collect()
+        
+        # Create model with specific seed
+        model = create_model(input_dim, output_dim, seed=model_seed, **config)
+        
+        # Early stopping
+        early_stop = EarlyStopping(monitor='val_loss', patience=3, 
+                                 restore_best_weights=True)
+        
+        # Train with deterministic batch shuffling
+        history = model.fit(X_train, y_train,
+                          validation_data=(X_val, y_val),
+                          batch_size=32,
+                          epochs=50,
+                          callbacks=[early_stop],
+                          shuffle=True,  # This will be deterministic due to seed
+                          verbose=0)
+        
+        # Evaluate
+        train_loss, train_accuracy = model.evaluate(X_train, y_train, verbose=0)
+        val_loss, val_acc = model.evaluate(X_val, y_val, verbose=0)
+        
+        # Store results
+        models_base_s3.append(model)
+        histories_base_s3.append({
+            "config": config,
+            "train_loss": train_loss,
+            "train_accuracy": train_accuracy,
+            "val_loss": val_loss,
+            "val_accuracy": val_acc,
+            "history": history,
+            "seed": model_seed
+        })
+        
+        print(f"Final validation accuracy: {val_acc:.4f}")
+        gc.collect()
+    
+    return models_base_s3, histories_base_s3
+
+# Usage
+set_global_determinism(42)  # Set at the beginning
+
+# Get dimensions
+input_dim = X_train_scaled_s3.shape[1]
+output_dim = len(np.unique(y_train_s3))
+
+# Architecture configurations
+architecture_configs = [
+    {"layers": 1, "units": 16},
+    {"layers": 1, "units": 32},
+    {"layers": 1, "units": 64},
+    {"layers": 2, "units": 16},
+    {"layers": 2, "units": 32},
+    {"layers": 2, "units": 64},
+    {"layers": 3, "units": 16},
+    {"layers": 3, "units": 32},
+    {"layers": 3, "units": 64}
+]
+
+# Train models deterministically
+models_base_s3, histories_base_s3 = train_models_deterministic(architecture_configs, X_train_scaled_s3, y_train_s3, X_val_scaled_s3, y_val_s3)
+print(f'Model: {models_base_s3}, History: {histories_base_s3}')
+```
+
+
+### Model Evaluation and Results Visualization
+
+```{=html}
+<figure id="fig-nn-models" class="fig-panel">
+  <div class="fig-row" style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1rem;">
+    <!-- Figure A -->
+    <div class="fig-item" style="flex: 0 1 45%; max-width: 500px;">
+      <div class="fig-label" style="font-size: 1.1rem; font-weight: 500; color: #2c3e50; margin-bottom: 0.5rem;">
+        A: Accuracy Curve for NN Models for Stage 3
+      </div>
+      <img src="../assets/student_dropout/figures/accuracy_curve_nn_s3.png" 
+           style="width: 100%; height: auto;" 
+           alt="Accuracy Curve">
+    </div>
+    
+    <!-- Figure B -->
+    <div class="fig-item" style="flex: 0 1 45%; max-width: 500px;">
+      <div class="fig-label" style="font-size: 1.1rem; font-weight: 500; color: #2c3e50; margin-bottom: 0.5rem;">
+        B: Learning Curve for NN Models for Stage 3
+      </div>
+      <img src="../assets/student_dropout/figures/learning_curve_nn_s3.png" 
+           style="width: 100%; height: auto;" 
+           alt="Learning Curve">
+    </div>
+  </div>
+  
+  <figcaption style="text-align: left; font-style: italic; color: #666; margin-top: 1rem;">
+    Figure 1: Neural Network model performance on validation set: (A) Accuracy curve showing classification accuracy for dropout prediction, (B) Learning curve showing model performance over training epochs.
+  </figcaption>
+</figure>
+```
+
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+
+# --- Evaluation Function ---
+# Set random seeds for reproducibility
+np.random.seed(42)
+tf.random.set_seed(42)
+
+def evaluate_trained_models(models, hist_metrics, X_test, y_test, 
+                           class_names=None, verbose=True, return_curves=False):
+    """
+    Comprehensive model evaluation function optimized for imbalanced datasets
+    
+    Parameters:
+    -----------
+    models : list
+        List of trained Keras models
+    hist_metrics : list
+        List of training history and config data
+    X_test : array-like
+        Test features
+    y_test : array-like
+        Test labels
+    class_names : list, optional
+        Names of classes for better reporting
+    verbose : bool
+        Print detailed results
+    return_curves : bool
+        Whether to return ROC and PR curve data
+    
+    Returns:
+    --------
+    results : list
+        Comprehensive evaluation results for each model
+    """
+    
+    # Set seeds for reproducible evaluation
+    np.random.seed(42)
+    
+    results_base_s3 = []
+    n_classes = len(np.unique(y_test))
+    is_binary = n_classes == 2
+    
+    if verbose:
+        print("="*80)
+        print(f"EVALUATING {len(models)} MODELS ON TEST SET")
+        print(f"Dataset: {len(y_test)} samples, {n_classes} classes")
+        if is_binary:
+            class_dist = np.bincount(y_test)
+            print(f"Class distribution: {class_dist[0]}:{class_dist[1]} ({class_dist[1]/len(y_test)*100:.1f}% positive)")
+        print("="*80)
+    
+    for i, (model, history_data) in enumerate(zip(models, hist_metrics)):
+        config = history_data['config']
+        model_name = f"Model_{i+1}_{config['layers']}L_{config['units']}U"
+        
+        if verbose:
+            print(f"\n{model_name}")
+            print("-" * 50)
+        
+        try:
+            # Get predictions - CONSISTENT APPROACH
+            y_pred_prob = model.predict(X_test, verbose=0)
+            
+            # FIXED: Consistent probability extraction
+            if y_pred_prob.shape[1] > 1:  # Multi-class output
+                y_pred_class = np.argmax(y_pred_prob, axis=1)
+                if is_binary:
+                    # For binary classification, use probability of positive class (class 1)
+                    y_prob_positive = y_pred_prob[:, 1]
+                else:
+                    y_prob_positive = y_pred_prob  # Keep all probabilities for multi-class
+            else:  # Single output (sigmoid activation)
+                y_pred_prob = y_pred_prob.flatten()
+                y_pred_class = (y_pred_prob > 0.5).astype(int)
+                y_prob_positive = y_pred_prob
+            
+            # Basic metrics
+            test_loss, test_accuracy = model.evaluate(X_test, y_test, verbose=0)
+            
+            # Classification metrics
+            if is_binary:
+                # Binary classification metrics
+                precision = precision_score(y_test, y_pred_class, zero_division=0)
+                recall = recall_score(y_test, y_pred_class, zero_division=0)
+                f1 = f1_score(y_test, y_pred_class, zero_division=0)
+                
+                # Class-specific metrics
+                precision_per_class = precision_score(y_test, y_pred_class, average=None, zero_division=0)
+                recall_per_class = recall_score(y_test, y_pred_class, average=None, zero_division=0)
+                f1_per_class = f1_score(y_test, y_pred_class, average=None, zero_division=0)
+                
+                # FIXED: Use consistent function for ROC-AUC calculation
+                roc_auc = roc_auc_score(y_test, y_prob_positive)
+                
+                # Alternative calculation using roc_curve + auc (should match)
+                fpr, tpr, _ = roc_curve(y_test, y_prob_positive)
+                roc_auc_manual = auc(fpr, tpr)
+                
+                # Precision-Recall AUC (better for imbalanced data)
+                precision_curve, recall_curve, _ = precision_recall_curve(y_test, y_prob_positive)
+                pr_auc = auc(recall_curve, precision_curve)
+                
+                # Confusion matrix components
+                cm = confusion_matrix(y_test, y_pred_class)
+                tn, fp, fn, tp = cm.ravel()
+                
+                # Additional metrics for imbalanced data
+                specificity = tn / (tn + fp) if (tn + fp) > 0 else 0
+                sensitivity = tp / (tp + fn) if (tp + fn) > 0 else 0  # Same as recall
+                
+                # Matthews Correlation Coefficient (good for imbalanced data)
+                mcc = ((tp * tn) - (fp * fn)) / np.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)) if ((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn)) > 0 else 0
+                
+                # Balanced accuracy
+                balanced_accuracy = (sensitivity + specificity) / 2
+            else:
+                # Multi-class metrics
+                precision = precision_score(y_test, y_pred_class, average='weighted', zero_division=0)
+                recall = recall_score(y_test, y_pred_class, average='weighted', zero_division=0)
+                f1 = f1_score(y_test, y_pred_class, average='weighted', zero_division=0)
+                
+                precision_per_class = precision_score(y_test, y_pred_class, average=None, zero_division=0)
+                recall_per_class = recall_score(y_test, y_pred_class, average=None, zero_division=0)
+                f1_per_class = f1_score(y_test, y_pred_class, average=None, zero_division=0)
+                
+                # Multi-class ROC-AUC (one-vs-rest)
+                roc_auc = roc_auc_score(y_test, y_prob_positive, multi_class='ovr', average='weighted')
+                roc_auc_manual = roc_auc  # For consistency
+                pr_auc = np.nan  # Not directly applicable to multi-class
+                
+                cm = confusion_matrix(y_test, y_pred_class)
+                specificity = sensitivity = mcc = balanced_accuracy = np.nan
+            
+            # Store results
+            result = {
+                'model_name': model_name,
+                'model': model,
+                'config': config,
+                
+                # Test performance
+                'test_loss': test_loss,
+                'test_accuracy': test_accuracy,
+                'balanced_accuracy': balanced_accuracy,
+                
+                # Main classification metrics
+                'precision': precision,
+                'recall': recall,
+                'f1': f1,
+                'roc_auc': roc_auc,
+                'roc_auc_manual': roc_auc_manual,  # For verification
+                'pr_auc': pr_auc,  # Better than ROC-AUC for imbalanced data
+                
+                # Per-class metrics
+                'precision_per_class': precision_per_class,
+                'recall_per_class': recall_per_class,
+                'f1_per_class': f1_per_class,
+                
+                # Imbalanced data specific metrics
+                'specificity': specificity,
+                'sensitivity': sensitivity,
+                'mcc': mcc,
+                
+                # Predictions and probabilities - STORED CONSISTENTLY
+                'y_pred_prob': y_prob_positive,  # Always the positive class prob for binary
+                'y_pred_prob_full': y_pred_prob,  # Full probability matrix
+                'y_pred_class': y_pred_class,
+                'confusion_matrix': cm,
+                
+                # Training history metrics
+                'val_accuracy': history_data.get('val_accuracy', np.nan),
+                'val_loss': history_data.get('val_loss', np.nan),
+                'train_accuracy': history_data.get('train_accuracy', np.nan),
+                'train_loss': history_data.get('train_loss', np.nan),
+            }
+            
+            # Add curve data if requested
+            if return_curves and is_binary:
+                fpr, tpr, roc_thresholds = roc_curve(y_test, y_prob_positive)
+                precision_curve, recall_curve, pr_thresholds = precision_recall_curve(y_test, y_prob_positive)
+                
+                result.update({
+                    'roc_curve': {'fpr': fpr, 'tpr': tpr, 'thresholds': roc_thresholds},
+                    'pr_curve': {'precision': precision_curve, 'recall': recall_curve, 'thresholds': pr_thresholds}
+                })
+            
+            results_base_s3.append(result)
+            
+            # Verbose output
+            if verbose:
+                print(f"Core Metrics:")
+                print(f"Accuracy: {test_accuracy:.4f} | Balanced Acc: {balanced_accuracy:.4f}")
+                print(f"Precision: {precision:.4f} | Recall: {recall:.4f} | F1: {f1:.4f}")
+                print(f"AUC Scores:")
+                print(f" ROC-AUC: {roc_auc:.4f} | ROC-AUC (manual): {roc_auc_manual:.4f} | PR-AUC: {pr_auc:.4f}")
+                
+                if is_binary:
+                    print(f"Imbalanced Metrics:")
+                    print(f"Sensitivity: {sensitivity:.4f} | Specificity: {specificity:.4f}")
+                    print(f"MCC: {mcc:.4f}")
+                    print(f"Confusion Matrix: TN={tn}, FP={fp}, FN={fn}, TP={tp}")
+                
+                print(f"Training Performance:")
+                # FIXED: Proper conditional formatting
+                train_loss_val = history_data.get('train_loss', np.nan)
+                val_loss_val = history_data.get('val_loss', np.nan)
+                
+                if isinstance(train_loss_val, (int, float)) and not np.isnan(train_loss_val):
+                    print(f"   Train Loss: {train_loss_val:.4f}")
+                else:
+                    print(f"   Train Loss: N/A")
+                    
+                if isinstance(val_loss_val, (int, float)) and not np.isnan(val_loss_val):
+                    print(f"   Val Loss: {val_loss_val:.4f}")
+                else:
+                    print(f"   Val Loss: N/A")
+                
+        except Exception as e:
+            print(f"Error evaluating {model_name}: {str(e)}")
+            continue
+    
+    if verbose:
+        print("\n" + "="*80)
+        print("EVALUATION SUMMARY")
+        print("="*80)
+        
+        # Create summary DataFrame
+        summary_data_base_s3 = []
+        for r in results_base_s3:
+            summary_data_base_s3.append({
+                'Model': r['model_name'],
+                'ROC_AUC': r['roc_auc'],
+                'ROC_AUC_Manual': r['roc_auc_manual'],
+                'PR_AUC': r['pr_auc'],
+                'F1': r['f1'],
+                'Bal_Acc': r['balanced_accuracy'],
+                'MCC': r.get('mcc', np.nan)
+            })
+        
+        summary_df_base_s3 = pd.DataFrame(summary_data_base_s3)
+        
+        positive_ratio = np.mean(y_test)
+        if positive_ratio < 0.4:  # Positives are minority
+            sort_col = 'PR_AUC'   # Focus on positive class performance
+        elif positive_ratio > 0.6:  # Positives are majority  
+            sort_col = 'ROC_AUC' # Focus on negative class performance
+        else:
+            sort_col = 'ROC_AUC'
+        
+        # Sort by ROC-AUC (or PR-AUC for heavily imbalanced data)
+        summary_df_base_s3 = summary_df_base_s3.sort_values(sort_col, ascending=False)
+        
+        print(summary_df_base_s3.round(4).to_string(index=False))
+        print(f"\nBest model by {sort_col}: {summary_df_base_s3.iloc[0]['Model']}")
+        
+        # Save summary to CSV - FIXED PATH: Save in current directory
+        output_path = 'comparison_neural_networks_all_stages.csv'
+        summary_df_base_s3.to_csv(output_path, index=False)
+        print(f"\nSummary saved to: {output_path}")
+    
+    return results_base_s3
+
+# Run evaluation
+test_results_s3_base = evaluate_trained_models(
+    models_base_s3, 
+    histories_base_s3, 
+    X_test_scaled_s3, 
+    y_test_s3, 
+    verbose=True, 
+    return_curves=True
+)
+```
+
+```{python}
+#| label: tbl-NN_eval_s3
+#| code-fold: true
+#| code-summary: "Load and display Neural Network performance data"
+#| tbl-cap: 'Performance metrics for nine neural network architectures tested on Stage 3 dataset, ranked by ROC-AUC score'
+#| tbl-cap-location: bottom
+#| tbl-align: left  # Left-aligns the caption
+#| output: asis
+
+
+import pandas as pd
+# Load and display data
+nn_eval_s3 = pd.read_csv('../assets/student_dropout/figures/nn_models_evaluation.csv')
+
+# Define the decimal precision
+decimal_places = 3
+# Format numeric columns
+numeric_cols = nn_eval_s3.select_dtypes(include=['float64', 'int64']).columns
+nn_eval_s3[numeric_cols] = nn_eval_s3[numeric_cols].round(decimal_places)
+
+# Print as markdown table with improved formatting
+print(nn_eval_s3.to_markdown(tablefmt="pipe", index=False, stralign="center", numalign="center"))
+
+```
+
+
+**Best model by ROC_AUC:** Model_5_2L_32U
+
+- **Core Metrics:**
+Accuracy: 0.9532 | Balanced Acc: 0.9253 | Precision: 0.9799 | Recall: 0.9649 | F1: 0.9724
+- **AUC Scores:**
+ROC-AUC: 0.9846 | ROC-AUC (manual): 0.9846 | PR-AUC: 0.9973
+- **Imbalanced Metrics:**
+Sensitivity: 0.9649 | Specificity: 0.8857 | MCC: 0.8215
+- **Confusion Matrix:**
+TN=519, FP=67, FN=119, TP=3271
+- **Training Performance:**
+Train Loss: 0.0920 | Val Loss: 0.1416
+
+Model 5 achieves the highest ROC-AUC score (0.9846), indicating optimal separation between positive and negative classes across all classification thresholds. This means its predicted probabilities are best calibrated to distinguish between classes. Critically, it also leads in PR-AUC (0.9973), which is essential for imbalanced datasets (6.8:1 class ratio). This near-perfect score demonstrates the model maintains high precision without sacrificing recall on the minority class.
+
+The 2-layer, 32-unit configuration represents the ideal balance between model capacity and generalization. Compared to simpler 1-layer models, it provides hierarchical feature learning for better representation. Unlike 3-layer architectures, it avoids unnecessary complexity and potential overfitting. The 32-unit width captures sufficient feature complexity without the parameter redundancy of 64-unit models, making it more efficient and generalizable.
+
+The validation-to-training loss ratio (~1.54) indicates healthy generalization without severe overfitting. The model's high balanced accuracy (0.9253) combined with top ROC-AUC suggests reliable probability estimates rather than merely threshold-dependent performance.
+
+The highest Matthews Correlation Coefficient (MCC: 0.8215) confirms Model 5 achieves the best overall balance across all confusion matrix elements. With sensitivity of 0.9649 and specificity of 0.8857, it effectively handles both majority and minority classes. The strong F1 score (0.9724) further demonstrates excellent precision-recall harmony, with only 67 false positives out of 586 negative samples (11.4% false positive rate).
+
+```{python}
+#| echo: false
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+# Display all the Baseline Models Tested
+
+fig, axes = plt.subplots(3, 3, figsize=(10, 10))
+fig.tight_layout(pad=4.0)
+
+# Flatten the axes array for easier iteration
+axes = axes.ravel()
+
+# Counter for the current subplot
+plot_idx = 0
+
+for result in test_results_s3_base:
+    # Stop if we've filled all 9 subplots
+    if plot_idx >= 9:
+        break
+        
+    # Check if this is the specific model we want
+    if result.get('model_name') and 'confusion_matrix' in result:
+        disp = ConfusionMatrixDisplay(confusion_matrix=result['confusion_matrix'])
+        disp.plot(ax=axes[plot_idx])
+        axes[plot_idx].set_title(f"{result['model_name']}")
+        
+        # Add red border if this is Model_5_2L_32U
+        if result['model_name'] == 'Model_5_2L_32U':
+            for spine in axes[plot_idx].spines.values():
+                spine.set_edgecolor('red')
+                spine.set_linewidth(3)
+        
+        plot_idx += 1
+
+# Hide any remaining empty subplots
+for i in range(plot_idx, 9):
+    axes[i].axis('off')
+
+plt.show()
+```
+
+```{=html}
+<figure id="fig-nn-models_conf_matrix" class="fig-panel">
+  <div class="fig-row" style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1rem;">
+    <!-- Figure A -->
+    <div class="fig-item" style="flex: 0 1 100%; max-width: 700px;">
+      <div class="fig-label fig-label-left-edge" style="font-size: 1.1rem; font-weight: 500; color: #2c3e50; margin-bottom: 0.5rem;">
+        A: Comparison of confusion matrices for NN Models
+      </div>
+      <img src="../assets/student_dropout/figures/cm_all_models_nn_red_square.png" 
+           style="width: 100%; height: auto;" 
+           alt="conf matrix best model highlighted">
+    </div>
+    
+  </div>
+  
+  <figcaption style="text-align: left; font-style: italic; color: #666; margin-top: 1rem;">
+    Figure 2: Neural Network models performance on validation set: (A) Comparison of confusion matrices for NN Models. The best performing model (Model_5_2L_32U) is highlighted with a red border.
+  </figcaption>
+</figure>
+```
+
+
+
+Note: The models seem to be overfitting, considering the Loss Curves and the very high ROC_AUC scores. Therefore, I will apply L1 and L2 regularization to assess whether the overfitting can be reduced without having to manipulate the data.
+
+
+### Hyperparameter Tuning
+
+```{python}
+#| echo: true
+#| eval: false
+# Model with 1 layer and 16 Units
+
+# Suppress TensorFlow warnings and logs
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress all TF logs (0=all, 1=info, 2=warning, 3=error)
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable oneDNN optimizations warnings
+warnings.filterwarnings('ignore')
+
+# Additional TensorFlow logging suppression
+tf.get_logger().setLevel('ERROR')
+tf.autograph.set_verbosity(0)
+
+def set_global_determinism(seed):
+    """Set seeds for reproducible results"""
+    tf.random.set_seed(seed)
+    np.random.seed(seed)
+
+def create_model_tuning(input_dim, output_dim, layers=1, units=32, dropout=0.2, batch_size=16,
+                       lr=0.001, optimizer='adam', seed=42,
+                       l1_reg=0.0, l2_reg=0.0):
+    """Create a deterministic neural network model with L1/L2 regularization"""
+    # Reset seeds before each model creation
+    tf.random.set_seed(seed)
+    np.random.seed(seed)
+    
+    # Create regularization object
+    kernel_regularizer = regularizers.L1L2(l1=l1_reg, l2=l2_reg) if (l1_reg > 0 or l2_reg > 0) else None
+    
+    model = Sequential(name=f"model_{layers}L_{units}U")
+    model.add(InputLayer(shape=(input_dim,)))
+    
+    for _ in range(layers):
+        model.add(Dense(units, activation='relu', 
+                       kernel_regularizer=kernel_regularizer,
+                       kernel_initializer=tf.keras.initializers.GlorotUniform(seed=seed),
+                       bias_initializer=tf.keras.initializers.Zeros()))
+        model.add(Dropout(dropout, seed=seed))
+    
+    model.add(Dense(output_dim, activation='softmax',
+                   kernel_regularizer=kernel_regularizer,
+                   kernel_initializer=tf.keras.initializers.GlorotUniform(seed=seed),
+                   bias_initializer=tf.keras.initializers.Zeros()))
+    
+    # Choose optimizer
+    if optimizer.lower() == 'adam':
+        opt = Adam(learning_rate=lr)
+    elif optimizer.lower() == 'rmsprop':
+        opt = RMSprop(learning_rate=lr)
+    else:
+        opt = Adam(learning_rate=lr)  # default
+    
+    model.compile(optimizer=opt,
+                 loss='sparse_categorical_crossentropy',
+                 metrics=['accuracy'])
+    return model
+
+# Get dimensions (assuming X_train, y_train are defined)
+input_dim = X_train_scaled_s3.shape[1]
+output_dim = len(np.unique(y_train_s3))
+
+# Hyperparameter grid with L1/L2 regularization options
+hyperparameter_config = {
+    'dropout': [0.2], 
+    'lr': [0.001],
+    'optimizer': ['adam'],
+    'batch_size': [16, 32],
+    'l1_reg': [0.01, 0.001],  # L1 regularization strengths
+    'l2_reg': [0.01, 0.001]   # L2 regularization strengths
+}
+models_tuning_s3 = []
+histories_tuning_s3 = []
+
+# Generate all combinations of hyperparameters
+keys, values = zip(*hyperparameter_config.items())
+configs = [dict(zip(keys, v)) for v in product(*values)]
+
+# Initialize progress bar
+progress_bar = tqdm(configs, desc="Hyperparameter Tuning", unit="model")
+
+for i, config in enumerate(progress_bar):
+    # Update progress bar description with current config
+    short_desc = (f"do:{config['dropout']} lr:{config['lr']} opt:{config['optimizer']} "
+                 f"bs:{config['batch_size']} L1:{config['l1_reg']} L2:{config['l2_reg']}")
+    progress_bar.set_postfix(config=short_desc)
+    
+    # Set unique but deterministic seed for each model
+    model_seed = 42 + i
+    set_global_determinism(model_seed)
+    
+    # Clear session and memory
+    tf.keras.backend.clear_session()
+    gc.collect()
+    
+    # Early stopping
+    early_stop = EarlyStopping(monitor='val_loss', patience=3, 
+                              restore_best_weights=True, verbose=0)
+    
+    # Create model with current config (excluding batch_size which is for training)
+    model_config = {k: v for k, v in config.items() if k != 'batch_size'}
+    model_tuning_s3 = create_model_tuning(input_dim, output_dim, seed=model_seed, **model_config)
+    
+    # Train model (NON-VERBOSE)
+    history_tuning_s3 = model_tuning_s3.fit(
+        X_train_scaled_s3, y_train_s3,
+        validation_data=(X_val_scaled_s3, y_val_s3),
+        batch_size=config['batch_size'],
+        epochs=5,
+        callbacks=[early_stop],
+        shuffle=True,  # Deterministic due to seed
+        verbose=0  # Silent training
+    )
+    
+    # Evaluate model (NON-VERBOSE)
+    val_loss_tuning_s3, val_acc_tuning_s3 = model_tuning_s3.evaluate(X_val_scaled_s3, y_val_s3, verbose=0)
+    
+    
+    # Store results
+    models_tuning_s3.append(model_tuning_s3)
+    histories_tuning_s3.append({
+        "config": config,
+        "model": model_tuning_s3,
+        "val_loss": val_loss_tuning_s3,
+        "val_accuracy": val_acc_tuning_s3,
+        "history": history_tuning_s3,
+        "seed": model_seed
+    })
+    
+    # Clean up
+    gc.collect()
+
+# Close progress bar
+progress_bar.close()
+
+print(f"Hyperparameter tuning completed. Trained {len(models_tuning_s3)} models.")
+print('Models: models_tuning_s3, Histories: histories_tuning_s3')
+
+```{markdown}
+Hyperparameter Tuning: 100%|██████████| 8/8 [00:36<00:00,  4.60s/model, config=do:0.2 lr:0.001 opt:adam bs:32 L1:0.001 L2:0.001]
+Hyperparameter tuning completed. Trained 8 models.
+Models: models_tuning_s3, Histories: histories_tuning_s3
+```
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+
+# Because there are too many models, sort and select top 15 Accuracy scores.
+sorted_acc_tuning_s3 = sorted(histories_tuning_s3, key=lambda x: x['val_accuracy'], reverse=True)
+top_acc_tuning_s3 = sorted_acc_tuning_s3[:15]
+```
+
+Note: The 2 layers and 32 units architecture seems to be too much for this dataset. learning curve reached plateau within 1 epoch. The model is learning very quickly and based on our tuning parameters, the model is performing very well, without overfitting. I will try with a simpler architecture.
+A simpler model with 1 layer and 16 units showed similar behaviour.
+
+
+Best model by ROC_AUC: do:0.2 lr:0.001 opt:adam bs:32 L1:0.001 L2:0.001
+
+
+### Model: do:0.2 lr:0.001 opt:adam bs:32 L1:0.001 L2:0.001: 1 hidden layers with 32 neurons. 
+
+Activation: Relu, Softmax
+Optimizer: Adam
+Loss: Sparse Categorical Crossentropy
+Dropout: 0.2
+Learning Rate: 0.001
+Batch Size: 32
+L1 Regularization: 0.001
+L2 Regularization: 0.001
+
+
+- Learning curves assist with training decisions like early stopping, architecture selection, and stability assessment, but shouldn't be the only basis for final model choice. 
+- Standard loss functions can be biased toward majority classes, masking poor minority class performance. That's why I used 'sparse_categorical_crossentropy,' which handles imbalanced datasets more effectively. 
+- In imbalanced settings where positives are rare, traditional accuracy can be misleading—an accuracy of 80% might merely reflect always predicting the majority class. ROC-AUC remains a reliable metric for overall discriminative ability, while Precision-Recall AUC offers deeper insights into minority class performance. For model evaluation, I prioritized ROC-AUC, followed by Precision-Recall AUC, F1-score, Recall, and Precision, ensuring a balanced assessment of performance across metrics.
+
+```{python}
+#| echo: true
+#| eval: false
+#| code-fold: false
+#| code-overflow: wrap
+#| # Display top Tuned Model Tested
+
+# Display top Tuned Model Tested
+
+# Create the figure with adjusted spacing parameters
+fig, axes = plt.subplots(4, 2, figsize=(12, 12))
+
+# Main figure padding control
+fig.tight_layout(pad=1.0)
+
+# Additional spacing controls:
+plt.subplots_adjust(
+    left=0.1,    # Left margin
+    right=0.9,   # Right margin
+    bottom=0.1,  # Bottom margin
+    top=0.9,     # Top margin
+    wspace=0.1,  # Horizontal space between subplots
+    hspace=0.8   # Vertical space between subplots
+)
+
+# Flatten the axes array for easier iteration
+axes = axes.ravel()
+
+# Counter for the current subplot
+plot_idx = 0
+
+# Find the best model by ROC-AUC
+best_model = max(test_results_s3_tuning, key=lambda x: x.get('roc_auc', 0))
+best_model_name = best_model.get('model_name')
+
+for result in test_results_s3_tuning:
+    # Stop if we've filled desired number of subplots
+    if plot_idx >= 8:
+        break
+        
+    # Check if this is the specific model we want
+    if result.get('model_name') and 'confusion_matrix' in result:
+        disp = ConfusionMatrixDisplay(confusion_matrix=result['confusion_matrix'])
+        disp.plot(ax=axes[plot_idx])
+        
+        # Adjust title positioning and font size
+        axes[plot_idx].set_title(
+            f"{result['model_name']}",
+            pad=10,  # Add padding between title and plot
+            fontsize=9  # Smaller font size for long titles
+        )
+        
+        # Add red border if this is the best model
+        if result['model_name'] == best_model_name:
+            for spine in axes[plot_idx].spines.values():
+                spine.set_edgecolor('red')
+                spine.set_linewidth(3)
+        
+        # Adjust tick label sizes if needed
+        axes[plot_idx].tick_params(axis='both', which='major', labelsize=8)
+        
+        plot_idx += 1
+
+# Hide any remaining empty subplots
+for i in range(plot_idx, 8):
+    axes[i].axis('off')
+
+plt.show()
+```
+
+```{=html}
+<figure id="fig-nn-models_conf_matrix_tuned_models" class="fig-panel">
+  <div class="fig-row" style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 1rem;">
+    <!-- Figure A -->
+    <div class="fig-item" style="flex: 0 1 100%; max-width: 700px;">
+      <div class="fig-label fig-label-left-edge" style="font-size: 1.1rem; font-weight: 500; color: #2c3e50; margin-bottom: 0.5rem;">
+        A: Comparison of confusion matrices for fine tuned NN Models
+      </div>
+      <img src="../assets/student_dropout/figures/tuned_nn_models_best_highlighted.png" 
+           style="width: 100%; height: auto;" 
+           alt="conf matrix best fine tuned model highlighted">
+    </div>
+    
+  </div>
+  
+  <figcaption style="text-align: left; font-style: italic; color: #666; margin-top: 1rem;">
+    Figure 3: Neural Network models performance on validation set: (A) Comparison of confusion matrices for fine tuned NN Models. The best performing model (Model_5_2) is highlighted with a red border.
+  </figcaption>
+</figure>
+```
+
+
+[← Back to Projects](../projects.qmd){.back-link}

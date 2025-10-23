@@ -3,7 +3,7 @@ title: "Genomic Quality Control Pipeline"
 description: "Automated pipeline for quality control and analysis of next-generation sequencing data in cell therapy manufacturing"
 date: "2024-08-05"
 categories: ["Bioinformatics", "Quality Control", "Automation"]
-image: "../assets/logo_2.png"
+image: "../assets/images/logo_2.png"
 featured: true
 ---
 
