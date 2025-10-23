@@ -32,3 +32,10 @@ Thumbs.db
 *.tmp
 *~
 temp_documents/
+
+# Models
+models/
+
+# Databases
+.chroma/
+**/.chroma/
