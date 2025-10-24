@@ -40,7 +40,7 @@ Browse my portfolio of projects across key research areas. Each category showcas
       <a href="projects/categories/cell-molecular-biology.html">Cell and Molecular Biology</a>
     </h3>
     <div class="listing-description">
-      This section describes my research conducted during nine years of postdoctoral training at UMass Medical School (USA) and the Stem Cell Institute at Cambridge University (United Kingdom). During this period, I focused on cellular mechanisms, genomic analysis, epigenetics, and the regulation of cell differentiation. My primary research involved human embryonic stem cells (hESCs) and induced pluripotent stem cells (iPSCs), specifically investigating their differentiation processes and optimizing protocols for generating mature tissue cells by applying principles of human embryonic development.
+     This section highlights my research in cell and molecular biology, focusing on the mechanisms of cell differentiation, gene regulation, and the application of stem cell technologies in regenerative medicine.
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 ---
 title: "Rodrigo Grandy, PhD"
-subtitle: "Cell & Molecular Biologist | AI and ML Analytics | Biotech Entrepreneurship"
+subtitle: "Cell & Molecular Biologist | AI and ML Analytics | Biotech"
 description: ""
 page-layout: custom
 format: 
@@ -18,7 +18,7 @@ format:
 
 Innovative scientific leader with over 19 years of combined experience in academia and biotech, specializing in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing.
 
-Founder of an AI-driven biotech startup focused on developing and designing novel peptides and small molecules through machine learning approaches, translating computational predictions into biological applications.
+Currently developing an AI-driven biotech venture that leverages machine learning to design novel peptides and small molecules as cost-effective replacements for growth factors in cell-derived product manufacturing.
 
 Certified in AI and Machine Learning for Data Science by the University of Cambridge, with expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
 
@@ -41,6 +41,6 @@ Strong combination of technical expertise spanning wet-lab methodologies and mac
 
 <!-- Core Expertise - Full Width -->
 ::: {.core-expertise-section}
-**Core Expertise**: Strategic R&D & team leadership • iPSC and hematopoietic stem cell systems • Genomics, bioinformatics & sequencing • Quality Control of iPSC systems• AI & ML • Neural networks & deep learning • LLMs & RAG systems 
+**Core Expertise**: Strategic R&D & team leadership • iPSC and hematopoietic stem cell systems • Genomics, bioinformatics & sequencing • Quality Control of iPSC systems • AI & ML • Neural networks & deep learning • LLMs & RAG systems • Data Analysis (NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation) 
 :::
 

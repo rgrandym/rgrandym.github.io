@@ -43,17 +43,8 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Projects"
-        menu:
-          - text: "All Projects"
-            href: projects.qmd
-          - text: "---"
-          - text: "Machine Learning & AI"
-            href: projects/categories/machine-learning-ai.qmd
-          - text: "Cell Therapy"
-            href: projects/categories/cell-therapy.qmd
-          - text: "Cell and Molecular Biology"
-            href: projects/categories/cell-molecular-biology.qmd
+      - text: "Projects"   
+        href: projects.qmd
       - text: "Blog"
         href: blog.qmd
       - text: "CV"
