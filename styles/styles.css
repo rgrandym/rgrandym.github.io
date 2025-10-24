@@ -480,6 +480,14 @@ img.no-caption + figcaption {
   border-color: #707070;
 }
 
+/* CV page: button size override */
+
+.cv-download-wrap .btn-primary {
+padding: 6px 14px;
+font-size: 16px;
+line-height: 1.2; /* optional: tightens height */
+}
+
 /* ============================================
    Sections
    ============================================ */
