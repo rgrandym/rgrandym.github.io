@@ -25,8 +25,23 @@ format:
           position: relative;
           left: 0;
         }
+        /* Numbered references */
+        #refs .csl-entry {
+          padding-left: 2em;
+          text-indent: -2em;
+          margin-bottom: 1em;
+        }
+        #refs {
+          counter-reset: ref-counter;
+        }
+        #refs .csl-entry::before {
+          counter-increment: ref-counter;
+          content: counter(ref-counter) ". ";
+          margin-right: 0.5em;
+        }
         </style>
 ---
+[← Back to Machine Learning Projects](categories/machine-learning-ai.qmd){.back-link}
 
 ## Overview
 

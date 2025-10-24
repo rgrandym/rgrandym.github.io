@@ -43,6 +43,8 @@ format:
         </style>
 ---
 
+[← Back to Machine Learning Projects](categories/machine-learning-ai.qmd){.back-link}
+
 ## Introduction
 
 Student dropout in higher education represents a critical challenge affecting individuals, institutions, and society. Understanding factors that contribute to dropout risk and developing accurate predictive models enables timely interventions that can improve student outcomes and institutional retention rates [@goren2024early]. Early identification of at-risk students allows institutions to deploy targeted support services, academic advising, tutoring, financial aid, mental health resources, when they can have maximum impact.
