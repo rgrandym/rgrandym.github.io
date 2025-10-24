@@ -1,85 +1,109 @@
 ---
 title: "Curriculum Vitae"
-subtitle: "Rodrigo Grandy, PhD"
-page-layout: article
+subtitle: "Principal Scientist & Group Leader | Cell & Molecular Biologist | AI and ML Analytics"
+page-layout: full
 format: 
   html:
-    toc: true
-    toc-depth: 2
+    toc: false
+    css: styles/styles.css
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 ---
 
-## Download CV
+::: {.cv-download-wrap}
+[Download CV (PDF)](assets/CV_Rodrigo_Grandy_Principal_Scientist_group_leader_October_2025.pdf){.btn .btn-primary .cv-download-btn target="_blank" rel="noopener"}
 
-You can download my full CV in PDF format:
+::: {.contact-links}
+[{{< fa envelope >}}](mailto:rodrigograndy@gmail.com){.contact-link target="_blank" title="Email"}
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.contact-link target="_blank" title="LinkedIn"}
+[{{< fa brands github >}}](https://github.com/rgrandym){.contact-link target="_blank" title="GitHub"}
+:::
+:::
 
-[Download CV (PDF)](assets/CV_Rodrigo_Grandy_Principal_Scientist_Group_Leader_June_2025.pdf){.btn .btn-primary}
+- Currently developing an AI-driven biotech venture that leverages machine learning to design novel peptides and small molecules as cost-effective replacements for growth factors in cell-derived product manufacturing.
 
----
+- Certified in AI and Machine Learning for Data Science by the University of Cambridge, with expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
 
-## Professional Summary
+- Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modeling. 
 
-Innovative scientific leader with over 19 years of combined experience in academia and biotech, specializing in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing. Recently completed advanced certification in AI and Machine Learning for Data Science, gaining expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
+- Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
 
-## Core Expertise
+**Core Expertise:** Strategic R&D & team leadership • iPSC and hematopoietic stem cell systems • Genomics, bioinformatics & sequencing • Quality Control of iPSC systems • AI & ML • Neural networks & deep learning • LLMs & RAG systems • Data Analysis (NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation)
 
-- Strategic R&D planning
-- Team leadership
-- iPSC-derived cell cultures
-- Hematopoietic stem cell differentiation
-- Genomics & bioinformatics
-- Process optimization
-- Quality control for cell-based products
-- AI/ML for data analysis
+## Education, Training, and Certifications
 
-## Education
+- **AI and Machine Learning for Data Science Certification**  
+*University of Cambridge (UK)* | 2025
 
-**PhD in Cell and Molecular Biology**  
-*University Name* | Year
+- **Postdoctoral Researcher**  
+*Stem Cell Institute, Cambridge University (UK)* | 2015-2019
 
-**Master's Degree**  
-*University Name* | Year
+- **Postdoctoral Researcher**  
+*UMass Medical School (USA)* | 2011-2015
 
-**Bachelor's Degree**  
-*University Name* | Year
+- **PhD in Cell and Molecular Biology**  
+*University of Concepcion (Chile)* | 2011
+
+- **Bachelor's Degree in Biochemistry**  
+*University of Concepcion (Chile)* | 2004
+
 
 ## Professional Experience
 
-### Current Position
-**Principal Scientist & Group Leader**  
-*Company Name* | Date - Present
+**Principal Scientist, Group Leader**  
+*Evotec, United Kingdom | Germany (2023 - November 2024)
+Principal Scientist, Project Lead, Line Manager: iPSC Cell Therapy/Immuno-Oncology
 
-- Leading innovation in stem cell biology and immunology research
-- Establishing R&D programs and managing cross-functional teams
-- Translating scientific discoveries into healthcare solutions
+- Managed and supervised a team of scientists and technical staff to ensure the quality of work met company standards in iPSC-derived immunotherapies generation. 
+- Led scientific strategy and process optimisation for differentiating, expanding, and cryopreserving iPSC-derived HSCs and T cells.
+- Contributed to strategic R&D planning: Identified strategies with the VP of immune oncology to control R&D expenses and FTEs within budget.
+- Facilitated teamwork among various sites to improve Quality Control processes for iPSC maintenance, expansion, and MCB production. 
+- Coordinated inter-site actions to optimise the differentiation of hematopoietic stem cells from iPSCs. 
+- Spearheaded the creation of an mRNA-seq single cell atlas for internal use, focusing on immune cell differentiation during human embryonic development.
+- Worked closely with the Business Development Director and SVP of Cell Therapy to showcase the company's iPSC-derived T cells program and cell therapy manufacturing capabilities to potential R&D and manufacturing corporate clients.
+- Served as interim Line Manager for scientists leading iPSC-derived macrophage development, overseeing activities, setting quarterly objectives, and providing mentorship to enhance team performance.
+- Partnered with senior leaders on key projects, including iPSC line generation in a GMP environment and establishing NGS platforms for assessing iPSC line genetic stability.
+- Developed a comprehensive strategy for biomarker assay generation using flow cytometry to characterise cell types during T cell differentiation and intermediate stages.
+- Supervised the characterisation of iPSC-derived T cell phenotypes and functionality, led by the immunology team in Toulouse, France.
 
-### Previous Positions
+**Group Leader/Line Manager Stem Cell Research**
+Adaptimmune | Abingdon, UK (2022 - 2023)
+Group Leader/Line Manager Stem Cell Research
 
-**Senior Scientist**  
-*Company Name* | Date - Date
+- Developed a quality control package in compliance with international standards to assess the quality of in-house derived iPS cell lines.
+- Formed and led a team of senior scientists and scientists to manage the quality control program for our engineered iPS cells and derivatives.
+- Conducted performance reviews and addressed any misalignment of team members with group objectives.
+- Reported progress to stakeholders. Collaborated with project leads and other departments to ensure timely delivery of results.
+- Directed the research program, improving the efficiency and consistency of iPS cell cultures, genetically engineered cell lines, and HSC differentiation systems to meet company objectives.
+- Created and implemented a training program to standardise iPS cell culture techniques and ensure adherence to international guidelines for scientists.
+- Coordinated the quality control, banking, and differentiation processes for hiPSC lines and HSC derivatives, facilitating the generation of allogenic T cells.
+- Served as a subject matter expert on stem cell-related matters, providing strategic guidance and advice across organisation.
+- Defined and managed the research program budget, ensuring financial resources were aligned with project goals.
+- Engaged in constructing and improving the platform to support the development of engineered iPSC-derived T cell therapies.
 
-- Description of responsibilities and achievements
+**Senior Scientist R&D: Genomics & Cellular Research**
+Cytiva, Cardiff, UK (2019 - 2022)
+Senior Scientist Research and Development: Genomics & Cellular Research
 
-**Scientist**  
-*Company Name* | Date - Date
+- Generated and analysed NGS data to evaluate performance and quality of various Cytiva products and prototypes.
+- Operated and maintained Next Generation Sequencer. Collaborated with the head of R&D to implement Single Cell analysis laboratory capabilities.
+- Developed a method for detecting COVID-19 viral RNA through "Direct RT-PCR," optimising the formulation for reliable and consistent detection in human nasopharyngeal swab samples.
+- Provided advisory support to R&D and G&D leads, helping them understand NGS and Single Cell Technology data, applications, and requirements, while collaborating with leadership to establish a new Single Cell Technology portfolio.
+- Partnered with R&D and G&D leadership to establish new Single Cell Technology lab, expanding company's capabilities.
+- Collaborated with the Lead Chemist to develop streptavidin-conjugated magnetic beads for use in hybridisation capture assays, including Exome sequencing.
+- Supervised two junior scientists on a nucleic acid isolation project and a scientist on the Single Cell Technology portfolio.
+- Led the team for Single Cell, NGS, and New Isolation Kit projects, overseeing junior scientists and supporting M4 activities for the VIA Omics Bundle.
 
-- Description of responsibilities and achievements
-
-## Publications
-
-Selected publications and research contributions.
-
-## Skills & Technologies
-
-**Wet Lab**: Cell culture, iPSC differentiation, flow cytometry, molecular biology
-
-**Bioinformatics**: NGS analysis, genomics pipelines, data visualization
-
-**Programming**: Python, R, bioinformatics tools
-
-**AI/ML**: Neural networks, deep learning, LLMs, RAG systems
 
 ## Contact
 
-- Email: rodrigograndy@gmail.com
-- LinkedIn: [linkedin.com/in/rodrigo-grandy](https://www.linkedin.com/in/rodrigo-grandy)
-- GitHub: [github.com/rgrandym](https://github.com/rgrandym)
+::: {.contact-links .cv-contact-links}
+[{{< fa envelope >}}](mailto:rodrigograndy@gmail.com){.contact-link target="_blank" title="Email"}
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.contact-link target="_blank" title="LinkedIn"}
+[{{< fa brands github >}}](https://github.com/rgrandym){.contact-link target="_blank" title="GitHub"}
+:::
+
+## Publications & Conferences
+Full list of publications available on: [Link to Publications in PubMed](https://www.ncbi.nlm.nih.gov/myncbi/1xWYmtc7fmqI9z/bibliography/public/)

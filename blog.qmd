@@ -1,5 +1,6 @@
 ---
 title: "Blog"
+page-layout: full
 listing:
   contents: posts
   type: default
@@ -10,4 +11,4 @@ listing:
   fields: [date, title, description, reading-time, categories]
 ---
 
-Exploring topics in bioinformatics, data analysis, machine learning, and scientific computing. Sharing knowledge, experiences, and best practices from years of research and development.
+This page is under construction...

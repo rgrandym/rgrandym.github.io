@@ -23,7 +23,7 @@ Browse my portfolio of projects across key research areas. Each category showcas
       <a href="projects/categories/cell-therapy.html">Cell Therapy</a>
     </h3>
     <div class="listing-description">
-      Advanced research in stem cell optimization, iPSC technology, and regenerative medicine. Focus on protocol development and cell line engineering for therapeutic applications.
+      Advanced research in pluripotent stem cell culture and differentiation for R&D and manufacturing. I share my experience and points of view in specific areas related to the use of human iPSCs and hESCs for research and development of allogenic cell therapies and other stem cell-derived products.
     </div>
   </div>
 </div>
@@ -40,7 +40,7 @@ Browse my portfolio of projects across key research areas. Each category showcas
       <a href="projects/categories/cell-molecular-biology.html">Cell and Molecular Biology</a>
     </h3>
     <div class="listing-description">
-      This section describes my research conducted during nine years of postdoctoral training at UMass Medical School (USA) and the Stem Cell Institute at Cambridge University (United Kingdom). During this period, I focused on cellular mechanisms, genomic analysis, epigenetics, and the regulation of cell differentiation. My primary research involved human embryonic stem cells (hESCs) and induced pluripotent stem cells (iPSCs), specifically investigating their differentiation processes and optimizing protocols for generating mature tissue cells by applying principles of human embryonic development.
+      This section highlights my research in cell and molecular biology, focusing on the mechanisms of cell differentiation, gene regulation, and the application of stem cell technologies in regenerative medicine.
     </div>
   </div>
 </div>
@@ -49,7 +49,7 @@ Browse my portfolio of projects across key research areas. Each category showcas
 <div class="quarto-post image-right">
   <div class="thumbnail">
     <a href="projects/categories/machine-learning-ai.html">
-      <img src="assets/images/logo_2.png" class="thumbnail-image">
+      <img src="assets/images/logo_v4.png" class="thumbnail-image">
     </a>
   </div>
   <div class="body">

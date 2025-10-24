@@ -1,0 +1,10 @@
+---
+title: "Under Construction: Use of AI for Protein Design"
+page-layout: full
+author: "Rodrigo Grandy"
+date: "2025-01-15"
+description: "A practical guide to using AI for protein design, covering key concepts, methodologies, and applications."
+categories: ["Tutorial", "Ai & ML", "Protein Design", "Data Analysis"]
+tags: ["AI", "Protein Design", "Machine Learning", "Deep Learning"]
+reading-time: "-- min"
+---
