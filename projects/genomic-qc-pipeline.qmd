@@ -5,6 +5,7 @@ date: "..."
 categories: ["Bioinformatics", "Quality Control", "Automation"]
 image: ""
 page-layout: full
+draft: true
 
 ---
 

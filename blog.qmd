@@ -4,12 +4,16 @@ page-layout: full
 listing:
   contents: 
     - "posts/**/*.qmd"
-  type: default
+  type: grid
+  grid-columns: 1
   sort: "date desc"
   sort-ui: false
   filter-ui: true
   categories: true
   fields: [image, date, title, description, reading-time, categories]
+  image-align: left
 ---
 
-Exploring topics in Biotech, data analysis, Ai & machine learning. Sharing insights from research, industry trends, and practical applications of cutting-edge technologies.
+::: {.projects-landing-page}
+Exploring topics in Biotech, data analysis, AI & machine learning. Sharing insights from research, industry trends, and practical applications of cutting-edge technologies.
+:::

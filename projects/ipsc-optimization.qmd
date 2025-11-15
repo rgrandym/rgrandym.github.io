@@ -1,10 +1,11 @@
 ---
 title: "Cell Cycle Regulators but not Cell Cycle Progression is Necessary for Stem Cell Differentiation."
-description: "..."
+description: "Work in Progress..."
 date: "..."
 categories: ["Cell Biology", "Data Science", "Process Optimization"]
 image: "/assets/images/embryonic_dev.png"
 page-layout: full
+draft: true
 ---
 [← Back to CT & MB Projects](categories/cell-therapy_mol_biology.qmd){.back-link}
 

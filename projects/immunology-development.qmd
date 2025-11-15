@@ -5,6 +5,7 @@ date: "..."
 categories: ["Cell Therapy", "R&D"]
 image: ""
 page-layout: full
+draft: true
 ---
 [← Back to CT & MB Projects](categories/cell-therapy_mol_biology.qmd){.back-link}
 

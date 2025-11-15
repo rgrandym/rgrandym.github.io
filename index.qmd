@@ -33,7 +33,7 @@ Strong combination of technical expertise spanning wet-lab methodologies and mac
 
 ::: {.contact-links}
 [{{< fa envelope >}}](mailto:rodrigograndy@gmail.com){.contact-link target="_blank" title="Email"} 
-[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigo-grandy){.contact-link target="_blank" title="LinkedIn"} 
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/rodrigograndy){.contact-link target="_blank" title="LinkedIn"} 
 [{{< fa brands github >}}](https://github.com/rgrandym){.contact-link target="_blank" title="GitHub"} 
 :::
 :::
