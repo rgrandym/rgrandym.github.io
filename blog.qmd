@@ -9,7 +9,7 @@ listing:
   sort-ui: false
   filter-ui: true
   categories: true
-  fields: [date, title, description, reading-time, categories]
+  fields: [image, date, title, description, reading-time, categories]
 ---
 
 Exploring topics in Biotech, data analysis, Ai & machine learning. Sharing insights from research, industry trends, and practical applications of cutting-edge technologies.
