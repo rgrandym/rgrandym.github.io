@@ -1,42 +1,15 @@
 ---
 title: "Immunology Development Analysis"
-description: "Computational analysis of immune system development patterns using machine learning and bioinformatics approaches"
-date: "2024-12-15"
-categories: ["Bioinformatics", "Research", "Machine Learning"]
-
+description: "..."
+date: "..."
+categories: ["Cell Therapy", "R&D"]
+image: ""
+page-layout: full
 ---
+[← Back to CT & MB Projects](categories/cell-therapy_mol_biology.qmd){.back-link}
 
-## Problem
+## Introduction
 
-Understanding the complex developmental trajectories of immune cells requires sophisticated computational approaches to analyze large-scale genomic datasets. Traditional methods often fail to capture the intricate relationships and temporal dynamics in immune system development.
 
-## Solution
-
-Developed a comprehensive bioinformatics pipeline integrating:
-
-- Single-cell RNA sequencing data analysis
-- Machine learning algorithms for cell type classification
-- Trajectory inference methods to map developmental pathways
-- Statistical frameworks for identifying key regulatory genes
-
-The analysis revealed novel insights into hematopoietic stem cell differentiation and immune cell maturation processes.
-
-## Technologies
-
-- **Python**: Data processing and analysis (pandas, numpy, scikit-learn)
-- **R**: Statistical analysis and visualization (Seurat, ggplot2)
-- **Bioconductor**: Genomics toolkit for NGS data
-- **Machine Learning**: Classification and clustering algorithms
-
-## Outcomes
-
-- Identified 12 novel cell populations in the developing immune system
-- Discovered key transcription factors regulating T cell differentiation
-- Published findings in peer-reviewed journal
-- Developed reusable analysis pipeline for future studies
-
-The project demonstrates the power of combining domain expertise in immunology with advanced computational methods to extract meaningful biological insights from complex genomic data.
-
-[View on GitHub](https://github.com/rgrandym/immuno-dev){.btn target="_blank"}
 
 [← Back to Projects](../projects.qmd){.back-link}

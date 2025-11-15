@@ -4,52 +4,35 @@ page-layout: full
 ---
 
 ::: {.projects-landing-page}
-Browse my portfolio of projects across key research areas. Each category showcases my skills and practical experience in data science, machine learning, and scientific innovation in biotechnology.
+Browse my projects across key research areas. Each category showcases my skills and practical experience in scientific innovation in biotechnology, data science, machine learning and artificial intelligence.
 :::
 
 ```{=html}
 <div class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
 
-<!-- Cell Therapy -->
+<!-- Cell Therapy & Molecular Biology (Combined) -->
 <div class="quarto-post image-right">
-  <div class="thumbnail">
-    <a href="projects/categories/cell-therapy.html">
+  <div class="thumbnail thumbnail-cell-therapy" style="align-self:center; margin-top: 5px;">
+    <a href="projects/categories/cell-therapy_mol_biology.html">
       <img src="assets/images/stemcells.png" class="thumbnail-image">
     </a>
   </div>
   <div class="body">
     <h3 class="no-anchor listing-title">
-      <a href="projects/categories/cell-therapy.html">Cell Therapy</a>
+      <a href="projects/categories/cell-therapy_mol_biology.html">Cell Therapy & Molecular Biology</a>
     </h3>
     <div class="listing-description">
-      Advanced research in stem cell optimization, iPSC technology, and regenerative medicine. Focus on protocol development and cell line engineering for therapeutic applications.
-    </div>
-  </div>
-</div>
-
-<!-- Cell and Molecular Biology -->
-<div class="quarto-post image-right">
-  <div class="thumbnail">
-    <a href="projects/categories/cell-molecular-biology.html">
-      <img src="assets/images/embryonic_dev.png" class="thumbnail-image">
-    </a>
-  </div>
-  <div class="body">
-    <h3 class="no-anchor listing-title">
-      <a href="projects/categories/cell-molecular-biology.html">Cell and Molecular Biology</a>
-    </h3>
-    <div class="listing-description">
-     This section highlights my research in cell and molecular biology, focusing on the mechanisms of cell differentiation, gene regulation, and the application of stem cell technologies in regenerative medicine.
+      Here I share experiences, perspectives, and insights from past research in pluripotent stem cell biology and molecular cell biology, focusing on techniques, mechanisms, and best practices for stem cell culture, differentiation, and scale-up from R&D to manufacturing.
     </div>
   </div>
 </div>
 
 <!-- Machine Learning & AI -->
 <div class="quarto-post image-right">
-  <div class="thumbnail">
+  <div class="thumbnail thumbnail-ml" style="margin-top: 0px;">
     <a href="projects/categories/machine-learning-ai.html">
-      <img src="assets/images/logo_2.png" class="thumbnail-image">
+      <img src="assets/images/logo_v4.png" class="thumbnail-image">
     </a>
   </div>
   <div class="body">
@@ -57,7 +40,7 @@ Browse my portfolio of projects across key research areas. Each category showcas
       <a href="projects/categories/machine-learning-ai.html">Machine Learning & AI</a>
     </h3>
     <div class="listing-description">
-      Predictive modeling, statistical analysis, and artificial intelligence applications in education and data science. Featuring XGBoost models, neural networks, and advanced analytics.
+      Here I share experiences, perspectives, and insights from past projects in Machine Learning and AI, with a focus on predictive modeling, statistical analysis, and deep learning applications, including natural language processing, neural network architectures, and advanced analytics.
     </div>
   </div>
 </div>

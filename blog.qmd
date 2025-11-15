@@ -1,7 +1,9 @@
 ---
 title: "Blog"
+page-layout: full
 listing:
-  contents: posts
+  contents: 
+    - "posts/**/*.qmd"
   type: default
   sort: "date desc"
   sort-ui: false
@@ -10,4 +12,4 @@ listing:
   fields: [date, title, description, reading-time, categories]
 ---
 
-Exploring topics in bioinformatics, data analysis, machine learning, and scientific computing. Sharing knowledge, experiences, and best practices from years of research and development.
+Exploring topics in Biotech, data analysis, Ai & machine learning. Sharing insights from research, industry trends, and practical applications of cutting-edge technologies.

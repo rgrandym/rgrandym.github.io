@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning & AI"
-description: "Predictive modeling, statistical analysis, and artificial intelligence applications in education and data science. Featuring XGBoost models, neural networks, and advanced analytics."
+title: "Cell Therapy & Molecular Biology"
+description: "Overview of research in stem cell optimization, cellular mechanisms, genomic analysis, and molecular biology applications."
 page-layout: full
 listing:
   contents: 
-    - "../student-dropout-prediction_xgb_092525.qmd"
-    - "../student-dropout-prediction_nn_201025.qmd"
+    - "../ipsc-optimization.qmd"
+    - "../genomic-qc-pipeline.qmd"
+    - "../immunology-development.qmd"
     
   type: default
   sort: "date desc"
