@@ -3,15 +3,18 @@
 Personal portfolio website showcasing projects in biotechnology, data science, machine learning, and AI research.
 
 ## 🌐 Live Site
+
 [https://rgrandym.github.io](https://rgrandym.github.io)
 
 ## 🚀 Built With
+
 - **Quarto** - Static site generator
 - **Python** - Data analysis and machine learning projects
 - **HTML/CSS** - Custom styling and responsive design
 - **GitHub Pages** - Hosting and deployment
 
 ## 📁 Project Structure
+
 ```
 ├── index.qmd           # Homepage
 ├── blog.qmd            # Blog listing page
@@ -25,6 +28,7 @@ Personal portfolio website showcasing projects in biotechnology, data science, m
 ```
 
 ## 🔄 Development Workflow
+
 ```bash
 # Make changes to content
 quarto render           # Build site to docs/
@@ -32,18 +36,6 @@ git add .
 git commit -m "Update content"
 git push origin main    # Auto-deploy to GitHub Pages
 ```
-
-## 📊 Featured Projects
-- **Student Dropout Prediction** - Neural networks and XGBoost models
-- **Genomic QC Pipeline** - Bioinformatics workflow optimization
-- **iPSC Optimization** - Stem cell research and development
-- **Immunology Development** - Cell therapy applications
-
-## 📝 Blog Topics
-- AI and Machine Learning
-- Biotechnology Research
-- Data Science Applications
-- Career Development in Science
 
 ---
 
