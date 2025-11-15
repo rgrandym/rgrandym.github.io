@@ -1,0 +1,1204 @@
+/* ============================================
+   Modern Minimalist Portfolio - Design System
+   ============================================ */
+
+:root {
+  /* Colors */
+  --background: #ffffff;
+  --card-background: #FFFFFF;
+  --text: #1d1d1d;
+  --text-light: #2a2a2a;
+  --accent: #2C2C2C;
+  --border: #E5E5E0;
+  
+  /* Typography */
+  --font-main: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-size-base: 17px;
+  --line-height: 1.7;
+  
+  /* Layout */
+  --max-width: 1300px;
+  --section-padding: 100px;
+  --card-radius: 3px;
+  --transition: all 0.3s ease;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-light);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Override Quarto container */
+body > .container-fluid,
+.page-columns {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+/* ============================================
+   Typography Scale
+   ============================================ */
+
+/* -------- INDEX PAGE ONLY -------- */
+
+/* YAML title (from frontmatter) - Home page ONLY */
+#title-block-header .title {
+  font-size: clamp(50px, 8vw, 86px);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  padding-top: 0;
+  color: var(--text);
+}
+
+/* YAML subtitle (from frontmatter) - Home page ONLY */
+#title-block-header .subtitle {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  padding-top: 10px;
+  color: var(--text-light);
+}
+
+/* Global h1 for home page content sections */
+h1 {
+  font-size: clamp(60px, 7vw, 90px);
+  font-weight: 200;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* Global h2 for home page sections */
+h2 {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+/* Global h3 for home page */
+h3 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+/* -------- PROJECT/ARTICLE PAGES ONLY -------- */
+
+/* Project/Article page h2 headers */
+#quarto-document-content h2,
+article h2 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Project/Article page h3 headers */
+#quarto-document-content h3,
+article h3 {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Project/Article page h4 headers */
+#quarto-document-content h4,
+article h4 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* -------- GLOBAL STYLES -------- */
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   Image Control System
+   ============================================ */
+
+/* Profile photo control - use width="X" attribute in markdown */
+img[width="300"],
+img[width="400"],
+img[width="500"],
+.hero-image img {
+  width: var(--image-width, 400px) !important;
+  max-width: var(--image-width, 400px) !important;
+  height: auto !important;
+  object-fit: cover;
+  border-radius: var(--card-radius);
+}
+
+/* Specific width overrides */
+img[width="300"] { --image-width: 300px; }
+img[width="400"] { --image-width: 400px; }
+img[width="500"] { --image-width: 500px; }
+
+/* Featured project images */
+.featured-image img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  border-radius: var(--card-radius);
+}
+
+/* ============================================
+   Navigation - Override theme defaults
+   ============================================ */
+
+#quarto-header {
+  background: #000000 !important;  /* Black */
+  border-bottom: 1px solid #000000 !important;  /* Black border */
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  backdrop-filter: blur(10px);
+  height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Navigation links - white text on dark navy */
+.navbar-nav .nav-link {
+  color: #FFFFFF !important;  /* White text */
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+  transition: var(--transition) !important;
+}
+
+
+.navbar {
+  max-width: var(--max-width) !important;
+  margin: 0 auto !important;
+  padding: 0 2.5% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #B3D9FF !important;  /* Light blue on hover */
+}
+
+/* Force left alignment for nav items */
+.navbar-nav {
+  display: flex !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-right: auto !important;  /* Push to left */
+}
+
+/* Force right alignment for tools */
+.navbar-tools,
+.navbar .ms-auto {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: auto !important;  /* Push to right */
+  padding-left: 0rem !important;
+  padding-right: 0rem !important;;
+  gap: 0.25rem !important;
+}
+
+/* Remove spacing from search container */
+#quarto-search {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.aa-Autocomplete {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide navbar brand/logo */
+.navbar-brand {
+  display: none !important;
+}
+
+
+/* CV Download button styling for dark navbar */
+.navbar-tools .nav-link,
+.navbar .ms-auto .nav-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: #FFFFFF !important;  /* White button */
+  color: #000000 !important;  /* Oxford blue text */
+  border: 1px solid #FFFFFF !important;
+  padding: 8px 10px !important;
+  border-radius: var(--card-radius) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;  /* Only transition colors */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.navbar-tools .nav-link:hover,
+.navbar .ms-auto .nav-link:hover {
+  background: #E8E8E8 !important;  /* Simple light gray instead of blue */
+  color: #000000 !important;
+  border-color: #E8E8E8 !important;
+  /* Removed transform and box-shadow for sharp, clean hover */
+}
+
+
+/* ============================================
+   Hero Section (60/40 split)
+   ============================================ */
+/* ============================================
+   Remove spacing from Quarto title header
+   ============================================ */
+
+/* This is the wrapper around title/subtitle from YAML */
+#title-block-header {
+  max-width: var(--max-width);
+  margin: 0 auto !important;
+  padding: 20px 2.5% 0 2.5% !important;  /* Match page content padding */
+}
+
+/* Projects listing page - align with title block */
+body:has(.quarto-listing-default) #title-block-header {
+  padding-left: 2.5% !important;
+  padding-right: 2.5% !important;
+  max-width: var(--max-width) !important;
+}
+
+/* Full width for listing pages - match title block */
+body:has(.quarto-listing-default) main {
+  max-width: var(--max-width) !important;
+  padding-left: 2.5% !important;
+  padding-right: 2.5% !important;
+  margin: 0 auto !important;
+}
+
+/* Home page only: reduce gap under fixed navbar */
+#quarto-content.page-layout-custom {
+  padding: 20px 2.5% !important; /* was var(--section-padding) on all pages; now compact on home */
+}
+
+/* Project detail pages - title is inside padded content, so no extra padding */
+#quarto-document-content #title-block-header {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Remove default margins from Quarto title components */
+#title-block-header .quarto-title {
+  margin-bottom: 0 !important;
+}
+
+#title-block-header .quarto-title-meta {
+  display: none;  /* Hide empty metadata section */
+}
+
+/* Hide date/metadata column on projects landing page only (category cards have no dates) */
+.projects-landing-page ~ #listing-listing .metadata {
+  display: none !important;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 65fr 35fr; 
+  gap: 3rem;  /* Reduced gap from 4rem to 3rem */
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: 0rem;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  /* Removed min-height: 70vh to prevent unnecessary vertical stretching */
+}
+
+/* Hero content styling */
+.hero-content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-right: 2rem !important;  /* Add padding to prevent text from getting too close to image */
+  padding-bottom: 0 !important;  /* Remove bottom padding */
+  margin-bottom: 0 !important;   /* Remove bottom margin */
+}
+
+
+.hero-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  max-width: 100%;  /* Changed from 550px to 100% to use full width */
+}
+
+.hero-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.hero-image img {
+  display: block;
+  margin-bottom: 0;
+  width: 300px;
+  max-width: 300px;
+}
+
+/* Hide image caption */
+.hero-image figcaption {
+  display: none !important;
+}
+
+/* Contact links below image */
+.hero-image .contact-links {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-top: 0;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.no-caption + figcaption,
+img.no-caption + figcaption {
+  display: none !important;
+}
+
+
+/* ============================================
+   Core Expertise Section
+   ============================================ */
+
+/* Core Expertise - Full Width Section */
+.core-expertise-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0rem 2.5% 2rem 2.5%;  /* Reduced top padding from 2rem to 1rem */
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-light);
+  text-align: left;  /* Left-aligned like hero content */
+}
+
+.core-expertise-section strong {
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.cta-button,
+.btn-primary {
+  display: inline-block;
+  background: #000000;  /* Smart silver */
+  color: #ffffff !important;
+  padding: 10px 32px;
+  border-radius: var(--card-radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  transition: var(--transition);
+  border: 1px solid #000000;  /* Subtle darker border */
+  cursor: pointer;
+}
+
+.cta-button:hover,
+.btn-primary:hover {
+  background: #8A8A8A;  /* Darker silver on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(168, 168, 168, 0.3);
+  border-color: #707070;
+}
+
+/* Small CV download button + inline contact links */
+.cv-download-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.25rem 0;
+}
+.cv-download-wrap .contact-links { margin-top: 0 !important; align-items: center; }
+.cv-download-btn {
+  display: inline-block;
+  background: #000000;
+  color: #ffffff !important;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #000000;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cv-download-btn:hover {
+  background: #8A8A8A;
+  color: #000000 !important;
+  border-color: #707070;
+}
+
+/* CV page: button size override */
+
+.cv-download-wrap .btn-primary {
+padding: 6px 14px;
+font-size: 16px;
+line-height: 1.2; /* optional: tightens height */
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+
+.about-section,
+.featured-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-padding) 2.5%;
+  background: var(--card-background);
+  border-top: 1px solid var(--border);
+}
+
+.about-section h2,
+.featured-section h2 {
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   Contact Links with Icons
+   ============================================ */
+
+.contact-links {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.contact-link {
+  color: #000000;  /* Gray color */
+  text-decoration: none;
+  font-size: 38px;  /* Icon size */
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;  /* Removed background for cleaner look */
+}
+
+.contact-link:hover {
+  color: var(--text);  /* Darker on hover */
+  transform: translateY(-2px);
+  background: var(--background);
+}
+
+/* (removed) page-scoped thumbnail nudge via CSS variable to preserve original design */
+
+.contact-link i {
+  font-size: 38px;
+}
+
+/* ============================================
+   Featured Project
+   ============================================ */
+
+.featured-project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.featured-content h3 {
+  margin-bottom: 1rem;
+}
+
+.featured-content p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.featured-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Projects Page - List Layout
+   ============================================ */
+
+#quarto-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--section-padding) 2.5%;
+}
+
+/* ============================================
+   Individual Project/Blog Pages
+   ============================================ */
+
+.project-content,
+.post-content {
+  max-width: var(--max-width);  /* Match main page width (1300px) */
+  margin: 0 auto;
+  padding: 2rem 2.5%;  /* Match main page padding */
+}
+
+/* Widen Quarto's article layout to match main page */
+#quarto-document-content {
+  max-width: var(--max-width) !important;  /* Match main page width (1300px) */
+  padding-left: 2.5% !important;  /* Match main page padding */
+  padding-right: 2.5% !important;
+}
+
+.project-content img,
+.post-content img,
+#quarto-document-content img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+  margin: 2rem 0;
+}
+
+/* Figure panels for multi-image displays */
+.figure-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.figure-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.figure-item strong {
+  font-size: 18px;
+  margin-bottom: 1rem;
+  display: block;
+  color: var(--text);
+}
+
+.figure-item img {
+  margin: 0.5rem 0;
+  max-width: 100%;
+}
+
+/* Code blocks */
+pre {
+  background: var(--background);
+  padding: 1.5rem;
+  border-radius: var(--card-radius);
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  font-size: 18px;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 968px) {
+  :root {
+    --section-padding: 80px;
+  }
+  
+  .hero-section,
+  .featured-project-card {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .hero-image {
+    justify-content: center;
+    order: -1;
+  }
+  
+  .hero-image img {
+    --image-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px;
+    --font-size-base: 16px;
+  }
+  
+  /* Index page responsive typography */
+  #title-block-header .title {
+    font-size: clamp(40px, 9vw, 70px);
+  }
+  
+  #title-block-header .subtitle {
+    font-size: clamp(20px, 4vw, 28px);
+  }
+  
+  h1 {
+    font-size: clamp(48px, 10vw, 70px);
+  }
+  
+  h2 {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+  
+  /* Project page responsive typography */
+  #quarto-document-content h2,
+  article h2 {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+  
+  #quarto-document-content h3,
+  article h3 {
+    font-size: clamp(20px, 4vw, 26px);
+  }
+  
+  .contact-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .featured-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 40px;
+  }
+  
+  .navbar {
+    padding: 1rem 5%;
+  }
+  
+  .hero-section,
+  .about-section,
+  .featured-section {
+    padding: 60px 5%;
+  }
+}
+
+
+/* ============================================
+   Projects List Layout
+   ============================================ */
+
+/* Override grid and set list layout (Projects landing page only) */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Individual project item */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default div.quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default div.quarto-post {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 2rem !important;
+  align-items: flex-start !important;  /* Changed to flex-start so thumbnail and text both align at top */
+  padding: 1.5rem 1.5rem 1.5rem 0 !important;  /* No left padding to align with title */
+  background: var(--background) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: box-shadow 0.2s ease !important;  /* Only transition shadow, not position */
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* More specific override to force top alignment */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-post.image-right,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-post.image-left,
+.projects-landing-page ~ .quarto-listing-container-default div.quarto-post {
+  align-items: flex-start !important;  /* Both thumbnail and text start at the same top position */
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post:hover,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post:hover,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item:hover {
+  /* Removed transform for no pop-up effect */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Thumbnail container - works with Quarto's natural sizing */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail {
+  flex-shrink: 0 !important;
+  width: 250px !important;
+  height: 150px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 8px;
+  overflow: visible;
+}
+
+/* Thumbnail images - let Quarto control sizing naturally */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail img,
+.thumbnail-image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 250px !important;
+  max-height: 150px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* (Reverted) No page-scoped nudge for Cell Therapy thumbnail to preserve original design */
+
+/* Custom sizing for Cell Therapy thumbnail - larger to accommodate wide image */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-cell-therapy,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-cell-therapy {
+  width: 350px !important;
+  height: 200px !important;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-cell-therapy img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-cell-therapy img {
+  max-width: 350px !important;
+  max-height: 200px !important;
+}
+
+/* Machine Learning thumbnail keeps default sizing */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-ml,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-ml {
+  width: 250px !important;
+  height: 150px !important;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-ml img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-ml img {
+  max-width: 250px !important;
+  max-height: 150px !important;
+}
+
+/* Content on the right */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .body,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .body,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem;
+}
+
+/* Project title */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title a:hover {
+  color: #A8A8A8;
+}
+
+/* Project description - default for all listing pages */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+/* Category description font size ONLY on projects landing page (not category pages) */
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post .listing-description,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post .listing-description a {
+  font-size: 14px !important;  /* Smaller font for category descriptions on landing page */
+  line-height: 1.5 !important;
+}
+
+/* Categories */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-category {
+  background: #F5F5F5;
+  color: var(--text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-category:hover {
+  background: #E0E0E0;
+}
+
+/* Date */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-date {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item,
+  .projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post {
+    flex-direction: column;
+  }
+  
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail,
+  .projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* ============================================
+   Table Caption Alignment
+   ============================================ */
+
+.table-caption-left .quarto-float-caption,
+.table-caption-left figcaption {
+  text-align: left !important;
+  caption-side: bottom;
+}
+
+/* ============================================
+   Figure Panel System
+   ============================================ */
+
+/* Main figure container */
+.fig-panel {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 100%;
+}
+
+/* Row container for figures */
+.fig-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2%;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+/* Column sizes */
+.fig-col-1 { flex: 0 0 100%; max-width: 100%; }
+.fig-col-2 { flex: 0 0 48%; max-width: 48%; }
+.fig-col-3 { flex: 0 0 31%; max-width: 31%; }
+.fig-col-4 { flex: 0 0 23%; max-width: 23%; }
+
+/* Custom widths */
+.fig-col-30 { flex: 0 0 30%; max-width: 30%; }
+.fig-col-40 { flex: 0 0 40%; max-width: 40%; }
+.fig-col-45 { flex: 0 0 45%; max-width: 45%; }
+.fig-col-50 { flex: 0 0 50%; max-width: 50%; }
+.fig-col-60 { flex: 0 0 60%; max-width: 60%; }
+.fig-col-70 { flex: 0 0 70%; max-width: 70%; }
+.fig-col-80 { flex: 0 0 80%; max-width: 80%; }
+
+/* Individual figure wrapper */
+.fig-item {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+/* Panel labels (A, B, C, etc.) */
+.fig-label {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5em;
+  letter-spacing: 0.5px;
+}
+
+.fig-label-sm { font-size: 12pt; }
+.fig-label-md { font-size: 14pt; }
+.fig-label-lg { font-size: 16pt; }
+.fig-label-xl { font-size: 18pt; }
+
+/* Label positions */
+.fig-label-top { margin-bottom: 0.5em; margin-top: 0; }
+.fig-label-bottom { margin-top: 0.5em; margin-bottom: 0; }
+.fig-label-left { text-align: left; }
+.fig-label-center { text-align: center; }
+.fig-label-right { text-align: right; }
+
+/* Image styling */
+.fig-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--card-radius);
+}
+
+/* Figure captions */
+.fig-caption {
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0.8em auto 0;
+  text-align: left;
+  padding: 0 0em;
+  font-weight: normal
+}
+
+.fig-caption-center { text-align: center; }
+.fig-caption-sm { font-size: 0.8em; }
+.fig-caption-md { font-size: 0.9em; }
+.fig-caption-lg { font-size: 1em; }
+
+/* Panel titles (above each subfigure) */
+.fig-title {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+/* ============================================
+   Blog Listing - Grid Layout (Image Left)
+   ============================================ */
+
+/* Target Quarto's generated list structure */
+.quarto-listing-container-grid .list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+/* Each blog post card - force horizontal two-column layout */
+.quarto-listing-container-grid .quarto-grid-item,
+.quarto-listing-container-grid .listing-item {
+  display: grid !important;
+  grid-template-columns: 300px 1fr !important;
+  gap: 2rem !important;
+  padding: 1.5rem !important;
+  background: var(--card-background) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: box-shadow 0.2s ease !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  align-items: start !important;
+}
+
+.quarto-listing-container-grid .quarto-grid-item:hover,
+.quarto-listing-container-grid .listing-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Thumbnail wrapper - left column */
+.quarto-listing-container-grid .listing-item-img-placeholder,
+.quarto-listing-container-grid .quarto-grid-link {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 300px !important;
+  height: 200px !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Thumbnail image */
+.quarto-listing-container-grid .listing-item-img-placeholder img,
+.quarto-listing-container-grid .quarto-grid-link img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+/* Content wrapper - right column */
+.quarto-listing-container-grid .listing-item-content,
+.quarto-listing-container-grid .quarto-grid-item > div:not(.listing-item-img-placeholder) {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+/* Title */
+.quarto-listing-container-grid .listing-title {
+  font-size: 28px !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.3 !important;
+}
+
+.quarto-listing-container-grid .listing-title a {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.quarto-listing-container-grid .listing-title a:hover {
+  color: var(--accent) !important;
+}
+
+/* Description */
+.quarto-listing-container-grid .listing-description {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+  color: var(--text-light) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Date and reading time */
+.quarto-listing-container-grid .listing-date,
+.quarto-listing-container-grid .listing-reading-time {
+  font-size: 14px !important;
+  color: #666 !important;
+}
+
+/* Categories */
+.quarto-listing-container-grid .listing-categories {
+  display: flex !important;
+  gap: 0.5rem !important;
+  flex-wrap: wrap !important;
+  margin-top: 0.5rem !important;
+}
+
+.quarto-listing-container-grid .listing-category {
+  font-size: 13px !important;
+  padding: 4px 12px !important;
+  background: #f5f5f5 !important;
+  border-radius: 3px !important;
+  color: var(--text-light) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fig-row {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  
+  .fig-col-2, .fig-col-3, .fig-col-4,
+  .fig-col-30, .fig-col-40, .fig-col-45,
+  .fig-col-50, .fig-col-60, .fig-col-70, .fig-col-80 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .fig-caption {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  /* Stack blog posts vertically on mobile */
+  .quarto-listing-container-grid .quarto-grid-item,
+  .quarto-listing-container-grid .listing-item {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+  }
+  
+  .quarto-listing-container-grid .listing-item-img-placeholder,
+  .quarto-listing-container-grid .quarto-grid-link {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    height: 250px !important;
+  }
+  
+  .quarto-listing-container-grid .listing-item-content,
+  .quarto-listing-container-grid .quarto-grid-item > div:not(.listing-item-img-placeholder) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+}
+
+
