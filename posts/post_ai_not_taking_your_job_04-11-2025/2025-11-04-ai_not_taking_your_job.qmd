@@ -42,7 +42,7 @@ format:
         </style>
 
 ---
-[← Back to Blogs](blog.qmd){.back-link}
+[← Back to Blogs](../../blog.qmd){.back-link}
 
 ---
 
