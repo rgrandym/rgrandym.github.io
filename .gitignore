@@ -46,3 +46,6 @@ assets/student_dropout/references/.chroma/
 # Internal development/planning files (private repo, can keep internal docs)
 specs/
 agent_quarto_reports/
+# Personal/sensitive content
+assets/CV_*.pdf
+assets/article_cell_cycle/
