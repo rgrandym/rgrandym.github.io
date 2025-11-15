@@ -1,0 +1,12 @@
+---
+title: "AI and Protein Design"
+date: "2025"
+categories: [AI, Machine Learning, Protein Design, Biotechnology]
+draft: true
+---
+
+# AI and Protein Design
+
+*Placeholder for upcoming blog post on AI applications in protein design.*
+
+Coming soon...

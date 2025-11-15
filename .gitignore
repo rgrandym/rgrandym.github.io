@@ -33,6 +33,8 @@ Thumbs.db
 *.tmp
 *~
 temp_documents/
+
+# Work in progress
 work_in_progress/
 
 # Large ML models (3.8GB - not suitable for git)
@@ -41,9 +43,6 @@ models/
 # ChromaDB vector database
 assets/student_dropout/references/.chroma/
 
-# Internal development/planning files
+# Internal development/planning files (private repo, can keep internal docs)
 specs/
 agent_quarto_reports/
-
-# Personal/sensitive content (contains private data, images, and research materials)
-assets/
