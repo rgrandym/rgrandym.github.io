@@ -102,6 +102,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-CQQPYGGXDK"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-CQQPYGGXDK', { 'anonymize_ip': true});
+</script>
 <style>
 figcaption.quarto-float-caption {
   text-align: left !important;
@@ -365,7 +374,7 @@ Table&nbsp;1: XGBoost Model Performance before and after hyperparameter tuning: 
 <h3 class="anchored" data-anchor-id="xgboost-model-development">XGBoost Model Development:</h3>
 <p>XGBoost (v3.0.1) models were initially trained without tuning (Chen &amp; Guestrin, 2016). Hyperparameter tuning used GridSearchCV with 3-fold cross-validation, optimizing for ROC AUC. Key hyperparameters included learning_rate, max_depth, and n_estimators.</p>
 <p>Feature matrices (X) were constructed by isolating the target variable (y) from the dataset. An 80-20 train-test split was then applied to partition the data. To validate the split’s quality, I examined the target variable distribution in both subsets, confirming similar class proportions, an essential verification step when working with imbalanced data. Although normalization was performed to facilitate this distributional analysis, the original unnormalized features were retained for XGBoost modeling, as tree-based algorithms do not benefit from feature scaling.</p>
-<div id="63c996a1" class="cell" data-execution_count="2">
+<div id="31accd4c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into features and target variable</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X_s3 <span class="op">=</span> df3_filled.drop(columns<span class="op">=</span>[<span class="st">'CompletedCourse_Yes'</span>], axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y_s3 <span class="op">=</span> df3_filled[<span class="st">'CompletedCourse_Yes'</span>] </span>
@@ -396,11 +405,11 @@ Table&nbsp;1: XGBoost Model Performance before and after hyperparameter tuning: 
 <section id="baseline-model-without-hyperparameter-tuning" class="level3">
 <h3 class="anchored" data-anchor-id="baseline-model-without-hyperparameter-tuning">Baseline Model without Hyperparameter Tuning</h3>
 <p>Following the data split, a baseline XGBoost model was trained using default hyperparameters. The model’s performance was evaluated on the validation set using accuracy and a classification report, which includes precision, recall, and F1-score. A confusion matrix was plotted to visualize the model’s predictions. Feature importance was also examined to identify the most influential features in the model.</p>
-<div id="4312aa75" class="cell" data-execution_count="3">
+<div id="a3882054" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xg_model_no_tunning_s3 <span class="op">=</span> xgb.XGBClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>xg_model_no_tunning_s3.fit(X_train_s3, y_train_s3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="020d800b" class="cell" data-execution_count="4">
+<div id="b40b1df0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model evaluation</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>predictions_no_tunning_s3 <span class="op">=</span> xg_model_no_tunning_s3.predict(X_val_s3)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate accuracy</span></span>
@@ -502,7 +511,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 </section>
 <section id="hyperparameter-tuning-with-gridsearchcv" class="level3">
 <h3 class="anchored" data-anchor-id="hyperparameter-tuning-with-gridsearchcv">Hyperparameter Tuning with GridSearchCV</h3>
-<div id="a25fc579" class="cell" data-execution_count="6">
+<div id="96ffbc3d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Search for Hyperparameter Tuning</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
@@ -534,7 +543,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 </section>
 <section id="initialise-model-with-best-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="initialise-model-with-best-parameters">Initialise model with best parameters</h3>
-<div id="8c41456d" class="cell" data-execution_count="7">
+<div id="aa794aa2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model with optimized hyperparameters</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>xg_model_best_param_s3 <span class="op">=</span> xgb.XGBClassifier(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
@@ -556,7 +565,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">False</span>                <span class="co"># Show training progress</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2bdbed9f" class="cell" data-execution_count="8">
+<div id="9da144df" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model evaluation</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>predictions_best_param_s3 <span class="op">=</span> xg_model_best_param_s3.predict(X_val_s3)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate accuracy</span></span>
@@ -666,7 +675,7 @@ Table&nbsp;3: XGBoost Model Performance after hyperparameter tuning.
 <section id="model-interpretability-with-shap-values" class="level3">
 <h3 class="anchored" data-anchor-id="model-interpretability-with-shap-values">Model Interpretability with SHAP Values</h3>
 <p>To enhance model interpretability, SHAP (SHapley Additive exPlanations) values were computed for both the baseline and tuned XGBoost models. Here I show only an example for the the fine tuned model (Figures 3). SHAP values quantify each feature’s contribution to individual predictions, providing insights into model decision-making.</p>
-<div id="b5941a25" class="cell" data-execution_count="10">
+<div id="2e0706b4" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shap_analysis(model, X, sample_size<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">42</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compute SHAP values with robust sampling and checks."""</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(X) <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -686,7 +695,7 @@ Table&nbsp;3: XGBoost Model Performance after hyperparameter tuning.
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage </span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>shap_values_base_s3, X_sample_base_s3, expected_value_base_s3 <span class="op">=</span> shap_analysis(xg_model_no_tunning_s3, X_train_s3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a598d5d0" class="cell" data-execution_count="11">
+<div id="cc97c4d4" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get SHAP values (unpack ALL return values)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shap_values_best_param_s3, X_sample_best_param_s3, expected_value_best_param_s3 <span class="op">=</span> shap_analysis(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    xg_model_best_param_s3, </span>
