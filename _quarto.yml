@@ -36,7 +36,7 @@ project:
     
 
 website:
-  site-url: "https://rgrandym.github.io"
+  site-url: "https://rgrandym.github.io/site"
   description: "Professional Portfolio - Principal Scientist & Group Leader"
   navbar:
     background: '#000000'
