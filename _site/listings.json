@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/projects/categories/cell-therapy_mol_biology.html",
+    "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/post_ai_not_taking_your_job_04-11-2025/2025-11-15-ai_not_taking_your_job.html"
+    ]
+  },
+  {
+    "listing": "/projects/categories/machine-learning-ai.html",
+    "items": [
+      "/projects/student-dropout-prediction_nn_201025.html",
+      "/projects/student-dropout-prediction_xgb_092525.html"
+    ]
+  }
+]

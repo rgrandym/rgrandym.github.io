@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rodrigo Grandy, PhD">
+<meta name="dcterms.date" content="2025-11-15">
+<meta name="description" content="A deep dive into Microsoft’s AI jobs study published on July 2025 reveals the real story behind the headlines: AI is transforming work, not eliminating it.">
+
+<title>The Microsoft AI Jobs Study:   What the Headlines Miss</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c7f4df60c4f27e6d4d5319664186fcad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+figcaption.quarto-float-caption {
+  text-align: left !important;
+}
+.quarto-figure-center {
+  text-align: left !important;
+}
+.fig-label-left-edge {
+  text-align: left !important;
+  margin-left: calc(-46vw + 50%);
+  width: 100vw;
+  position: relative;
+  left: 0;
+}
+/* Numbered references */
+#refs .csl-entry {
+  padding-left: 2em;
+  text-indent: -2em;
+  margin-bottom: 1em;
+}
+#refs {
+  counter-reset: ref-counter;
+}
+#refs .csl-entry::before {
+  counter-increment: ref-counter;
+  content: counter(ref-counter) ". ";
+  margin-right: 0.5em;
+}
+</style>
+
+
+<link rel="stylesheet" href="../../styles/styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Microsoft AI Jobs Study: <br> What the Headlines Miss</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Technology</div>
+    <div class="quarto-category">Ai &amp; ML</div>
+    <div class="quarto-category">Society</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A deep dive into Microsoft’s AI jobs study published on July 2025 reveals the real story behind the headlines: <strong>AI is transforming work, not eliminating it.</strong>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rodrigo Grandy, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 15, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../blog.html" class="back-link">← Back to Blogs</a></p>
+<hr>
+<figure id="fig-1" class="figure">
+  <div style="text-align: center; margin-bottom: 1rem;">
+    <div style="font-size: 20pt; font-weight: normal; color: #2c3e50;"></div>
+  </div>
+  <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+    <img src="generated-image-2.png" style="width: 40%; min-width: 600px;" alt="Validation accuracy curves" class="figure-img">
+  </div>
+  <figcaption>Figure 1: The cartoon illustrates the concept of AI as a tool for augmenting human capabilities, not replacing them. The AIs need constant supervision, guidance, and the human touch to ensure quality and accuracy.</figcaption>
+</figure>
+<section id="the-study-everyones-talking-about-but-probably-misunderstanding" class="level2">
+<h2 class="anchored" data-anchor-id="the-study-everyones-talking-about-but-probably-misunderstanding">The Study Everyone’s Talking About (But Probably Misunderstanding)</h2>
+<p>Microsoft Research released a much-cited study analyzing 200,000 real user conversations to see which jobs are “most vulnerable” to AI <a href="https://arxiv.org/pdf/2507.07935v2">(The Article)</a>. The headlines wrote themselves: customer service, writers, interpreters are at risk, “AI is coming for your job.” But if you actually read the study (as most in the media clearly have not), the real picture is much more complex and, frankly, less dramatic.</p>
+<hr>
+</section>
+<section id="high-ai-exposure-does-not-mean-job-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="high-ai-exposure-does-not-mean-job-elimination">High AI Exposure Does NOT Mean Job Elimination</h2>
+<p>The researchers created an “AI applicability score” for occupations (0.0–1.0), based on how often tasks are handled by AI and whether they’re marked “completed.” Unsurprisingly, this got quickly translated into “jobs at risk.”</p>
+<p>However, the authors are explicit throughout: AI is not performing all activities of any occupation. Even for jobs with substantial overlap, AI completion rates are well below 100%, and the work supported is often only a subset, far from wholesale automation. This nuance, though central, is nearly absent from mainstream coverage.</p>
+<p>As someone who in the past year has been living and breathing AI tools for coding, writing, brainstorming, and yes, even the occasional image, I must say that I agree with the study. Overall, it aligns with my daily experiences: a lot of usage, relative success, but requiring a great deal of intervention.</p>
+<p>In general, I feel these tools are great… but very, very far from replacing anyone who knows what they’re doing. Behind the curtain, they’re basically just guessing at the next word, not thinking or understanding (despite what some people may want you to believe). I use them every day, and can tell you that I spend a lot of time sorting, debugging, verifying, and sometimes just deleting what they produce.</p>
+<hr>
+</section>
+<section id="task-completion-does-not-equal-correct-or-useful-output" class="level2">
+<h2 class="anchored" data-anchor-id="task-completion-does-not-equal-correct-or-useful-output">Task Completion Does NOT Equal Correct or Useful Output</h2>
+<p>And here’s where the method falls over. The study tracks whether AI “finishes” a user’s task. But it does not count how often it gets things wrong. It doesn’t capture the time you waste fixing errors or the expertise needed to figure out if the answer is even remotely correct.</p>
+<p>To put it plainly: imagine a sales rep making 100 calls a day but closing only 2 deals. Lots of “completion,” very little success. That’s generous, even, compared to some AI outputs, and I’m not talking about writing emails or making a website with the exact same design once and again. I’m talking about actual complex tasks. The irony is sometimes people don’t even realize the answer is wrong, until it’s too late. Just look at what happened when Deloitte Australia used AI to prepare a $440,000 government report and had to issue a partial refund after the document was found riddled with fabricated academic citations, nonexistent references, and a fake quote attributed to a federal court judge. The errors were attributed to AI “hallucinations,” and the incident has become a cautionary tale about unchecked reliance on AI outputs (1-3)</p>
+<p>If you’ve used GitHub Copilot or any other LLM-based platform for coding, you know the reality: AI completes tasks constantly, but the output requires correction, verification, and expert review. Sometimes the bot even congratulates itself on a job not even close to well done. Recent studies show that developers accept only 21-30% of Copilot’s suggestions, with the UK public sector reporting acceptance rates as low as 15.8%. Security analysis found that 45% of AI-generated code samples introduce OWASP Top 10 vulnerabilities, with Java being the riskiest at 72% security failure rate.</p>
+<p><strong>If you’re technical and attentive, your productivity still improves. If you just hope for the bot to give you the right answer, you’re on track to be constantly disappointed and frustrated</strong> (4-6).</p>
+<p>It’s not just coding. I recently performed a little experiment and asked an LLM to analyze and describe several charts for a report: initially I was impressed, all charts had been analyzed and the wording sounded polished. However, careful inspection revealed that the numbers were fantasy, most likely copied from its training, not my data. Sure, if you micromanage the prompt and spoon-feed context, and maybe process one chart at a time, you might be able to get better results, which brings us back to the actual point of this article. <strong>With enough supervision and expert guidance, these tools can produce useful output.</strong> But that invisible scaffolding is all human. The study’s methodology does not capture this reality.</p>
+<hr>
+</section>
+<section id="why-developers-arent-being-replaced" class="level2">
+<h2 class="anchored" data-anchor-id="why-developers-arent-being-replaced">Why Developers Aren’t Being Replaced</h2>
+<p>Interestingly, one of the fields where AI has shown the most progress is in software development. This is not surprising, at the end of the day, code is one of the simplest languages there are, and LLMs are language processors at their core. Code is even easier than natural language, very deterministic, with no ambiguity, tone, sentiment or context to consider. So, LLMs should excel at it, and yet, they do not.</p>
+<p>In the Microsoft study, the “computer and mathematical” group scores a 0.30 for AI applicability, second only to clerical roles. But you don’t see developers being replaced. Why? Because reality is very different: professional developers accept under 30% of Copilot’s suggestions, while the other 70%+ need manual work or are tossed out. Code gets written faster, but multiple surveys report that 67% of developers now spend <em>more</em> time debugging AI-generated code, and 68% spend more time resolving AI-related security vulnerabilities. Some research even found that when allowed to use AI tools, developers took 19% <em>longer</em> to complete tasks than predicted, with more time spent reviewing and validating AI outputs (4-6).</p>
+<p>Other fields: writing, science, business, are seeing the same divide. Now, with a few prompts, you can whip up a nice email or research report. But anything real and valuable still takes your judgment and your effort. It is important to be very diligent; some AI outputs can be very impressive at first glance, but if you look closely and start fact-checking the numbers, the references or the logic you will find plenty of errors, inconsistencies, fabrications, etc.</p>
+<p>So yes: <strong>jobs are changing, not disappearing. And if you’ve got expertise, you’re suddenly a lot more valuable.</strong></p>
+<hr>
+</section>
+<section id="the-study-measures-current-usage-not-future-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="the-study-measures-current-usage-not-future-outcomes">The Study Measures Current Usage, Not Future Outcomes</h2>
+<p>A critical distinction: Microsoft’s paper analyzes present-day patterns of AI usage, not organizational staffing, policy, or macroeconomic consequences. They can’t predict which of the “AI-assisted” jobs a company will automate, outsource, or expand. All bold claims about inevitable job loss should be met with skepticism; the study itself says so.</p>
+<p>Unless the big AI-development companies are hiding some secret AGI technology that they are secretly selling to their big customers, there is no reason to believe that companies will suddenly get rid of their human workforce in the near future.</p>
+<p>This is crucial: <strong>AI applicability is a technology question. Job displacement is an economic and policy question, and the study answers only the first.</strong> So, just keep that in mind when you see sensational headlines about “40 Jobs AI Will Replace.”</p>
+<p>And as a side note, have you wondered what would happen to the economy if 10-20% of the current workforce all of a sudden became unemployed? Who is buying all the wonderful products and services that these AIs would be producing? Who will pay for mortgages, rent, healthcare, insurance, buy new cars, phones, computers, Netflix or Spotify subscriptions? Just to mention a few things. All that does not make any sense economically. Universal Income? Ha, what a joke, if we can’t even agree on the basics of healthcare for everyone.</p>
+<hr>
+</section>
+<section id="where-ai-actually-excels-and-why-it-matters" class="level2">
+<h2 class="anchored" data-anchor-id="where-ai-actually-excels-and-why-it-matters">Where AI Actually Excels (And Why It Matters)</h2>
+<p>Don’t get me wrong, I love these tools, and when used correctly, they are a productivity boost:</p>
+<ul>
+<li><strong>Information gathering:</strong> Great at finding, summarizing, speed-reading (but prone to hallucination, so keep a close eye)</li>
+<li><strong>Writing and editing:</strong> Drafts things fast, polishes prose (but needs human tone and fact-checking)</li>
+<li><strong>Explaining concepts:</strong> Simplifies the complicated (but may miss nuances, so just triple-check the facts, beware of bias)</li>
+<li><strong>Analyzing standard data:</strong> Fast at finding trends, not so hot with nuance or edge cases (human interpretation still key)</li>
+<li><strong>Producing documentation:</strong> Useful, but again, it requires strong human review</li>
+</ul>
+<p>However, creativity, context, strategic thinking, judgment, hands-on execution, hypothesis generation, stakeholder wrangling? You still need an expert, especially in messy real fields like Biology (AI applicability score: 0.16). Ask anyone who’s ever tried to automate “experimental design” or deep data interpretation via LLM.</p>
+<hr>
+</section>
+<section id="the-jobs-actually-under-pressure-and-why" class="level2">
+<h2 class="anchored" data-anchor-id="the-jobs-actually-under-pressure-and-why">The Jobs Actually Under Pressure (And Why)</h2>
+<p>The study’s highest-exposure occupations: interpreters, customer service representatives, telemarketers, have something in common: they’re already under economic pressure, and the work often involves lower barriers to entry and less specialized domain knowledge. But that’s an economic story, not an AI story. Companies have always sought to automate or outsource lower-margin work. AI is a tool that accelerates this trend, but it doesn’t create the underlying pressure.</p>
+<hr>
+</section>
+<section id="the-bottom-line" class="level2">
+<h2 class="anchored" data-anchor-id="the-bottom-line">The Bottom Line</h2>
+<p>The Microsoft study, despite its rigor, does not support the idea that AI is replacing skilled professionals. On the contrary, <strong>the professionals who can supervise, validate, and enhance AI outputs are more valuable than ever.</strong></p>
+<p>Both the data and daily experience tell me the same story: AI supercharges experts, but it doesn’t replace them. If you know your field, these tools can genuinely accelerate your workflow: they cut down brainstorming, drafting, and prototyping phases, letting you iterate ideas far faster. The real engine, is your expertise: adding context, spotting subtle flaws, knowing which answers work in the real world, and fixing what AI botches.</p>
+<p>You’re not competing with AI; you’re directing it, checking it, and knowing where it falls flat.</p>
+<p>Those who thrive? The domain experts, the supervisors, the relentless fact-checkers and synthesizers. The very people the best AI can only assist.</p>
+<p><strong>That’s not job elimination. That’s transformation—powered by skill, judgment, and the ability to make machines work for you, as it should be (not the other way around). And please, for everyone’s sake, do fact-check, even when output looks great. In my own experience, glaring issues slip through precisely because the result looked so polished at first glance</strong></p>
+<hr>
+<section id="note-on-sources" class="level3">
+<h3 class="anchored" data-anchor-id="note-on-sources">Note on Sources</h3>
+<p>All findings and quotes referenced from Microsoft Research’s “Working with AI: Measuring the Occupational Implications of Generative AI” (2025). <a href="https://arxiv.org/pdf/2507.07935v2">(The Article)</a>.</p>
+<p>Other references:</p>
+<p>1.- https://fortune.com/2025/10/07/deloitte-ai-australia-government-report-hallucinations-technology-290000-refund/</p>
+<p>2.- https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report</p>
+<p>3.- https://www.cfodive.com/news/deloitte-ai-debacle-seen-wake-up-call-corporate-finance/802674/</p>
+<p>4.- Bakal et al.&nbsp;2025. Experience with GitHub Copilot for Developer Productivity at Zoominfo. https://arxiv.org/html/2501.13282v1</p>
+<p>5.- GitHub Copilot Statistics &amp; Adoption Trends 2025. https://www.secondtalent.com/resources/github-copilot-statistics/</p>
+<p>6.- AI coding assistant trial: UK public sector findings report. https://www.gov.uk/government/publications/ai-coding-assistant-trial/ai-coding-assistant-trial-uk-public-sector-findings-report</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/rgrandym\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Rodrigo Grandy</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
