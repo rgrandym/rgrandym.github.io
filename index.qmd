@@ -16,7 +16,7 @@ format:
 ::: {.hero-section}
 ::: {.hero-content}
 
-Innovative scientific leader with over 19 years of combined experience in academia and biotech, specializing in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing.
+Innovative scientific leader with over 19 years of combined experience in academia and biotech, specialising in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing.
 
 Currently developing an AI-driven biotech venture that leverages machine learning to design novel peptides and small molecules as cost-effective replacements for growth factors in cell-derived product manufacturing.
 

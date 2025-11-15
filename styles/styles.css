@@ -313,6 +313,11 @@ body:has(.quarto-listing-default) main {
   margin: 0 auto !important;
 }
 
+/* Home page only: reduce gap under fixed navbar */
+#quarto-content.page-layout-custom {
+  padding: 20px 2.5% !important; /* was var(--section-padding) on all pages; now compact on home */
+}
+
 /* Project detail pages - title is inside padded content, so no extra padding */
 #quarto-document-content #title-block-header {
   padding-left: 0 !important;
@@ -530,12 +535,15 @@ line-height: 1.2; /* optional: tightens height */
   height: 50px;
   border-radius: 50%;
   background: transparent;  /* Removed background for cleaner look */
+}
 
 .contact-link:hover {
   color: var(--text);  /* Darker on hover */
   transform: translateY(-2px);
   background: var(--background);
 }
+
+/* (removed) page-scoped thumbnail nudge via CSS variable to preserve original design */
 
 .contact-link i {
   font-size: 38px;
@@ -745,10 +753,9 @@ blockquote {
    Projects List Layout
    ============================================ */
 
-/* Override grid and set list layout */
-.quarto-listing-default,
-.list.quarto-listing-default,
-#quarto-content .quarto-listing-default {
+/* Override grid and set list layout (Projects landing page only) */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default {
   display: flex !important;
   flex-direction: column !important;
   gap: 2rem !important;
@@ -759,64 +766,96 @@ blockquote {
 }
 
 /* Individual project item */
-.quarto-listing-default .quarto-post,
-.list.quarto-listing-default .quarto-post,
-.quarto-listing-default .listing-item,
-#quarto-content .quarto-listing-default .quarto-post,
-#quarto-content .quarto-listing-default .listing-item {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default div.quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default div.quarto-post {
   display: flex !important;
   flex-direction: row !important;
   gap: 2rem !important;
-  align-items: flex-start !important;
+  align-items: flex-start !important;  /* Changed to flex-start so thumbnail and text both align at top */
   padding: 1.5rem 1.5rem 1.5rem 0 !important;  /* No left padding to align with title */
   background: var(--background) !important;
   border-radius: var(--card-radius) !important;
   box-shadow: var(--card-shadow) !important;
-  transition: var(--transition) !important;
+  transition: box-shadow 0.2s ease !important;  /* Only transition shadow, not position */
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
-.quarto-listing-default .quarto-post:hover,
-.list.quarto-listing-default .quarto-post:hover,
-.quarto-listing-default .listing-item:hover,
-#quarto-content .quarto-listing-default .quarto-post:hover,
-#quarto-content .quarto-listing-default .listing-item:hover {
-  transform: translateY(-2px) !important;
+/* More specific override to force top alignment */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-post.image-right,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-post.image-left,
+.projects-landing-page ~ .quarto-listing-container-default div.quarto-post {
+  align-items: flex-start !important;  /* Both thumbnail and text start at the same top position */
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post:hover,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post:hover,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item:hover {
+  /* Removed transform for no pop-up effect */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Thumbnail container - works with Quarto's natural sizing */
-.quarto-listing-default .thumbnail,
-.list.quarto-listing-default .thumbnail,
-#quarto-content .quarto-listing-default .thumbnail {
-  flex-shrink: 0;
-  width: 250px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail {
+  flex-shrink: 0 !important;
+  width: 250px !important;
+  height: 150px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   border-radius: 8px;
   overflow: visible;
 }
 
 /* Thumbnail images - let Quarto control sizing naturally */
-.quarto-listing-default .thumbnail img,
-.list.quarto-listing-default .thumbnail img,
-#quarto-content .quarto-listing-default .thumbnail img,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail img,
 .thumbnail-image {
-  width: auto;
-  height: auto;
-  max-width: 250px;
-  max-height: 150px;
-  object-fit: contain;
-  object-position: center;
+  width: auto !important;
+  height: auto !important;
+  max-width: 250px !important;
+  max-height: 150px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* (Reverted) No page-scoped nudge for Cell Therapy thumbnail to preserve original design */
+
+/* Custom sizing for Cell Therapy thumbnail - larger to accommodate wide image */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-cell-therapy,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-cell-therapy {
+  width: 350px !important;
+  height: 200px !important;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-cell-therapy img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-cell-therapy img {
+  max-width: 350px !important;
+  max-height: 200px !important;
+}
+
+/* Machine Learning thumbnail keeps default sizing */
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-ml,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-ml {
+  width: 250px !important;
+  height: 150px !important;
+}
+
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail-ml img,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail-ml img {
+  max-width: 250px !important;
+  max-height: 150px !important;
 }
 
 /* Content on the right */
-.quarto-listing-default .body,
-.list.quarto-listing-default .body,
-.quarto-listing-default .listing-item-content,
-#quarto-content .quarto-listing-default .listing-item-content {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .body,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .body,
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item-content {
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
@@ -824,8 +863,7 @@ blockquote {
 }
 
 /* Project title */
-.quarto-listing-default .listing-title,
-#quarto-content .quarto-listing-default .listing-title {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title {
   font-size: 24px;
   font-weight: 600;
   color: var(--text);
@@ -834,21 +872,18 @@ blockquote {
   line-height: 1.3;
 }
 
-.quarto-listing-default .listing-title a,
-#quarto-content .quarto-listing-default .listing-title a {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title a {
   color: var(--text);
   text-decoration: none;
   transition: var(--transition);
 }
 
-.quarto-listing-default .listing-title a:hover,
-#quarto-content .quarto-listing-default .listing-title a:hover {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-title a:hover {
   color: #A8A8A8;
 }
 
 /* Project description - default for all listing pages */
-.quarto-listing-default .listing-description,
-#quarto-content .quarto-listing-default .listing-description {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-description {
   font-size: 17px;
   line-height: 1.6;
   color: var(--text-light);
@@ -856,23 +891,21 @@ blockquote {
 }
 
 /* Category description font size ONLY on projects landing page (not category pages) */
-.list.quarto-listing-default .quarto-post .listing-description,
-.list.quarto-listing-default .quarto-post .listing-description a {
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post .listing-description,
+.projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post .listing-description a {
   font-size: 14px !important;  /* Smaller font for category descriptions on landing page */
   line-height: 1.5 !important;
 }
 
 /* Categories */
-.quarto-listing-default .listing-categories,
-#quarto-content .quarto-listing-default .listing-categories {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-categories {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
 }
 
-.quarto-listing-default .listing-category,
-#quarto-content .quarto-listing-default .listing-category {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-category {
   background: #F5F5F5;
   color: var(--text);
   padding: 0.25rem 0.75rem;
@@ -883,14 +916,12 @@ blockquote {
   transition: var(--transition);
 }
 
-.quarto-listing-default .listing-category:hover,
-#quarto-content .quarto-listing-default .listing-category:hover {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-category:hover {
   background: #E0E0E0;
 }
 
 /* Date */
-.quarto-listing-default .listing-date,
-#quarto-content .quarto-listing-default .listing-date {
+.projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-date {
   font-size: 14px;
   color: var(--text-light);
   margin-bottom: 0.25rem;
@@ -898,17 +929,14 @@ blockquote {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .quarto-listing-default .quarto-post,
-  .quarto-listing-default .listing-item,
-  .quarto-listing-default .quarto-post,
-  .list.quarto-listing-default .quarto-post,
-  #quarto-content .quarto-listing-default .quarto-post {
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .quarto-post,
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .listing-item,
+  .projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .quarto-post {
     flex-direction: column;
   }
   
-  .quarto-listing-default .thumbnail,
-  .list.quarto-listing-default .thumbnail,
-  #quarto-content .quarto-listing-default .thumbnail {
+  .projects-landing-page ~ .quarto-listing-container-default .quarto-listing-default .thumbnail,
+  .projects-landing-page ~ .quarto-listing-container-default .list.quarto-listing-default .thumbnail {
     width: 100%;
     height: 200px;
   }

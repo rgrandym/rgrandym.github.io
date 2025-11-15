@@ -1,6 +1,6 @@
 ---
-title: "Cell Therapy"
-description: "Advanced research in stem cell optimization, iPSC technology, and regenerative medicine. Focus on protocol development and cell line engineering for therapeutic applications."
+title: "Cell Therapy & Molecular Biology"
+description: "Advanced research in stem cell optimization, iPSC technology, regenerative medicine, cellular mechanisms, genomic analysis, and molecular biology applications."
 image: "../../assets/images/stemcells.png"
 ---
 

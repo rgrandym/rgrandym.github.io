@@ -1,9 +1,0 @@
----
-title: "Cell and Molecular Biology"
-description: "This section describes my research conducted during nine years of postdoctoral training at UMass Medical School (USA) and the Stem Cell Institute at Cambridge University (United Kingdom). During this period, I focused on cellular mechanisms, genomic analysis, epigenetics, and the regulation of cell differentiation. My primary research involved human embryonic stem cells (hESCs) and induced pluripotent stem cells (iPSCs), specifically investigating their differentiation processes and optimizing protocols for generating mature tissue cells by applying principles of human embryonic development."
-image: "../../assets/images/embryonic_dev.png"
----
-
-```{=html}
-<script>window.location.href = '../categories/cell-molecular-biology.html';</script>
-```

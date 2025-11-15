@@ -8,6 +8,7 @@ venv/
 .env/
 .venv/
 .python/
+.python-version
 
 # Dependency files
 uv.lock
@@ -21,11 +22,11 @@ _files/
 # IDE
 .vscode/
 .idea/
+.specify/
 
 # OS
 .DS_Store
 Thumbs.db
-
 
 # Temp files
 *.log
@@ -33,5 +34,16 @@ Thumbs.db
 *~
 temp_documents/
 work_in_progress/
-assets/student_dropout/references/.chroma/
+
+# Large ML models (3.8GB - not suitable for git)
 models/
+
+# ChromaDB vector database
+assets/student_dropout/references/.chroma/
+
+# Internal development/planning files
+specs/
+agent_quarto_reports/
+
+# Personal/sensitive content (contains private data, images, and research materials)
+assets/
