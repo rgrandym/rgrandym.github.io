@@ -90,7 +90,7 @@
         "\n",
         "The dataset underwent hierarchical splitting into training (64%), validation (20%), and test (16%) sets using stratified random sampling to preserve class proportions across splits. Features were standardized using scikit-learn's StandardScaler fitted exclusively on training data, with the same transformation applied to validation and test sets to prevent data leakage. This preprocessing pipeline ensures models encounter data distributions representative of real-world deployment scenarios.\n"
       ],
-      "id": "47d7bae1"
+      "id": "16f59631"
     },
     {
       "cell_type": "code",
@@ -107,7 +107,7 @@
         "# Display the first few rows of the features and target variable\n",
         "display(X_s3.head())  "
       ],
-      "id": "2af92800",
+      "id": "5ccbbc2f",
       "execution_count": null,
       "outputs": []
     },
@@ -139,7 +139,7 @@
         "print(\"Test set target variable distribution:\")\n",
         "print(y_test_s3.value_counts(normalize=True))"
       ],
-      "id": "89c794eb",
+      "id": "e5edfbd9",
       "execution_count": null,
       "outputs": []
     },
@@ -158,7 +158,7 @@
         "X_val_scaled_s3 = scaler.transform(X_val_s3)\n",
         "X_test_scaled_s3 = scaler.transform(X_test_s3)"
       ],
-      "id": "3075312f",
+      "id": "14a07ce4",
       "execution_count": null,
       "outputs": []
     },
@@ -172,7 +172,7 @@
         "\n",
         "For hyperparameter optimization, systematic grid search explored learning rates, batch sizes, dropout rates, and L1/L2 regularization strengths, with optimal configurations selected based on validation set ROC-AUC. The tuned models maintained consistent hyperparameter choices (Adam optimizer, learning rate 0.001, dropout 0.2) across stages, with Stage 3 additionally incorporating L1/L2 regularization (0.001 each) to handle the expanded feature space resulting from academic performance metrics.\n"
       ],
-      "id": "c6b15296"
+      "id": "8e586fbc"
     },
     {
       "cell_type": "code",
@@ -313,7 +313,7 @@
         "models_base_s3, histories_base_s3 = train_models_deterministic(architecture_configs, X_train_scaled_s3, y_train_s3, X_val_scaled_s3, y_val_s3)\n",
         "print(f'Model: models_base_s3, History:histories_base_s3')"
       ],
-      "id": "753742ab",
+      "id": "dc5c02f8",
       "execution_count": null,
       "outputs": []
     },
@@ -331,7 +331,7 @@
         "\n",
         "### Training Dynamics of Stage 3 Baseline Models\n"
       ],
-      "id": "32539813"
+      "id": "46208f28"
     },
     {
       "cell_type": "code",
@@ -362,7 +362,7 @@
         "\n",
         "An important methodological consideration: the models compared across stages do not share identical architectures or hyperparameter configurations. Each stage's models were independently optimized for their respective feature sets through systematic hyperparameter search, with the best-performing configuration selected based on validation performance. Notably, the optimal architectures show counterintuitive patterns: Stage 1 base model employed a deeper 4-layer architecture with 64 units (Model_6_4L_64U), while Stages 2 and 3 base models utilized simpler 2-layer architectures with 32 units (Model_1_2L_32U and Model_5_2L_32U respectively). This suggests that with limited predictive signal from demographic features alone (Stage 1), models required additional architectural capacity to extract weak patterns, whereas data-rich stages (2 and 3) enabled simpler architectures to achieve superior performance through stronger feature-outcome relationships. The tuned models across all stages employed consistent hyperparameter configurations (Adam optimizer, learning rate 0.001, dropout 0.2, batch size 16-32), with Stage 3 additionally incorporating L1/L2 regularization (0.001 each) to prevent overfitting on the expanded feature space. These results suggest that optimal model complexity does not necessarily scale with data richness, and that more powerful features can enable simpler, more efficient architectures that outperform complex models trained on weak signals.\n"
       ],
-      "id": "22475ffb"
+      "id": "03526f30"
     },
     {
       "cell_type": "code",
@@ -417,7 +417,7 @@
         "    print(f\"  Final Epochs: {len(result['history'].history['loss'])}\")\n",
         "    print()"
       ],
-      "id": "2190be56",
+      "id": "68e5ca07",
       "execution_count": null,
       "outputs": []
     },
@@ -447,7 +447,7 @@
         "\n",
         "### Detailed Model Metrics for Baseline Architectures\n"
       ],
-      "id": "8e4b4fcf"
+      "id": "ba2ae925"
     },
     {
       "cell_type": "code",
@@ -471,7 +471,7 @@
       "source": [
         "Table 2 provides comprehensive evaluation metrics for the nine baseline Stage 3 model architectures from the systematic architecture search visualized in Figure 1. Each row represents one of the configurations spanning 1-3 layers and 16-64 units, evaluated on multiple complementary performance metrics: ROC-AUC (area under receiver operating characteristic curve), PR-AUC (precision-recall curve area), F1-score (harmonic mean of precision and recall), Balanced Accuracy (accounting for class imbalance), and Matthews Correlation Coefficient (MCC, overall classification quality). All nine architectures achieve exceptional performance (ROC-AUC >0.977, F1 >0.967), with remarkably narrow performance variance (ROC-AUC range: 0.9778-0.9846, span of only 0.007). The best-performing model (Model_5_2L_32U: 2 layers, 32 units) achieves ROC-AUC=0.9846, demonstrating that relatively simple architectures can excel given strong feature sets. The tight performance clustering across diverse architectures, from shallow 1-layer networks to deeper 3-layer configurations, validates the conclusion that Stage 3's rich academic performance features enable robust prediction regardless of architectural complexity. This homogeneity suggests practitioners can prioritize computational efficiency (simpler models) over architectural optimization when working with high-quality features, as the data quality dominates model complexity in determining final performance. The comprehensive metric set enables evidence-based model selection considering multiple evaluation criteria beyond single-metric optimization.\n"
       ],
-      "id": "49511713"
+      "id": "9bdfc064"
     },
     {
       "cell_type": "code",
@@ -517,7 +517,7 @@
         "\n",
         "plt.show()"
       ],
-      "id": "cfb05416",
+      "id": "ae14bd0f",
       "execution_count": null,
       "outputs": []
     },
@@ -554,7 +554,7 @@
         "\n",
         "The systematic search revealed that hyperparameter tuning yielded minimal performance improvements over baseline configurations. As documented in Table 1, the best tuned Stage 3 model achieved ROC-AUC=0.9838, marginally lower than the baseline Model_5_2L_32U (ROC-AUC=0.9846). The optimal tuned configuration incorporated L1/L2 regularization (0.001 each) with batch size 32, suggesting that modest regularization prevents overfitting on the expanded Stage 3 feature space without compromising predictive accuracy. However, the narrow performance variance across all tuned configurations (ROC-AUC range: ~0.980-0.984) indicates that Stage 3's rich academic performance features enable robust prediction regardless of regularization strength, echoing the architectural insensitivity observed in baseline models.\n"
       ],
-      "id": "82b85cd8"
+      "id": "1f6ec087"
     },
     {
       "cell_type": "code",
@@ -697,7 +697,7 @@
         "print(f\"Hyperparameter tuning completed. Trained {len(models_tuning_s3)} models.\")\n",
         "print('Models: models_tuning_s3, Histories: histories_tuning_s3')"
       ],
-      "id": "b5a7d819",
+      "id": "ae3cbdc2",
       "execution_count": null,
       "outputs": []
     },
@@ -837,7 +837,7 @@
         "::: {#refs}\n",
         ":::"
       ],
-      "id": "06e334d3"
+      "id": "fe154f92"
     }
   ],
   "metadata": {
