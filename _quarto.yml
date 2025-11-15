@@ -38,6 +38,7 @@ project:
 website:
   site-url: "https://rgrandym.github.io"
   description: "Professional Portfolio - Principal Scientist & Group Leader"
+  google-analytics: "G-CQQPYGGXDK"
   navbar:
     background: '#000000'
     left:
