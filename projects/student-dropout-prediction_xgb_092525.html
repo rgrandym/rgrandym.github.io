@@ -258,114 +258,11 @@ figcaption.quarto-float-caption {
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>For simplicity, only selected sections of the stage 3 analysis and results are shown as examples. A detailed performance comparison for the XGBoost models across all stages is provided in the table below.</p>
-<div id="tbl-xgb_comp" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="bottom" data-execution_count="1">
-<figure class="quarto-float quarto-float-tbl figure">
-<div aria-describedby="tbl-xgb_comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="cell caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 6%">
-<col style="width: 14%">
-<col style="width: 12%">
-<col style="width: 13%">
-<col style="width: 14%">
-<col style="width: 12%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Model</th>
-<th style="text-align: center;">Stage</th>
-<th style="text-align: center;">ROC AUC</th>
-<th style="text-align: center;">Precision (Class 0)</th>
-<th style="text-align: center;">Recall (Class 0)</th>
-<th style="text-align: center;">F1 Score (Class 0)</th>
-<th style="text-align: center;">Precision (Class 1)</th>
-<th style="text-align: center;">Recall (Class 1)</th>
-<th style="text-align: center;">F1 Score (Class 1)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Base</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0.853</td>
-<td style="text-align: center;">0.626</td>
-<td style="text-align: center;">0.422</td>
-<td style="text-align: center;">0.504</td>
-<td style="text-align: center;">0.904</td>
-<td style="text-align: center;">0.956</td>
-<td style="text-align: center;">0.929</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Tuned</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0.86</td>
-<td style="text-align: center;">0.627</td>
-<td style="text-align: center;">0.403</td>
-<td style="text-align: center;">0.491</td>
-<td style="text-align: center;">0.901</td>
-<td style="text-align: center;">0.958</td>
-<td style="text-align: center;">0.929</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Base</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0.895</td>
-<td style="text-align: center;">0.687</td>
-<td style="text-align: center;">0.486</td>
-<td style="text-align: center;">0.569</td>
-<td style="text-align: center;">0.916</td>
-<td style="text-align: center;">0.962</td>
-<td style="text-align: center;">0.939</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Tuned</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0.893</td>
-<td style="text-align: center;">0.712</td>
-<td style="text-align: center;">0.476</td>
-<td style="text-align: center;">0.57</td>
-<td style="text-align: center;">0.915</td>
-<td style="text-align: center;">0.967</td>
-<td style="text-align: center;">0.94</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Base</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">0.993</td>
-<td style="text-align: center;">0.893</td>
-<td style="text-align: center;">0.911</td>
-<td style="text-align: center;">0.902</td>
-<td style="text-align: center;">0.985</td>
-<td style="text-align: center;">0.981</td>
-<td style="text-align: center;">0.983</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Tuned</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">0.994</td>
-<td style="text-align: center;">0.889</td>
-<td style="text-align: center;">0.917</td>
-<td style="text-align: center;">0.903</td>
-<td style="text-align: center;">0.986</td>
-<td style="text-align: center;">0.98</td>
-<td style="text-align: center;">0.983</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-xgb_comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: XGBoost Model Performance before and after hyperparameter tuning: Class 0 denotes the minority class, the less prevalent category in this imbalanced dataset. Performance optimization for the minority class is critical since accurately predicting underrepresented cases typically constitutes the core analytical objective, despite their lower frequency in the training data.
-</figcaption>
-</figure>
-</div>
 <section id="xgboost-model-development" class="level3">
 <h3 class="anchored" data-anchor-id="xgboost-model-development">XGBoost Model Development:</h3>
 <p>XGBoost (v3.0.1) models were initially trained without tuning (Chen &amp; Guestrin, 2016). Hyperparameter tuning used GridSearchCV with 3-fold cross-validation, optimizing for ROC AUC. Key hyperparameters included learning_rate, max_depth, and n_estimators.</p>
 <p>Feature matrices (X) were constructed by isolating the target variable (y) from the dataset. An 80-20 train-test split was then applied to partition the data. To validate the split’s quality, I examined the target variable distribution in both subsets, confirming similar class proportions, an essential verification step when working with imbalanced data. Although normalization was performed to facilitate this distributional analysis, the original unnormalized features were retained for XGBoost modeling, as tree-based algorithms do not benefit from feature scaling.</p>
-<div id="2bd7a3b3" class="cell" data-execution_count="2">
+<div id="3b009676" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into features and target variable</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>X_s3 <span class="op">=</span> df3_filled.drop(columns<span class="op">=</span>[<span class="st">'CompletedCourse_Yes'</span>], axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y_s3 <span class="op">=</span> df3_filled[<span class="st">'CompletedCourse_Yes'</span>] </span>
@@ -396,11 +293,11 @@ Table&nbsp;1: XGBoost Model Performance before and after hyperparameter tuning: 
 <section id="baseline-model-without-hyperparameter-tuning" class="level3">
 <h3 class="anchored" data-anchor-id="baseline-model-without-hyperparameter-tuning">Baseline Model without Hyperparameter Tuning</h3>
 <p>Following the data split, a baseline XGBoost model was trained using default hyperparameters. The model’s performance was evaluated on the validation set using accuracy and a classification report, which includes precision, recall, and F1-score. A confusion matrix was plotted to visualize the model’s predictions. Feature importance was also examined to identify the most influential features in the model.</p>
-<div id="d8d8c079" class="cell" data-execution_count="3">
+<div id="49841578" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>xg_model_no_tunning_s3 <span class="op">=</span> xgb.XGBClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>xg_model_no_tunning_s3.fit(X_train_s3, y_train_s3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="51e82ba1" class="cell" data-execution_count="4">
+<div id="f13ae633" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model evaluation</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>predictions_no_tunning_s3 <span class="op">=</span> xg_model_no_tunning_s3.predict(X_val_s3)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate accuracy</span></span>
@@ -417,63 +314,6 @@ Table&nbsp;1: XGBoost Model Performance before and after hyperparameter tuning: 
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>display(report_df.style.<span class="bu">format</span>(<span class="st">"</span><span class="sc">{:.4f}</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>XGBoost Model Accuracy: 0.9710319855159928</strong></p>
-<div id="tbl-xgb_classif_no_tunning" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="bottom" data-execution_count="5">
-<figure class="quarto-float quarto-float-tbl figure">
-<div aria-describedby="tbl-xgb_classif_no_tunning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Unnamed: 0</th>
-<th style="text-align: center;">precision</th>
-<th style="text-align: center;">recall</th>
-<th style="text-align: center;">f1-score</th>
-<th style="text-align: center;">support</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0.893</td>
-<td style="text-align: center;">0.911</td>
-<td style="text-align: center;">0.902</td>
-<td style="text-align: center;">727</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0.985</td>
-<td style="text-align: center;">0.981</td>
-<td style="text-align: center;">0.983</td>
-<td style="text-align: center;">4244</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">accuracy</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">macro avg</td>
-<td style="text-align: center;">0.939</td>
-<td style="text-align: center;">0.946</td>
-<td style="text-align: center;">0.942</td>
-<td style="text-align: center;">4971</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">weighted avg</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">4971</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-xgb_classif_no_tunning-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
-</figcaption>
-</figure>
-</div>
 <p>Figure 1A displays the confusion matrix for the baseline XGBoost model trained on Stage 3 data (demographics, engagement, and academic performance). The matrix visualizes model predictions on the validation set, comparing predicted dropout outcomes against actual student outcomes. The diagonal elements represent correct classifications: students correctly identified as completing or dropping out. Off-diagonal elements show misclassifications. The model demonstrates strong performance with minimal false negatives (missed dropout cases) and false positives (incorrectly flagged completers), achieving 97.1% accuracy (Table 2). This visualization is critical for evaluating the model’s ability to identify at-risk students requiring early intervention support.</p>
 <p>Figure 1B presents the feature importance analysis for the baseline XGBoost model, ranking the top 20 features by their contribution to dropout prediction. The visualization quantifies each feature’s impact on model decisions, with longer bars indicating greater importance. Academic performance emerged as the most influential predictor. Engagement metrics like absence patterns and demographic factors such as age also demonstrated significant predictive power. This ranking reveals that academic achievement data provides the strongest signals for identifying at-risk students.</p>
 <figure id="fig-baseline-model" class="fig-panel figure">
@@ -502,7 +342,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 </section>
 <section id="hyperparameter-tuning-with-gridsearchcv" class="level3">
 <h3 class="anchored" data-anchor-id="hyperparameter-tuning-with-gridsearchcv">Hyperparameter Tuning with GridSearchCV</h3>
-<div id="7bb782df" class="cell" data-execution_count="6">
+<div id="18ad97d8" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid Search for Hyperparameter Tuning</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
@@ -534,7 +374,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 </section>
 <section id="initialise-model-with-best-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="initialise-model-with-best-parameters">Initialise model with best parameters</h3>
-<div id="1fa4a818" class="cell" data-execution_count="7">
+<div id="a70da9a5" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model with optimized hyperparameters</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>xg_model_best_param_s3 <span class="op">=</span> xgb.XGBClassifier(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
@@ -556,7 +396,7 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="va">False</span>                <span class="co"># Show training progress</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b9f8bac6" class="cell" data-execution_count="8">
+<div id="7f52b54b" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model evaluation</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>predictions_best_param_s3 <span class="op">=</span> xg_model_best_param_s3.predict(X_val_s3)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate accuracy</span></span>
@@ -588,63 +428,6 @@ Table&nbsp;2: XGBoost Model Performance before hyperparameter tuning.
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>}, na_rep<span class="op">=</span><span class="st">''</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>XGBoost Model Best Params Accuracy: 0.9712331522832428</strong></p>
-<div id="tbl-xgb_classif_best_param_s3" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="bottom" data-execution_count="9">
-<figure class="quarto-float quarto-float-tbl figure">
-<div aria-describedby="tbl-xgb_classif_best_param_s3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="cell caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Unnamed: 0</th>
-<th style="text-align: center;">precision</th>
-<th style="text-align: center;">recall</th>
-<th style="text-align: center;">f1-score</th>
-<th style="text-align: center;">support</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0.889</td>
-<td style="text-align: center;">0.918</td>
-<td style="text-align: center;">0.903</td>
-<td style="text-align: center;">727</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0.986</td>
-<td style="text-align: center;">0.98</td>
-<td style="text-align: center;">0.983</td>
-<td style="text-align: center;">4244</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">accuracy</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">macro avg</td>
-<td style="text-align: center;">0.938</td>
-<td style="text-align: center;">0.949</td>
-<td style="text-align: center;">0.943</td>
-<td style="text-align: center;">4971</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">weighted avg</td>
-<td style="text-align: center;">0.972</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">0.971</td>
-<td style="text-align: center;">4971</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-xgb_classif_best_param_s3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: XGBoost Model Performance after hyperparameter tuning.
-</figcaption>
-</figure>
-</div>
 <figure id="fig-base-vs-tuned-model" class="fig-panel figure">
   <div class="fig-row" style="gap:5%; justify-content: flex-start;">
     <!-- Figure A: Confusion Matrix -->
@@ -666,7 +449,7 @@ Table&nbsp;3: XGBoost Model Performance after hyperparameter tuning.
 <section id="model-interpretability-with-shap-values" class="level3">
 <h3 class="anchored" data-anchor-id="model-interpretability-with-shap-values">Model Interpretability with SHAP Values</h3>
 <p>To enhance model interpretability, SHAP (SHapley Additive exPlanations) values were computed for both the baseline and tuned XGBoost models. Here I show only an example for the the fine tuned model (Figures 3). SHAP values quantify each feature’s contribution to individual predictions, providing insights into model decision-making.</p>
-<div id="a0b8c902" class="cell" data-execution_count="10">
+<div id="72beb416" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shap_analysis(model, X, sample_size<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">42</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Compute SHAP values with robust sampling and checks."""</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(X) <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -686,7 +469,7 @@ Table&nbsp;3: XGBoost Model Performance after hyperparameter tuning.
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage </span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>shap_values_base_s3, X_sample_base_s3, expected_value_base_s3 <span class="op">=</span> shap_analysis(xg_model_no_tunning_s3, X_train_s3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="33df581f" class="cell" data-execution_count="11">
+<div id="18d8fedc" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get SHAP values (unpack ALL return values)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shap_values_best_param_s3, X_sample_best_param_s3, expected_value_best_param_s3 <span class="op">=</span> shap_analysis(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    xg_model_best_param_s3, </span>
@@ -843,7 +626,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/rodrigograndy\.github\.io");
+      var filterRegex = new RegExp("https:\/\/rgrandym\.github\.io");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
