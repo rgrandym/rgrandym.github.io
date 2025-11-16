@@ -46,7 +46,7 @@ assets/student_dropout/references/.chroma/
 # Internal development/planning files (private repo, can keep internal docs)
 specs/
 agent_quarto_reports/
-# Personal/sensitive content
-assets/CV_*.pdf
+# Personal/sensitive content - but allow CV for website deployment
+# assets/CV_*.pdf
 assets/article_cell_cycle/
 # GitHub Actions workflows are needed for deployment
