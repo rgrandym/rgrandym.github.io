@@ -1,0 +1,68 @@
+name: rag-transformers
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python=3.11.13
+  
+  # Core Scientific Computing
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  
+  # Plotting & Visualization
+  - matplotlib
+  - plotly
+  - pillow
+  
+  # NLP & Transformers
+  - spacy=3.8.7
+  - tokenizers
+  
+  # Jupyter & IPython
+  - ipykernel
+  - ipython
+  - jupyter_client
+  - jupyter_core
+  - ipywidgets
+  
+  # Deep Learning (PyTorch)
+  - pytorch::pytorch
+  - pytorch::torchvision
+  
+  # Graph Database
+  - neo4j-python-driver=5.28.1
+  - py4j=0.10.9.9
+  - openjdk=17.0.15
+  
+  # Utilities
+  - requests
+  - tqdm
+  - pyyaml
+  - filelock
+  - platformdirs
+  - packaging
+  - setuptools
+  - pip
+  
+  # Network & Cloud
+  - nodejs=24.4.1
+  
+  # Data Processing
+  - pyarrow
+  
+  # System Dependencies (automatically handled by conda)
+  - brotli
+  - certifi
+  - charset-normalizer
+  - idna
+  - urllib3
+  - openssl
+  - libcurl
+  - krb5
+  
+  # Pip-installed packages (see requirements.txt for full list)
+  - pip:
+      - -r file:requirements.txt

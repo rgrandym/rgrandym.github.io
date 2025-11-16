@@ -1,0 +1,203 @@
+# ==============================================================================
+# RAG Financial Document Analysis System - Python Dependencies
+# ==============================================================================
+# This file contains pip-installable packages for the conda environment
+# Use in combination with environment.yml for complete setup
+# 
+# Installation:
+#   conda env create -f environment.yml
+#   conda activate rag-transformers
+#   python -m spacy download en_core_web_sm
+# ==============================================================================
+
+# Core ML & Deep Learning
+# ------------------------------------------------------------------------------
+accelerate==1.10.1
+torch==2.8.0
+torchvision==0.23.0
+transformers==4.56.1
+sentence-transformers==5.1.0
+tokenizers==0.22.0
+sentencepiece==0.2.1
+safetensors==0.6.2
+
+# Vector Databases & Search
+# ------------------------------------------------------------------------------
+chromadb==1.0.21
+chroma-hnswlib==0.7.3
+chroma-migrate==0.0.7
+weaviate-client==4.16.9
+rank-bm25==0.2.2
+onnxruntime==1.22.1
+
+# LangChain Ecosystem
+# ------------------------------------------------------------------------------
+langchain==0.3.27
+langchain-core==0.3.76
+langchain-community==0.3.29
+langchain-text-splitters==0.3.11
+langchain-openai==0.3.33
+langsmith==0.4.27
+
+# LLM Integration
+# ------------------------------------------------------------------------------
+openai==1.107.2
+llama-cpp-python==0.3.16
+instructor==1.11.3
+
+# Document Processing
+# ------------------------------------------------------------------------------
+pymupdf==1.26.4
+python-docx==1.2.0
+python-pptx==1.0.2
+lxml==6.0.1
+
+# Data Processing & Analysis
+# ------------------------------------------------------------------------------
+pandas==2.3.2
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+pyarrow==21.0.0
+datasets==4.0.0
+duckdb==0.7.1
+
+# Topic Modeling & Clustering
+# ------------------------------------------------------------------------------
+bertopic==0.17.3
+hdbscan==0.8.40
+umap-learn==0.5.9.post2
+scikit-network==0.33.3
+
+# NLP & Text Processing
+# ------------------------------------------------------------------------------
+nltk==3.9.1
+ftfy==6.3.1
+regex==2025.9.1
+tiktoken==0.11.0
+
+# RAG Evaluation
+# ------------------------------------------------------------------------------
+ragas==0.3.4
+
+# API & Web Framework
+# ------------------------------------------------------------------------------
+fastapi==0.116.1
+uvicorn==0.35.0
+starlette==0.47.3
+httpx==0.28.1
+httpcore==1.0.9
+httptools==0.6.4
+h11==0.16.0
+websockets==15.0.1
+websocket-client==1.8.0
+httpx-sse==0.4.1
+
+# Authentication & Security
+# ------------------------------------------------------------------------------
+cryptography==45.0.7
+authlib==1.6.3
+oauthlib==3.3.1
+requests-oauthlib==2.0.0
+
+# Database & Storage
+# ------------------------------------------------------------------------------
+sqlalchemy==2.0.43
+clickhouse-connect==0.6.6
+diskcache==5.6.3
+
+# Monitoring & Observability
+# ------------------------------------------------------------------------------
+opentelemetry-api==1.37.0
+opentelemetry-sdk==1.37.0
+opentelemetry-instrumentation==0.58b0
+opentelemetry-instrumentation-fastapi==0.58b0
+opentelemetry-exporter-otlp-proto-grpc==1.37.0
+posthog==5.4.0
+
+# Configuration & Environment
+# ------------------------------------------------------------------------------
+python-dotenv==1.1.1
+pydantic==2.11.9
+pydantic-core==2.33.2
+pydantic-settings==2.10.1
+
+# Utilities
+# ------------------------------------------------------------------------------
+tqdm==4.67.1
+click==8.2.1
+typer==0.17.4
+rich==14.1.0
+coloredlogs==15.0.1
+humanfriendly==10.0
+backoff==2.2.1
+tenacity==9.1.2
+validators==0.35.0
+
+# Jupyter & Widgets
+# ------------------------------------------------------------------------------
+ipywidgets==8.1.7
+jupyterlab-widgets==3.0.15
+widgetsnbextension==4.0.14
+
+# Data Serialization
+# ------------------------------------------------------------------------------
+pyyaml==6.0.2
+orjson==3.11.3
+ujson==5.11.0
+
+# Cloud & Kubernetes
+# ------------------------------------------------------------------------------
+kubernetes==33.1.0
+google-auth==2.40.3
+googleapis-common-protos==1.70.0
+
+# Version Control & Git
+# ------------------------------------------------------------------------------
+gitpython==3.1.45
+gitdb==4.0.12
+
+# Testing
+# ------------------------------------------------------------------------------
+pytest==8.4.2
+pytest-timeout==2.4.0
+
+# Compression & Hashing
+# ------------------------------------------------------------------------------
+zstandard==0.24.0
+xxhash==3.5.0
+lz4==4.4.4
+mmh3==5.2.0
+
+# Miscellaneous
+# ------------------------------------------------------------------------------
+joblib==1.5.2
+fsspec==2025.3.0
+dill==0.3.7
+multiprocess==0.70.15
+threadpoolctl==3.6.0
+protobuf==6.32.0
+grpcio==1.74.0
+kaleido==1.1.0
+xlsxwriter==3.2.9
+tabulate==0.9.0
+
+# ==============================================================================
+# Additional Setup Instructions
+# ==============================================================================
+# 
+# 1. Install Ollama (for local LLM):
+#    - Download from: https://ollama.ai/
+#    - Pull model: ollama pull llama3.1:8b
+# 
+# 2. Download spaCy language model:
+#    python -m spacy download en_core_web_sm
+# 
+# 3. Neo4j is installed via conda (see environment.yml)
+#    - OpenJDK 17 required (included in environment.yml)
+# 
+# 4. Models downloaded automatically on first run:
+#    - BAAI/bge-large-en-v1.5 (embeddings)
+#    - yiyanghkust/finbert-tone (sentiment)
+# 
+# ==============================================================================
