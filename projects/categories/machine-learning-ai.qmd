@@ -6,7 +6,7 @@ listing:
   contents: 
     - "../student-dropout-prediction_xgb_092525.qmd"
     - "../student-dropout-prediction_nn_201025.qmd"
-    - "../agentic_rag_system_201125.qmd"
+    - "../projects/agentic_rag_system_201125.qmd"
     
   type: default
   sort: "date desc"
