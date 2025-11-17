@@ -3,7 +3,7 @@ title: "Agentic Rag System for Earning Calls Transcripts Analysis"
 description: "Agentic Retrieval-Augmented Generation (RAG) system designed to analyze earnings calls transcripts, providing insights, summaries, and cross-reference against PRA rules."
 date: "2025-11-20"
 categories: ["Machine Learning", "Agentic RAG System", "Predictive Analytics", "Python", "NLP", "Data Science", "Machine Learning AI", "Bank of England Capstone Project"]
-image: "../assets/student_dropout/figures/learning_curve_nn_s3.png"
+image: "../assets/rag_system_boe/images/bot_10725318.png"
 featured: true
 jupyter: python3
 page-layout: full
@@ -47,7 +47,7 @@ format:
 
 ## Introduction
 
-
+Work in progress...
 
 ## Goals and Objectives
   
