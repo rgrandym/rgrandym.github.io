@@ -2,6 +2,7 @@
   {
     "listing": "/projects/categories/machine-learning-ai.html",
     "items": [
+      "/projects/agentic_rag_system_201125.html",
       "/projects/student-dropout-prediction_nn_201025.html",
       "/projects/student-dropout-prediction_xgb_092525.html"
     ]
