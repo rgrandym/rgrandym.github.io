@@ -57,20 +57,21 @@ Strong combination of technical expertise spanning wet-lab methodologies and mac
 **Co-Founder & Scientific Lead (Private Venture)**
 Optima Biolabs | Biotech Startup (Pre-incorporation) October 2025 – Present | Oxford, UK
 
-Project Scope: Leading the formation of a biotech venture leveraging ML and AI to improve bio-manufacturing of cell-derived products. Driving the transition from initial concept to pre-seed readiness through technical strategy, business design, and operational planning.
-Authored comprehensive pitch and due diligence decks; successfully articulated the scientific rationale, market opportunity, and technical execution plan for specialised growth factor disruption.
+- Project Scope: Leading the formation of a biotech venture leveraging ML and AI to improve bio-manufacturing of cell-derived products. Driving the transition from initial concept to pre-seed readiness through technical strategy, business design, and operational planning.
+  
+- Authored comprehensive pitch and due diligence decks; successfully articulated the scientific rationale, market opportunity, and technical execution plan for specialised growth factor disruption.
 
-Engineered detailed OpEx models, including laboratory setup budgets, specialised equipment procurement, and 24-month financial projections to ensure capital efficiency.
+- Engineered detailed OpEx models, including laboratory setup budgets, specialised equipment procurement, and 24-month financial projections to ensure capital efficiency.
 
-Orchestrating co-founder recruitment and team formation; evaluating technical synergies and leadership alignment to build a multi-disciplinary founding team.
+- Orchestrating co-founder recruitment and team formation; evaluating technical synergies and leadership alignment to build a multi-disciplinary founding team.
 
-Conducted deep-dive competitive landscape analysis to define market entry pathways and differentiation within the cell therapy supply chain.
+- Conducted deep-dive competitive landscape analysis to define market entry pathways and differentiation within the cell therapy supply chain.
 
-Defining the technical and regulatory milestones required to move from proof-of-concept to Series A, including safety compliance and resource scaling (In progress).
+- Defining the technical and regulatory milestones required to move from proof-of-concept to Series A, including safety compliance and resource scaling (In progress).
 
-Identifying and addressing critical-path technical and financial risks through iterative reviews with domain experts, KOLs, and potential investors (In progress).
+- Identifying and addressing critical-path technical and financial risks through iterative reviews with domain experts, KOLs, and potential investors (In progress).
 
-Cultivating a network of advisors and partners within the Oxford biotech ecosystem to validate the value proposition and identify partnership opportunities.
+- Cultivating a network of advisors and partners within the Oxford biotech ecosystem to validate the value proposition and identify partnership opportunities.
 
 
 **Principal Scientist, Project Lead, Line Manager: iPSC Cell Therapy/Immuno-Oncology**  
