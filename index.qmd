@@ -18,13 +18,15 @@ format:
 
 Innovative scientific leader with over 19 years of combined experience in academia and biotech, specialising in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing.
 
-Currently developing an AI-driven biotech venture that leverages machine learning to design novel peptides and small molecules as cost-effective replacements for growth factors in cell-derived product manufacturing.
-
 Certified in AI and Machine Learning for Data Science by the University of Cambridge, with expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
 
-Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modeling. 
+Currently leveraging this dual expertise as a Co-Founder and Scientific Lead for a private biotech venture (Optima Biolabs). I am driving the transition of an ML-driven platform to improve bio-manufacturing of cell-derived products from concept to pre-seed readiness, focusing on technical de-risking, multi-year OpEx modelling, and the articulation of commercial value propositions for the investment ecosystem.
+
+Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modelling. 
 
 Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
+
+Core Expertise: Strategic R&D & Team Leadership • Entrepreneurial Strategy & OpEx Modelling • iPSC and Hematopoietic Stem Cell Systems • Genomics, Bioinformatics & Sequencing • AI & ML (Neural Networks, Deep Learning, LLMs, RAG) • Data Analysis & Interpretation (NGS, Single-Cell RNA-Seq).
 
 :::
 
