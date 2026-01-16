@@ -22,12 +22,6 @@ Certified in AI and Machine Learning for Data Science by the University of Cambr
 
 Currently leveraging this dual expertise as a Co-Founder and Scientific Lead for a private biotech venture (Optima Biolabs). I am driving the transition of an ML-driven platform to improve bio-manufacturing of cell-derived products from concept to pre-seed readiness, focusing on technical de-risking, multi-year OpEx modelling, and the articulation of commercial value propositions for the investment ecosystem.
 
-Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modelling. 
-
-Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
-
-Core Expertise: Strategic R&D & Team Leadership • Entrepreneurial Strategy & OpEx Modelling • iPSC and Hematopoietic Stem Cell Systems • Genomics, Bioinformatics & Sequencing • AI & ML (Neural Networks, Deep Learning, LLMs, RAG) • Data Analysis & Interpretation (NGS, Single-Cell RNA-Seq).
-
 :::
 
 ::: {.hero-image}
@@ -43,6 +37,11 @@ Core Expertise: Strategic R&D & Team Leadership • Entrepreneurial Strategy & O
 
 <!-- Core Expertise - Full Width -->
 ::: {.core-expertise-section}
-**Core Expertise**: Strategic R&D & team leadership • iPSC and hematopoietic stem cell systems • Genomics, bioinformatics & sequencing • Quality Control of iPSC systems • AI & ML • Neural networks & deep learning • LLMs & RAG systems • Data Analysis (NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation) 
+
+Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modelling. 
+
+Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
+
+**Core Expertise**: Strategic R&D & Team Leadership • Entrepreneurial Strategy & OpEx Modelling • iPSC and Hematopoietic Stem Cell Systems • Genomics, Bioinformatics & Sequencing • AI & ML (Neural Networks, Deep Learning, LLMs, RAG) • Data Analysis & Interpretation (NGS, Single-Cell RNA-Seq).
 :::
 
