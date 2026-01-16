@@ -13,7 +13,7 @@ format:
 ---
 
 ::: {.cv-download-wrap}
-[Download CV (PDF)](assets/CV_Rodrigo_Grandy_Principal_Scientist_group_leader_October_2025.pdf){.btn .btn-primary .cv-download-btn target="_blank" rel="noopener"}
+[Download CV (PDF)](assets/CV_Rodrigo_Grandy_Principal_Scientist_group_leader_Jan_2026.pdf){.btn .btn-primary .cv-download-btn target="_blank" rel="noopener"}
 
 ::: {.contact-links}
 [{{< fa envelope >}}](mailto:rodrigograndy@gmail.com){.contact-link target="_blank" title="Email"}
@@ -22,20 +22,22 @@ format:
 :::
 :::
 
-- Currently developing an AI-driven biotech venture that leverages machine learning to design novel peptides and small molecules as cost-effective replacements for growth factors in cell-derived product manufacturing.
+Innovative scientific leader with over 19 years of combined experience in academia and biotech, specialising in Cell and Molecular Biology with emphasis on Cell Therapy, RNA/cDNA technologies, and next-generation sequencing.
 
-- Certified in AI and Machine Learning for Data Science by the University of Cambridge, with expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
+Certified in AI and Machine Learning for Data Science by the University of Cambridge, with expertise in neural networks, deep learning frameworks, LLMs, and RAG systems.
 
-- Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modeling. 
+Currently leveraging this dual expertise as a Co-Founder and Scientific Lead for a private biotech venture (Optima Biolabs). I am driving the transition of an ML-driven platform to improve bio-manufacturing of cell-derived products from concept to pre-seed readiness, focusing on technical de-risking, multi-year OpEx modelling, and the articulation of commercial value propositions for the investment ecosystem.
 
-- Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
+Skilled in establishing and managing R&D teams and projects across cell therapy and nucleic acid sequencing platforms, now enhanced by cutting-edge AI/ML capabilities for advanced data analysis and predictive modelling. 
 
-**Core Expertise:** Strategic R&D & team leadership • iPSC and hematopoietic stem cell systems • Genomics, bioinformatics & sequencing • Quality Control of iPSC systems • AI & ML • Neural networks & deep learning • LLMs & RAG systems • Data Analysis (NGS, Single-Cell RNA-Seq, Data Analysis & Interpretation)
+Strong combination of technical expertise spanning wet-lab methodologies and machine learning, with focus on data-driven decision-making, stakeholder management, and leveraging AI tools to unlock insights from complex datasets.
+
+**Core Expertise:** Strategic R&D & Team Leadership • Entrepreneurial Strategy & OpEx Modelling • iPSC and Hematopoietic Stem Cell Systems • Genomics, Bioinformatics & Sequencing • AI & ML (Neural Networks, Deep Learning, LLMs, RAG) • Data Analysis & Interpretation (NGS, Single-Cell RNA-Seq).
 
 ## Education, Training, and Certifications
 
 - **AI and Machine Learning for Data Science Certification**  
-*University of Cambridge (UK)* | 2025
+*University of Cambridge (UK)* | February - November 2025
 
 - **Postdoctoral Researcher**  
 *Stem Cell Institute, Cambridge University (UK)* | 2015-2019
@@ -52,9 +54,27 @@ format:
 
 ## Professional Experience
 
-**Principal Scientist, Group Leader**  
+**Co-Founder & Scientific Lead (Private Venture)**
+Optima Biolabs | Biotech Startup (Pre-incorporation) October 2025 – Present | Oxford, UK
+
+Project Scope: Leading the formation of a biotech venture leveraging ML and AI to improve bio-manufacturing of cell-derived products. Driving the transition from initial concept to pre-seed readiness through technical strategy, business design, and operational planning.
+Authored comprehensive pitch and due diligence decks; successfully articulated the scientific rationale, market opportunity, and technical execution plan for specialised growth factor disruption.
+
+Engineered detailed OpEx models, including laboratory setup budgets, specialised equipment procurement, and 24-month financial projections to ensure capital efficiency.
+
+Orchestrating co-founder recruitment and team formation; evaluating technical synergies and leadership alignment to build a multi-disciplinary founding team.
+
+Conducted deep-dive competitive landscape analysis to define market entry pathways and differentiation within the cell therapy supply chain.
+
+Defining the technical and regulatory milestones required to move from proof-of-concept to Series A, including safety compliance and resource scaling (In progress).
+
+Identifying and addressing critical-path technical and financial risks through iterative reviews with domain experts, KOLs, and potential investors (In progress).
+
+Cultivating a network of advisors and partners within the Oxford biotech ecosystem to validate the value proposition and identify partnership opportunities.
+
+
+**Principal Scientist, Project Lead, Line Manager: iPSC Cell Therapy/Immuno-Oncology**  
 *Evotec, United Kingdom | Germany (2023 - November 2024)
-Principal Scientist, Project Lead, Line Manager: iPSC Cell Therapy/Immuno-Oncology
 
 - Managed and supervised a team of scientists and technical staff to ensure the quality of work met company standards in iPSC-derived immunotherapies generation. 
 - Led scientific strategy and process optimisation for differentiating, expanding, and cryopreserving iPSC-derived HSCs and T cells.
@@ -70,7 +90,6 @@ Principal Scientist, Project Lead, Line Manager: iPSC Cell Therapy/Immuno-Oncolo
 
 **Group Leader/Line Manager Stem Cell Research**
 Adaptimmune | Abingdon, UK (2022 - 2023)
-Group Leader/Line Manager Stem Cell Research
 
 - Developed a quality control package in compliance with international standards to assess the quality of in-house derived iPS cell lines.
 - Formed and led a team of senior scientists and scientists to manage the quality control program for our engineered iPS cells and derivatives.
@@ -83,9 +102,8 @@ Group Leader/Line Manager Stem Cell Research
 - Defined and managed the research program budget, ensuring financial resources were aligned with project goals.
 - Engaged in constructing and improving the platform to support the development of engineered iPSC-derived T cell therapies.
 
-**Senior Scientist R&D: Genomics & Cellular Research**
+**Senior Scientist Research and Development: Genomics & Cellular Research**
 Cytiva, Cardiff, UK (2019 - 2022)
-Senior Scientist Research and Development: Genomics & Cellular Research
 
 - Generated and analysed NGS data to evaluate performance and quality of various Cytiva products and prototypes.
 - Operated and maintained Next Generation Sequencer. Collaborated with the head of R&D to implement Single Cell analysis laboratory capabilities.
